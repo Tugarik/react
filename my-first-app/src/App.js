@@ -3,17 +3,21 @@ import './App.css';
 import Header from './Header';
 import Title from './Title';
 import Calculator from './Calculator'
+import React, {useState}  from 'react';
 
 function App() {
-  //any JS code you want
-  const user = 'Tuga';
-
-  function clickHandler() {
-    console.log('click');
+  const [user, setUser] = useState('');
+  
+  const handleChange = (event) => {
+    setUser(event.target.value);
   }
 
-  function returnedMessage(user) {
-    if (user !== undefined) {
+  const handleClick = () => {
+    console.log(user);  
+  }
+  
+  const returnedMessage = (user) => {
+    if (user !== '') {
       return <h2 style={user == 'Tuga' ? style1 : style2}>Dear {user}! Fill the input fields, please.</h2>;
     }
     return <h2>Dear Guest, fill the input fields, please.</h2>;
@@ -21,20 +25,25 @@ function App() {
 
   const style1 = {
     color: "#FF0000",
-    fontSize: "30px",
+    fontSize: "20px",
   }
   const style2 = {
     color: "#FFBF00",
     fontSize: "20px",
   }
 
-  //main return for App function
   return (
     <div className="App">
         <Header />
-        <Title />
+        <label>Enter Your Name: </label>        
+        <input type="text" placeholder="Your Name" onChange={handleChange} />
+        <button type="button" value="Submit User" onClick={handleClick}>Submit User</button>
         {returnedMessage(user)}
-        <Calculator/>
+        <div className='calc'>
+          <Title />
+          <Calculator/>
+        </div>
+
     </div>
   );
 }

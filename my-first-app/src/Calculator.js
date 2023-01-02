@@ -37,7 +37,7 @@ class Calculator extends React.Component {
             <label>Enter Interest: </label>        
             <input type="text" placeholder="Interest % per year" value={this.state.interest} onChange={this.UpdateInterest} /><br/>        
             <h2>Calculated Balance: {this.state.year * this.state.balance * (1+ this.state.interest/100)} USD</h2>
-            <input type="button" value="View Info" onClick={this.testclick} />
+            <button type="button" value="View Info" onClick={this.testclick}>View Info</button>
           </div>
         );
       }
