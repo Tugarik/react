@@ -1,0 +1,11 @@
+
+.usersList {
+    background-color: #e6e7e3;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .usersBox {
+    display: flex;
+    justify-content: center;
+  }

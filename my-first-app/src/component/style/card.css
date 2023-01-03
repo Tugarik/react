@@ -1,0 +1,14 @@
+.card {
+    min-width: 180px;
+    margin: 10px;
+    background-color: #b0c8ed;
+    border-radius: 10px;
+}
+
+.userImage {
+    width: 100%;
+}
+.userInfo {
+    font-size: 0.8rem;
+    padding: 5px;
+}
