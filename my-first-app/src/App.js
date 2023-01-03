@@ -11,11 +11,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <CheckUser />
       <Calculator />
       <UsersList />
-
     </div>
   );
 }
