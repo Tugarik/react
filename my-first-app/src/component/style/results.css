@@ -1,0 +1,47 @@
+
+.resultList {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .resultBox {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .resultSum {
+    font-size: 1.5rem;
+    min-width: 150px;
+    padding: 16px;
+    text-align: right;
+  }
+
+  .filterBox {
+    display: flex;
+    max-width: 800px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  .resultFilter button {
+    padding: 5px 20px;
+    border-radius: 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .resultFilter button:hover {
+    background-color: grey;
+  }
+
+  .resultFilter button:first-of-type {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 0;
+  }
+  .resultFilter button:last-of-type {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 0;
+  }

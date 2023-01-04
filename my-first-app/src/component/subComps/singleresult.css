@@ -1,0 +1,41 @@
+.result {
+    display: flex;
+    border-top: 1px solid lightgrey;
+    justify-content: center;
+
+}
+
+.title h2 {
+    color: #0074CC;
+    margin-top: 16px;
+}
+
+.title h2:hover {
+    color: #24dced;
+}
+
+.answers {
+    background-color:green ;
+    margin: 5px 0;
+    padding: 6px;
+    border-radius: 5px;
+    color: #FFF;
+    max-width: 120px;
+}
+
+.views {
+    color: red;
+}
+
+.article_stats {
+    text-align: right;
+    padding: 16px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-end;
+}
+.article_text {
+    text-align: left;
+}

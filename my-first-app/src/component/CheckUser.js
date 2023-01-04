@@ -14,9 +14,9 @@ export default function CheckUser() {
 
     const returnedMessage = (user) => {
         if (user !== '') {
-            return <h2 style={user == 'Legendary Andy' ? style1 : style2}>Dear {user}! Fill the input fields, please.</h2>;
+            return <h2 style={user == 'Legendary Andy' ? style1 : style2}>Dear {user}! Welcome back.</h2>;
         }
-        return <h2>Dear Guest, fill the input fields, please.</h2>;
+        return <h2>Dear Guest, fill the input field, please.</h2>;
     }
 
     const style1 = {
