@@ -1,0 +1,25 @@
+.sliderItem {
+    padding-top: 50px;
+}
+
+.sliderItem .right {
+    text-align: center;    
+}
+.sliderItem .left {
+    padding-top: 50px;    
+}
+
+.brand {
+    color:#4ABEFF;
+    font-size: 50px;
+    font-weight: 700;
+}
+.type {
+    color:#4ABEFF;
+    font-size: 50px;
+    font-weight: 500;
+}
+.sliderImage {
+    width: 80%;
+    height: auto;
+}

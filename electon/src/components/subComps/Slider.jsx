@@ -1,8 +1,8 @@
-import SliderItem from "../slider/SliderItem";
+import SliderItem from "./SliderItem";
 
 export default function Slider() {
   return (
-    <div>
+    <div className="container-lg">
       <SliderItem />
     </div>
   );

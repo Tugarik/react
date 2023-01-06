@@ -1,41 +1,51 @@
 .navigation {
   background-color: #4abeff;
 }
+
 .logo {
   height: 40px;
 }
-.cart {
-  color: white;
-}
 .brandName {
-  font-size: 25px;
+  font-size: 2rem;
   font-weight: 700;
 }
-.navigation .input-group {
-  margin-left: 200px;
-  height: 48px;
+
+.user_icon {
+  height: 24px;
+}
+.cart {
+  color: white;
+  height: 24px;
 }
 
 .navigation input {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-radius: 15px 0 0 15px;
 }
 
 .navigation button {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  color: #FFF;
+  border-radius: 0 15px 15px 0;
 }
 
 .navigation .counter {
   color: #fff;
   border-radius: 50%;
-  padding: 5px;
+  padding: 2px 6px;
   background-color: #ff8957;
   text-align: center;
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  position:absolute;
+  right: 2px;
+  top: -5px;
 }
-
-.right {
+.navigation .middle {
+  min-width: 270px;
+  max-width: 500px;
+}
+.navigation .right {
   color: #ffffff;
+  min-width: 180px;
+  position: relative;
+
 }

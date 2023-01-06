@@ -1,14 +1,15 @@
-import Filter from "./subComps/FIlter";
-import Partners from "./subComps/Partners";
 import Slider from "./subComps/Slider";
+import Popular from "./subComps/Popular";
+import Sale from "./subComps/Sale";
 import Special from "./subComps/Special";
+import Partners from "./subComps/Partners";
 
 export default function Main() {
   return (
     <div className="container-lg">
       <Slider />
-      <Filter />
-      <img src="" alt="special_img" className="saleOffer" />
+      <Popular />
+      <Sale/>
       <Special />
       <Partners />
     </div>
