@@ -1,0 +1,28 @@
+.filters {
+  display: flex;
+  gap: 20px;
+}
+
+.filters button {
+  font-size: 18px;
+  font-weight: 700;
+  color: #424242;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.filters .all {
+  color: #d05270;
+  font-size: 24px;
+  border-bottom: 1px solid #d05270;
+  padding: 0 10px;
+}
+
+.stage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+}

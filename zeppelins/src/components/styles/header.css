@@ -1,0 +1,60 @@
+.header {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+}
+.left {
+  flex: 3;
+}
+
+.right {
+  flex: 1;
+}
+
+.left .title {
+  color: #d05270;
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.left .subTitle {
+  color: #424242;
+  font-size: 52px;
+  font-weight: 500;
+}
+
+.links {
+  display: flex;
+  gap: 5%;
+  justify-content: space-between;
+  color: #fff;
+  font-weight: 500;
+}
+
+.links .twitter {
+  display: flex;
+  justify-content: space-between;
+  background-color: #47acdf;
+  font-size: 12px;
+  padding: 23px 55px;
+  width: 30%;
+}
+.links .linkedin {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1275b1;
+  font-size: 12px;
+  padding: 23px 55px;
+  width: 30%;
+  text-align: center;
+}
+.links .medium {
+  display: flex;
+  justify-content: space-between;
+  background-color: #000000;
+  font-size: 12px;
+  padding: 23px 55px;
+  width: 30%;
+  text-align: center;
+}
