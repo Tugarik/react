@@ -1,6 +1,6 @@
 .card {
   width: 590px;
-  height: 700px;
+  height: 550px;
   display: flex;
   flex-direction: column;
 }
@@ -18,4 +18,18 @@
   cursor: pointer;
   border-bottom: 1px solid #d05270;
   align-self: flex-start;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /*number of lines to show*/
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.postDate {
+  font-weight: 500;
+  color: #424242;
 }

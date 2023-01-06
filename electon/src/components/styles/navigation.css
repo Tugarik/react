@@ -1,0 +1,41 @@
+.navigation {
+  background-color: #4abeff;
+}
+.logo {
+  height: 40px;
+}
+.cart {
+  color: white;
+}
+.brandName {
+  font-size: 25px;
+  font-weight: 700;
+}
+.navigation .input-group {
+  margin-left: 200px;
+  height: 48px;
+}
+
+.navigation input {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.navigation button {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.navigation .counter {
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #ff8957;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.right {
+  color: #ffffff;
+}

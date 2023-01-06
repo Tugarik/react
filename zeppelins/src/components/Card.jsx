@@ -5,6 +5,7 @@ export default function Card(props) {
     <div className="card">
       <img className="cardImage" src={`${props.data.image}`} alt="card image" />
       <div className="cardInfo">
+        <p className="postDate">{props.data.date}</p>
         <h3 className="title">{props.data.title}</h3>
         <p className="description">{props.data.description}</p>
       </div>
