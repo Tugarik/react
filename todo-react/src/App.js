@@ -3,25 +3,34 @@ import { useState } from "react";
 
 function App() {
   let item;
-  const [todos, setTodos] = useState([""]);
+  const [todos, setTodos] = useState([]);
   const inputChange = (e) => {
-    console.log(e.target.value);
     item = e.target.value;
   };
 
   const addTodo = () => {
     setTodos([...todos, item]);
-    console.log(todos);
   };
 
+  const removeItem = (n) => {
+    todos.splice(n, 1);
+    setTodos([...todos]);
+  };
   return (
     <div className="App">
-      <div className="title">To Do List</div>
+      <h1 className="title">To Do List</h1>
       <input type="text" onChange={inputChange} placeholder="Input todo ..." />
       <button onClick={addTodo}>Add Todo</button>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index} id={index}>
+            <div className="todoItem">
+              <div>{todo}</div>
+              <div>
+                <button onClick={() => removeItem(index)}>Delete</button>
+              </div>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
