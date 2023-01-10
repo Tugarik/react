@@ -4,12 +4,18 @@ import { useState } from "react";
 function App() {
   let item;
   const [todos, setTodos] = useState([]);
+
   const inputChange = (e) => {
     item = e.target.value;
+    console.log(item);
   };
 
   const addTodo = () => {
-    setTodos([...todos, item]);
+    if (item != "") {
+      setTodos([...todos, item]);
+    } else {
+      setTodos(todos);
+    }
   };
 
   const removeItem = (n) => {
