@@ -101,7 +101,7 @@ export default function Calculator() {
   }
 
   function signClick(e) {
-    e.preventDefault();
+    // e.preventDefault();
     isSign()
       ? setVal(val.replace(val.charAt(val.length - 1), e.target.value))
       : setVal(val + e.target.value);
