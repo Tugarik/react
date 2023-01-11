@@ -1,6 +1,6 @@
 export default function UserRow({ userData }) {
   return (
-    <tr>
+    <tr className="row">
       <td>#{userData.id}</td>
       <td>{userData.name}</td>
       <td>
