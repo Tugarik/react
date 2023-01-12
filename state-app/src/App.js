@@ -1,11 +1,6 @@
 import "./App.css";
-import Userlist from "./components/Userlist";
-
+import UserList from "./components/UserList";
 
 export default function App() {
-  return (
-
-    <Userlist/>
-
-  )}
-
+  return <UserList />;
+}

@@ -1,0 +1,8 @@
+.login {
+  color: green;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  align-items: center;
+  margin: 0 auto;
+}
