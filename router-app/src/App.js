@@ -1,29 +1,29 @@
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { MENUS } from "../src/utils/data";
 import About from "./pages/About";
 import Home from "./pages/Home";
-import { MENUS } from "../src/utils/data";
 import Login from "./pages/Login";
+import Product from "./pages/Poduct";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { users } from "../src/utils/data";
-import { useState } from "react";
-import Product from "./pages/Poduct";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usersList, setUsersList] = useState(users);
-  const [user, setUser] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
 
   const loginHandler = (userName, password) => {
-    console.log("log user name: ", userName);
-    console.log("log password: ", password);
     let isMatch = false;
     usersList.map((user) => {
       if (userName === user.name && password === user.password) {
         setIsLoggedIn(true);
-        setUser(userName);
+        setCurrentUser(userName);
         isMatch = true;
+        console.log("logged user name: ", userName);
+        console.log("logged password: ", password);
         return;
       }
     });
@@ -33,10 +33,12 @@ export default function App() {
   };
 
   const registerHandler = (userName, password) => {
-    console.log("reg user name: ", userName);
-    console.log("reg password: ", password);
-    setUsersList([...users, { name: userName, password: password }]);
+    console.log("user name to reg: ", userName);
+    console.log("password to reg: ", password);
+    setUsersList([...usersList, { name: userName, password: password }]);
+    console.log("New user registered!");
     console.log(usersList);
+    setIsLoggedIn(false);
   };
 
   return (
@@ -50,7 +52,7 @@ export default function App() {
           path={MENUS[2].url}
           element={
             isLoggedIn ? (
-              <Product setUser={user} setLogout={setIsLoggedIn} />
+              <Product setUser={currentUser} setLogout={setIsLoggedIn} />
             ) : (
               <Login loginData={loginHandler} registerData={registerHandler} />
             )
