@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./component/Header";
-import SideMenu from "./component/SideMenu";
 import Dashboard from "./pages/Dahsboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";

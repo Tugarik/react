@@ -1,5 +1,5 @@
 import "../styles/sidemenu.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SideMenu() {
   const navigate = useNavigate();
@@ -14,9 +14,11 @@ export default function SideMenu() {
 
   return (
     <div className="sidemenu">
-      Side
+      <h3>Side</h3>
       <button onClick={urlUsersHandler}>Users</button>
       <button onClick={urlProductsHandler}>Products</button>
+      <Link to="/">Log Out</Link>
+      <a href="/">Home</a>
     </div>
   );
 }

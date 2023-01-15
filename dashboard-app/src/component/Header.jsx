@@ -1,5 +1,5 @@
 import "../styles/header.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ export default function Header() {
     <div className="header">
       <button onClick={urlHomeHandler}>Home</button>
       <button onClick={urlLoginHandler}>Login</button>
+      <Link/>
     </div>
   );
 }
