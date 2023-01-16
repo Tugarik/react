@@ -1,16 +1,16 @@
 .back {
-    background-image: url("../../../public/img/sale_back.png");
+    background-image: url("/public/img/sale_back.png");
     border-radius: 20px;
     height: 420px;
 }
 
 .saleText1 {
-    color: #4ABEFF;
+    color: #4abeff;
     font-weight: 700;
     font-size: 40px;
 }
 .saleText2 {
-    color: #FFF;
+    color: #fff;
     font-weight: 500;
     font-size: 18px;
 }

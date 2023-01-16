@@ -17,8 +17,13 @@ export default function SideMenu() {
       <h3>Side</h3>
       <button onClick={urlUsersHandler}>Users</button>
       <button onClick={urlProductsHandler}>Products</button>
-      <Link to="/">Log Out</Link>
-      <a href="/">Home</a>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Log Out
+      </button>
     </div>
   );
 }

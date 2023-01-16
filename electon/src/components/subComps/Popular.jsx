@@ -1,5 +1,4 @@
-import Data from "./../data/Data";
-import "../styles/popular.css";
+import "../../styles/popular.css";
 
 export default function Popular() {
     return (
