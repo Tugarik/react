@@ -1,0 +1,52 @@
+/* Navigation */
+.HomeNav {
+    justify-content: space-between;
+    border: 1px solid green;
+    padding: 15px 0;
+    background-color: #003585;
+}
+
+.loginBtn {
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.shoppingCart {
+    background-color: #A7F65C;
+    color:#003585;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Slider */
+.Slider {
+    border: 1px solid green;
+    padding: 15px 0;
+}
+
+.Popular {
+    border: 1px solid green;
+    padding: 15px 0;
+}
+
+.Specials {
+    border: 1px solid green;
+    padding: 15px 0;
+}
+
+.SaleOffer {
+    border: 1px solid green;
+    padding: 15px 0;
+}
+
+.Partners {
+    border: 1px solid green;
+    padding: 15px 0;
+}
+
+.Footer {
+    border: 1px solid green;
+    padding: 15px 0;
+}

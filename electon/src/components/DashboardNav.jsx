@@ -29,7 +29,7 @@ export default function DashboardNav() {
                 >
                     <img
                         className="logo"
-                        src="./img/logo_white.svg"
+                        src="./img/logo_blue.svg"
                         alt="logo"
                     />
                     <span className="brandName ms-2">Electon</span>

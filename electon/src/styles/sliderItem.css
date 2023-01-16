@@ -1,5 +1,6 @@
 .sliderItem {
     padding-top: 50px;
+    background-color: #003585;
 }
 
 .sliderItem .right {
@@ -25,11 +26,11 @@
 }
 
 .viewmoreBtn {
-    border: 1px solid #a7f65c;
+    border: 2px solid #a7f65c;
     color: #a7f65c;
 }
 
 .shopnowBtn {
-    border-color: #003585;
-    color: #003585;
+    background-color: #fff!important;
+    color: #003585!important;
 }

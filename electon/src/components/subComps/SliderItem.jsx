@@ -16,15 +16,12 @@ export default function SliderItem() {
                             View more
                         </button>
                     </div>
-                    <div className="circle mt-3 text-center">
-                        &#x2B24; &#x25EF; &#x25EF;
-                    </div>
                 </div>
             </div>
             <div className="right order-0 order-md-1 flex-md-fill  pt-5">
                 <img
                     className="sliderImage"
-                    src="./img/canon_d3300.png"
+                    src="./img/canon_d7.png"
                     alt="slider1"
                     width="390px"
                 />

@@ -17,7 +17,8 @@ export default function Navigation() {
         setShow(true);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         navigate("/dashboard");
         setShow(false);
     };
@@ -54,7 +55,7 @@ export default function Navigation() {
                 <div className="right d-flex align-items-center justify-content-end ms-auto mt-3">
                     <Button
                         onClick={handleShow}
-                        className="loginbtn pe-3 btn btn-outline-primary"
+                        className="loginbtn pe-3 btn btn-outline-primary text-white"
                     >
                         <img
                             className="user_icon pe-1"
@@ -64,7 +65,8 @@ export default function Navigation() {
                         Sign in
                     </Button>
                     <Modal show={show} onHide={handleClose}>
-                        <Form onSubmit={handleSubmit}>
+                        <Form  onSubmit={handleSubmit}>
+
                             <Modal.Header closeButton>
                                 <div className="left d-flex flex-wrap text-white align-items-center justify-content-center justify-content-md-start">
                                     <img
@@ -112,7 +114,7 @@ export default function Navigation() {
                                     Sign In
                                 </Button>
                                 <Button
-                                    type="submit"
+                                    type="button"
                                     variant="primary"
                                     onClick={handleSignUp}
                                 >
@@ -121,6 +123,7 @@ export default function Navigation() {
                             </Modal.Footer>
                         </Form>
                     </Modal>
+                        
                     <img
                         className="cart pe-3"
                         src="./img/cart.svg"

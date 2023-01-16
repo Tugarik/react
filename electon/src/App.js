@@ -1,11 +1,9 @@
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+// import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import Products from "./pages/Products";
 import Users from "./pages/Users";
-// import "./App.css";
+import Products from "./pages/Products";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     return (
@@ -14,7 +12,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard/*" element={<Dashboard />}>
                     <Route index element={<Users />} />
-                    <Route index path="users" element={<Users />} />
+                    <Route path="users" element={<Users />} />
                     <Route path="products" element={<Products />} />
                 </Route>
             </Routes>

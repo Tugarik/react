@@ -1,0 +1,59 @@
+.Dash_Side {
+    width: 20%;
+    height: 80vh;
+    border: 1px solid blue;
+}
+
+.Dash_Nav {
+    justify-content: space-between;
+    border: 1px solid green;
+    padding: 15px 0;
+}
+
+.Dash_Nav .whiteBtn {
+    font-size: 14px;
+    color: #003585;
+    background-color: #FFFFFF;
+    border: 0;
+}
+
+.blueBtn {
+    width: 40%;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #003585;
+    border: 1px solid #003585;
+    border: 0;
+    border-radius: 5px;
+}
+
+.greyBtn {
+    width: 40%;
+    font-size: 14px;
+    color: #003585;
+    background-color: #D2D2D2;
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+
+}
+
+.blueBtn:hover, .greyBtn:hover {
+    border: 1px solid #003585;
+}
+
+.modalBtns {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+.qmark {
+    padding: 5px 15px;
+    background-color: #A7F65C;
+    color:#003585;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: fit-content;
+    border-radius: 50%;
+    margin: 15px auto;
+}
