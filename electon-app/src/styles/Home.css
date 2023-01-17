@@ -1,52 +1,57 @@
 /* Navigation */
 .HomeNav {
-    justify-content: space-between;
-    border: 1px solid green;
-    padding: 15px 0;
-    background-color: #003585;
+  justify-content: space-between;
+  border: 1px solid green;
+  padding: 15px 0;
+  background-color: #003585;
+}
+.brandName {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .loginBtn {
-    background-color: transparent;
-    color: #FFFFFF;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 .shoppingCart {
-    background-color: #A7F65C;
-    color:#003585;
-    padding: 5px 10px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: 600;
+  background-color: #a7f65c;
+  color: #003585;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /* Slider */
 .Slider {
-    border: 1px solid green;
-    padding: 15px 0;
+  border: 1px solid green;
+  padding: 15px 0;
 }
 
 .Popular {
-    border: 1px solid green;
-    padding: 15px 0;
+  border: 1px solid green;
+  padding: 15px 0;
 }
 
 .Specials {
-    border: 1px solid green;
-    padding: 15px 0;
+  border: 1px solid green;
+  padding: 15px 0;
 }
 
 .SaleOffer {
-    border: 1px solid green;
-    padding: 15px 0;
+  border: 1px solid green;
+  padding: 15px 0;
 }
 
 .Partners {
-    border: 1px solid green;
-    padding: 15px 0;
+  border: 1px solid green;
+  padding: 15px 0;
 }
 
 .Footer {
-    border: 1px solid green;
-    padding: 15px 0;
+  border: 1px solid green;
+  padding: 15px 0;
 }

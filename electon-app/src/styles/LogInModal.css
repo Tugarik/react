@@ -1,0 +1,78 @@
+.modalInputs {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 10px;
+}
+
+.modalInputs input {
+  padding: 5px;
+  border: 0;
+  width: 100%;
+  outline: none;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.inputImg {
+  padding: 5px;
+  color: grey;
+}
+
+.logInBtns {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.loginBtn {
+  border: 1px solid #003585;
+  background-color: #003585;
+}
+.loginBtn:hover {
+  border: 1px solid #003585;
+  background-color: #fff;
+}
+
+.regBtn {
+  border: 1px solid #a7f65c;
+}
+.regBtn:hover {
+  background-color: #a7f65c;
+}
+.hr-lines {
+  position: relative;
+  margin: 0 auto;
+  color: grey;
+}
+.hr-lines:before {
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  left: -210px;
+  background: lightgrey;
+}
+
+.hr-lines::after {
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  right: -210px;
+  background: lightgrey;
+}
+
+.passquestion {
+  color: grey;
+}
