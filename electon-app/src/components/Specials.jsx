@@ -1,8 +1,3 @@
-
 export default function Specials() {
-    return (
-        <div className='Specials'>
-            Specials 
-        </div>
-    );
+  return <div className="Specials container-lg">Specials</div>;
 }

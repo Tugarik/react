@@ -1,8 +1,3 @@
-
 export default function Partners() {
-    return (
-        <div className='Partners'>
-            Partners 
-        </div>
-    );
+  return <div className="Partners container-lg">Partners</div>;
 }

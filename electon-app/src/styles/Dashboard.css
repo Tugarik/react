@@ -1,13 +1,24 @@
 .Dash_Side {
   width: 30%;
-  height: 80vh;
+  height: calc(100vh - 50px);
   border: 1px solid blue;
 }
 
 .Dash_Nav {
+  flex-wrap: wrap;
   justify-content: space-between;
-  border: 1px solid green;
-  padding: 15px 0;
+  padding: 15px;
+}
+
+.Dash_Nav .brandName {
+  color: #003585;
+}
+#basic-input2 {
+  background-color: lightgrey;
+}
+#button-addon2 {
+  background-color: #003585;
+  color: #ffffff;
 }
 
 .Dash_Nav .whiteBtn {
@@ -31,6 +42,9 @@
   width: 70%;
   background-color: #003585;
   color: #ffffff;
+  border-radius: 10px;
+  border: 0;
+  padding: 5px;
 }
 
 .roleBtn:focus {

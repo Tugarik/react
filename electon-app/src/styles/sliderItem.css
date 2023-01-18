@@ -1,0 +1,60 @@
+.sliderItem {
+  padding: 50px 0;
+  background-color: #003585;
+}
+
+.sliderItem .right {
+  text-align: center;
+  max-width: 600px;
+}
+
+.sliderImgContainer {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.onlyText {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #a7f65c;
+  color: #003585;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  padding-top: 20px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.sliderItem .left {
+  max-width: 600px;
+}
+
+.brand {
+  color: #a7f65c;
+  font-size: 50px;
+  font-weight: 700;
+}
+.type {
+  color: #a7f65c;
+  font-size: 50px;
+  font-weight: 500;
+}
+.sliderImage {
+  max-width: 440px;
+  height: auto;
+}
+
+.viewmoreBtn {
+  border: 1px solid #a7f65c;
+  color: #a7f65c;
+}
+.viewmoreBtn:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.shopnowBtn {
+  background-color: #fff !important;
+  color: #003585 !important;
+}

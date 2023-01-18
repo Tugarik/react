@@ -17,30 +17,6 @@ const moderatorMenu = [
 ];
 
 export default function Dash_Side({ role }) {
-  // const AdminLayout = () => {
-  //   return (
-  //     <div>
-  //       {adminMenu.map((menu, index) => (
-  //         <div key={index}>
-  //           <button onClick={() => navigate(menu.url)}>{menu.name}</button>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // };
-
-  // const ModeratorLayout = () => {
-  //   return (
-  //     <div>
-  //       {moderatorMenu.map((menu, index) => (
-  //         <div key={index}>
-  //           <button onClick={() => navigate(menu.url)}>{menu.name}</button>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // };
-
   const navigate = useNavigate();
   let menus = [];
   const Layout = ({ role }) => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Dash_Panel from "./components/Dash_Panel";
+import Dash_Panel from "./pages/Dash_Panel";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Moderators from "./pages/Moderators";
