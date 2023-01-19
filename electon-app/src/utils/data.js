@@ -20,11 +20,59 @@ export const DATA = [
   {
     title: "Camera",
     image: "https://m.media-amazon.com/images/I/91rQ3XfEYzL._SL1500_.jpg",
-    model: "Sony Alpha iii",
-    price: "1000",
+    model: "Sony Alpha III",
+    spec: [
+      { Shutter: "10fps Silent" },
+      { ISO: "50 to 204,800" },
+      { Sensor: "35mm Full-frame Image Sensor" },
+      {
+        Battery:
+          "Long-lasting Z battery for up to 710 images8 on a full charge",
+      },
+    ],
+    description:
+      "Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
+    price: "1999",
     category: "Camera",
-    sale: true,
-    id: '55100c41',
+    sale: 15,
+    id: "55100c41",
+  },
+  {
+    title: "HP Laptop",
+    image:
+      "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06927801.png",
+    model: "HP Probook 430",
+    spec: [
+      { DisplaySize: '13"' },
+      { CPU: "i5-8250U 2,4 GHZ" },
+      { HardDrive: "256Gb SSD" },
+      { RAM: "8GB" },
+    ],
+    description:
+      "Touch Convertible Laptop AMD. 1 year Warranty. Free and fast delivery.",
+    price: "350",
+    stock: 2,
+    category: "Laptops",
+    sale: 10,
+    id: "bf3e8ab6",
+  },
+  {
+    title: "HP Elitebook 840",
+    image:
+      "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08114744.png?imwidth=270&imdensity=1",
+    spec: [
+      { DisplaySize: '14"' },
+      { CPU: "i5-6300U 2,4 GHZ" },
+      { HardDrive: "1Tb SSD" },
+      { RAM: "16GB" },
+    ],
+    description:
+      "An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller’s listing for full details and description of any imperfections. ",
+    price: "450",
+    stock: 29,
+    category: "Laptops",
+    sale: 20,
+    id: "ea5e3b6c",
   },
   {
     title: "Wireless headphones",
@@ -32,7 +80,8 @@ export const DATA = [
     model: "Beat",
     price: "350",
     category: "Accessories",
-    sale: false,
+    sale: 10,
+    id: "de1fd4da",
   },
   {
     title: "RTX3070",
@@ -41,6 +90,7 @@ export const DATA = [
     price: "1000",
     category: "PcParts",
     sale: false,
+    id: "57d28ae1",
   },
   {
     title: "CPU",
@@ -49,6 +99,7 @@ export const DATA = [
     price: "900",
     category: "PcParts",
     sale: false,
+    id: "8c3f3d00",
   },
   {
     title: "Laptop",
@@ -58,6 +109,7 @@ export const DATA = [
     price: "3000",
     category: "Laptops",
     sale: true,
+    id: "eb89f3b9",
   },
   {
     title: "Phone",
@@ -67,6 +119,7 @@ export const DATA = [
     price: "2000",
     category: "Phones",
     sale: false,
+    id: "9b77899e",
   },
   {
     title: "RAM",
@@ -76,6 +129,7 @@ export const DATA = [
     price: "500",
     category: "PcParts",
     sale: false,
+    id: "",
   },
   {
     title: "Motherboard",
@@ -85,6 +139,7 @@ export const DATA = [
     price: "700",
     category: "PcParts",
     sale: false,
+    id: "db9de9dd",
   },
   {
     title: "Power Supply",
@@ -93,6 +148,7 @@ export const DATA = [
     price: "400",
     category: "PcParts",
     sale: false,
+    id: "b99e64b4",
   },
   {
     title: "Phone",
@@ -102,6 +158,7 @@ export const DATA = [
     price: "1900",
     category: "Phones",
     sale: false,
+    id: "a2a5afea",
   },
   {
     title: "Phone",
@@ -110,6 +167,7 @@ export const DATA = [
     price: "1500",
     category: "Phones",
     sale: false,
+    id: "67611efd",
   },
   {
     title: "Phone",
@@ -119,5 +177,6 @@ export const DATA = [
     price: "1200",
     category: "Phones",
     sale: false,
+    id: "43f0cb85",
   },
 ];

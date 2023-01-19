@@ -9,6 +9,7 @@ import Products from "./pages/Products";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
 import ItemPage from "./pages/ItemPage";
+import Content from "./pages/Content";
 
 function App() {
   const loginRole = (userRole) => {
@@ -18,9 +19,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home loginRole={loginRole} />} />
-        <Route path="/item">
-          <Route path=':itemId' element={<ItemPage/>}/>
+        <Route path="/*" element={<Home loginRole={loginRole} />}>
+          <Route index element={<Content />} />
+          {/* <Route path="home" element={<Content />} /> */}
+          <Route path="item">
+            <Route path=":itemId" element={<ItemPage />} />
+          </Route>
         </Route>
         <Route path="/dashboard/*" element={<Dashboard role={role} />}>
           <Route index element={<Dash_Panel />} />

@@ -1,6 +1,6 @@
 .Home {
   margin: 0 auto;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
 }
 
@@ -11,6 +11,12 @@
   padding: 15px;
   background-color: #003585;
 }
+
+.middle {
+  min-width: 250px;
+  width: 425px;
+}
+
 .modal-backdrop {
   background-color: #003585;
   --bs-backdrop-opacity: 0.7;
@@ -69,13 +75,14 @@
   padding: 10px;
 }
 
-.popilarCartImage {
+.popularCartImage {
   text-align: center;
 }
 
-.popilarCartImage img {
+.popularCartImage img {
   width: 220px;
   height: 200px;
+  cursor: pointer;
 }
 .cartBlue {
   background-color: grey;
@@ -89,6 +96,7 @@
 
 /* Specials section */
 .Specials {
+  border: 1px solid green;
   padding: 15px 0;
 }
 

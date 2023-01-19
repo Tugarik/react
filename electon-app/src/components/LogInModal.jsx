@@ -73,6 +73,7 @@ export default function LogInModal({ loginRole }) {
         <form action="" onSubmit={handleSubmit}>
           <Modal.Header closeButton>
             <Modal.Title>
+              <img src="./img/logo_blue.svg" alt="logo" />
               <strong>Electon</strong>
             </Modal.Title>
           </Modal.Header>

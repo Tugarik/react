@@ -8,8 +8,8 @@ export default function HomeNav({ loginRole }) {
         <img src="./img/logo_white.svg" alt="logo" />
         <span className="brandName">Electon</span>
       </div>
-      <div className="middle mx-auto mx-md-0 my-auto">
-        <InputGroup className="mb-2 mb-md-0">
+      <div className="middle mx-auto mx-md-0 my-auto order-3 order-md-2">
+        <InputGroup className="searchInput mb-2 mb-md-0">
           <Form.Control
             placeholder="Search any things"
             aria-label="Search any things"
@@ -21,7 +21,7 @@ export default function HomeNav({ loginRole }) {
           </Button>
         </InputGroup>
       </div>
-      <div className="right mx-auto mx-md-0 my-auto">
+      <div className="right mx-auto mx-md-0 my-auto order-2 order-md-3">
         <LogInModal loginRole={loginRole} />
         <button className="btn">
           <img src="./img/cart_white.svg" alt="" />

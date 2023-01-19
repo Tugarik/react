@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 const adminMenu = [
   { name: "Хянах самбар", url: "panel" },

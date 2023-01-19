@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DATA } from "../utils/data";
 const items = ["Sale"];
+
 export default function Popular() {
   const FilterPopular = ({ datas }) => {
     datas.map((data) => {
@@ -42,13 +44,17 @@ export default function Popular() {
             fdatas.push(data);
           }
         });
-
+    const navigate = useNavigate();
     return (
-      <div className="popularCarts d-flex flex-wrap justify-content-between">
+      <div className="popularCarts d-flex flex-wrap justify-content-center">
         {fdatas.map((fdata, index) => (
-          <div key={index} className="popularCart mx-auto mx-md-0 my-3">
-            <div className="popilarCartImage">
-              <img src={fdata.image} alt="popularImage" />
+          <div key={index} className="popularCart mx-auto mx-md-3 my-3">
+            <div className="popularCartImage">
+              <img
+                src={fdata.image}
+                alt="popularImage"
+                onClick={() => navigate("/item/" + fdata.id)}
+              />
             </div>
             <div className="d-flex justify-content-between">
               <div>
