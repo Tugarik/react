@@ -8,6 +8,7 @@ import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
+import ItemPage from "./pages/ItemPage";
 
 function App() {
   const loginRole = (userRole) => {
@@ -18,6 +19,9 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home loginRole={loginRole} />} />
+        <Route path="/item">
+          <Route path=':itemId' element={<ItemPage/>}/>
+        </Route>
         <Route path="/dashboard/*" element={<Dashboard role={role} />}>
           <Route index element={<Dash_Panel />} />
           <Route path="panel" element={<Dash_Panel />} />

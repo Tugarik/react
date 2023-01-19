@@ -24,6 +24,7 @@ export const DATA = [
     price: "1000",
     category: "Camera",
     sale: true,
+    id: '55100c41',
   },
   {
     title: "Wireless headphones",
