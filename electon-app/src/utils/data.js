@@ -57,9 +57,10 @@ export const DATA = [
     id: "bf3e8ab6",
   },
   {
-    title: "HP Elitebook 840",
+    title: "HP Laptop",
     image:
       "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08114744.png?imwidth=270&imdensity=1",
+    model: "HP Elitebook 840",
     spec: [
       { DisplaySize: '14"' },
       { CPU: "i5-6300U 2,4 GHZ" },
@@ -80,7 +81,7 @@ export const DATA = [
     model: "Beat",
     price: "350",
     category: "Accessories",
-    sale: 10,
+    sale: 0,
     id: "de1fd4da",
   },
   {
@@ -89,7 +90,7 @@ export const DATA = [
     model: "Graphic card",
     price: "1000",
     category: "PcParts",
-    sale: false,
+    sale: 0,
     id: "57d28ae1",
   },
   {
@@ -98,17 +99,23 @@ export const DATA = [
     model: "I7-12700K",
     price: "900",
     category: "PcParts",
-    sale: false,
+    sale: 0,
     id: "8c3f3d00",
   },
   {
-    title: "Laptop",
+    title: "Apple Mac Laptop",
     image:
       "https://9to5mac.com/wp-content/uploads/sites/6/2021/10/MacBook-Pro-2021.jpg",
     model: "Macbook Pro",
+    spec: [
+      { DisplaySize: '14"' },
+      { CPU: "i5-6300U 2,4 GHZ" },
+      { HardDrive: "1Tb SSD" },
+      { RAM: "16GB" },
+    ],
     price: "3000",
     category: "Laptops",
-    sale: true,
+    sale: 0,
     id: "eb89f3b9",
   },
   {
@@ -118,7 +125,7 @@ export const DATA = [
     model: "Iphone 14 Promax",
     price: "2000",
     category: "Phones",
-    sale: false,
+    sale: 0,
     id: "9b77899e",
   },
   {
@@ -128,8 +135,8 @@ export const DATA = [
     model: "TridentZ Royal",
     price: "500",
     category: "PcParts",
-    sale: false,
-    id: "",
+    sale: 0,
+    id: "77e9361b",
   },
   {
     title: "Motherboard",
@@ -138,7 +145,7 @@ export const DATA = [
     model: "ASUS Z690",
     price: "700",
     category: "PcParts",
-    sale: false,
+    sale: 0,
     id: "db9de9dd",
   },
   {
@@ -147,7 +154,7 @@ export const DATA = [
     model: "",
     price: "400",
     category: "PcParts",
-    sale: false,
+    sale: 0,
     id: "b99e64b4",
   },
   {
@@ -157,7 +164,7 @@ export const DATA = [
     model: "S21 Ultra",
     price: "1900",
     category: "Phones",
-    sale: false,
+    sale: 15,
     id: "a2a5afea",
   },
   {
@@ -166,7 +173,7 @@ export const DATA = [
     model: "Iphone 14 Pro",
     price: "1500",
     category: "Phones",
-    sale: false,
+    sale: 7,
     id: "67611efd",
   },
   {
@@ -176,7 +183,7 @@ export const DATA = [
     model: "Iphone 14",
     price: "1200",
     category: "Phones",
-    sale: false,
+    sale: 0,
     id: "43f0cb85",
   },
 ];

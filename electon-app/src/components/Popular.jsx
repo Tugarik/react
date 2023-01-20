@@ -4,7 +4,7 @@ import { DATA } from "../utils/data";
 const items = ["Sale"];
 
 export default function Popular() {
-  const FilterPopular = ({ datas }) => {
+  const FilterButtons = ({ datas }) => {
     datas.map((data) => {
       if (!items.includes(data.category)) {
         items.push(data.category);
@@ -51,10 +51,18 @@ export default function Popular() {
           <div key={index} className="popularCart mx-auto mx-md-3 my-3">
             <div className="popularCartImage">
               <img
+                className="z-index-2"
                 src={fdata.image}
                 alt="popularImage"
                 onClick={() => navigate("/item/" + fdata.id)}
               />
+              <div
+                className={
+                  fdata.sale > 0 ? "saleSign" : "saleSign bg-transparent"
+                }
+              >
+                {fdata.sale > 0 ? `Sale ${fdata.sale}% off` : null}
+              </div>
             </div>
             <div className="d-flex justify-content-between">
               <div>
@@ -78,7 +86,7 @@ export default function Popular() {
     <div className="Popular container-lg">
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap">
         <div className="popularTitle mx-auto mx-md-0">Popular products</div>
-        <FilterPopular datas={DATA} />
+        <FilterButtons datas={DATA} />
       </div>
       <Filtered datas={DATA} filter={filter} />
     </div>

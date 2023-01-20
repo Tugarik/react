@@ -15,7 +15,7 @@ export default function Dash_Nav({ role }) {
   return (
     <div className="Dash_Nav d-flex">
       <div className="left mb-2 mb-md-0 mx-auto mx-md-0 my-auto">
-        <img src="./img/logo_blue.svg" alt="logo" />
+        <img src="../../img/logo_blue.svg" alt="logo" />
         <span className="brandName">Electon</span>
       </div>
       <div className="middle mx-auto mx-md-0 my-auto">
@@ -34,7 +34,7 @@ export default function Dash_Nav({ role }) {
       <div className="right mx-auto mx-md-0 my-auto">
         <span>Signed In as {role}!</span>
         <button className="whiteBtn" onClick={handleShow}>
-          <img src="./img/log_out.svg" alt="logout" />
+          <img src="../../img/log_out.svg" alt="logout" />
           <span> Гарах</span>
         </button>
         <Modal

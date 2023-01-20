@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Dash_Nav from "../components/Dash_Nav";
-import Dash_Side from "../components/Dash_Side";
+import Dash_Nav from "../components/subComps/Dash_Nav";
+import Dash_Side from "../components/subComps/Dash_Side";
 import "../styles/Dashboard.css";
 
 export default function Dashboard({ role }) {

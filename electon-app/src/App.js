@@ -21,7 +21,6 @@ function App() {
       <Routes>
         <Route path="/*" element={<Home loginRole={loginRole} />}>
           <Route index element={<Content />} />
-          {/* <Route path="home" element={<Content />} /> */}
           <Route path="item">
             <Route path=":itemId" element={<ItemPage />} />
           </Route>

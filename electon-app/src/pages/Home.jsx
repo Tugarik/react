@@ -1,5 +1,5 @@
 import "../styles/Home.css";
-import HomeNav from "../components/HomeNav";
+import HomeNav from "../components/subComps/HomeNav";
 import Specials from "../components/Specials";
 import Partners from "../components/Partners";
 import Footer from "../components/Footer";

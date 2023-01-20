@@ -1,8 +1,8 @@
-import "../styles/LogInModal.css";
+import "../../styles/LogInModal.css";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { USERS } from "../utils/data";
+import { USERS } from "../../utils/data";
 
 export default function LogInModal({ loginRole }) {
   const [show, setShow] = useState(false);
@@ -31,14 +31,25 @@ export default function LogInModal({ loginRole }) {
     let isMatch = false;
     usersList.map((user) => {
       if (userName === user.name && password === user.password) {
-        setIsLoggedIn(true);
-        setCurrentUser(userName);
-        loginRole(user.role);
-        isMatch = true;
-        console.log("logged user name: ", userName);
-        console.log("logged password: ", password);
-        navigate("/dashboard");
-        return;
+        if (user.role === "user") {
+          setIsLoggedIn(true);
+          setCurrentUser(userName);
+          loginRole(user.role);
+          isMatch = true;
+          console.log("logged user name: ", userName);
+          console.log("logged password: ", password);
+          navigate("/");
+          return;
+        } else {
+          setIsLoggedIn(true);
+          setCurrentUser(userName);
+          loginRole(user.role);
+          isMatch = true;
+          console.log("logged user name: ", userName);
+          console.log("logged password: ", password);
+          navigate("/dashboard");
+          return;
+        }
       }
     });
     if (!isMatch) {

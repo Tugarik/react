@@ -39,17 +39,24 @@
 }
 
 .roleBtn {
-  width: 70%;
-  background-color: #003585;
-  color: #ffffff;
+  width: 80%;
+  background-color: #fcfcfc;
+  color: #838383;
   border-radius: 10px;
   border: 0;
   padding: 5px;
+  font-size: 0.8rem;
+  text-align: left;
 }
 
-.roleBtn:focus {
-  background-color: #a7f65c;
-  color: #003585;
+.roleBtn:hover {
+  background-color: #003585;
+  color: #ffffff;
+}
+
+.roleBtn:active {
+  background-color: #003585;
+  color: #ffffff;
 }
 
 .greyBtn {
