@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useRoleContext } from "../../App";
 const adminMenu = [
   {
     name: "Хянах самбар",
@@ -39,9 +40,11 @@ const moderatorMenu = [
   { name: "Хэрэглэгчид", url: "users", imageUrl: "../../../img/ds_users.svg" },
 ];
 
-export default function Dash_Side({ role }) {
+export default function Dash_Side() {
+  const { role } = useRoleContext();
   const navigate = useNavigate();
   let menus = [];
+
   const Layout = ({ role }) => {
     role == "admin" ? (menus = [...adminMenu]) : (menus = [...moderatorMenu]);
 
