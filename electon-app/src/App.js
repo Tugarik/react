@@ -22,6 +22,7 @@ function App() {
     setRole(userRole);
   };
   const [role, setRole] = useState("admin");
+
   return (
     <div className="App">
       <RoleContext.Provider value={{ role, setRole }}>

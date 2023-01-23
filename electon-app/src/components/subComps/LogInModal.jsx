@@ -13,8 +13,8 @@ export default function LogInModal({ loginRole }) {
   const [currentUser, setCurrentUser] = useState("");
 
   const navigate = useNavigate();
-  const logOutHandle = () => {
-    navigate("/");
+  const forgotHandle = () => {
+    alert("Bi ch bas martsan");
     setShow(false);
   };
   const handleClose = () => setShow(false);
@@ -26,6 +26,8 @@ export default function LogInModal({ loginRole }) {
     console.log(userName, password);
     setShow(false);
   };
+
+  // validation
 
   const loginHandler = (userName, password) => {
     let isMatch = false;
@@ -57,6 +59,9 @@ export default function LogInModal({ loginRole }) {
     }
   };
 
+  const handleRegister = () => {
+    registerHandler(userName, password);
+  };
   const registerHandler = (userName, password) => {
     console.log("user name to reg: ", userName);
     console.log("password to reg: ", password);
@@ -69,11 +74,22 @@ export default function LogInModal({ loginRole }) {
     setIsLoggedIn(false);
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate("/");
+  };
   return (
     <>
-      <button onClick={handleShow} className="btn loginBtn">
-        <img src="./img/user_white.svg" alt="" /> Log in
-      </button>
+      {isLoggedIn ? (
+        <button onClick={handleLogout} className="btn loginBtn">
+          <img src="./img/user_white.svg" alt="" />
+          {userName}, Log out
+        </button>
+      ) : (
+        <button onClick={handleShow} className="btn loginBtn">
+          <img src="./img/user_white.svg" alt="" /> Log in
+        </button>
+      )}
 
       <Modal
         show={show}
@@ -115,11 +131,7 @@ export default function LogInModal({ loginRole }) {
                 />
               </div>
 
-              <Link
-                to={"/dashboard"}
-                className="passquestion"
-                onClick={logOutHandle}
-              >
+              <Link to={"/"} className="passquestion" onClick={forgotHandle}>
                 Нууц үгээ мартсан уу?
               </Link>
             </div>
@@ -130,7 +142,11 @@ export default function LogInModal({ loginRole }) {
                 Нэвтрэх
               </button>
               <p className="hr-lines">эсвэл</p>
-              <button className="btn regBtn" onClick={registerHandler}>
+              <button
+                type="button"
+                className="btn regBtn"
+                onClick={handleRegister}
+              >
                 Бүртгүүлэх
               </button>
             </div>

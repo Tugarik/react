@@ -4,8 +4,14 @@ import { DATA } from "../utils/data";
 const items = ["Sale"];
 
 export default function Popular() {
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState("Sale");
+  const filterHandler = (item) => {
+    setFilter(item);
+  };
+
   const FilterButtons = ({ datas }) => {
-    datas.map((data) => {
+    datas.forEach((data) => {
       if (!items.includes(data.category)) {
         items.push(data.category);
       }
@@ -26,11 +32,6 @@ export default function Popular() {
     );
   };
 
-  const [filter, setFilter] = useState("Sale");
-  const filterHandler = (item) => {
-    setFilter(item);
-  };
-
   const Filtered = ({ datas, filter }) => {
     const fdatas = [];
     filter == "Sale"
@@ -44,7 +45,7 @@ export default function Popular() {
             fdatas.push(data);
           }
         });
-    const navigate = useNavigate();
+
     return (
       <div className="popularCarts d-flex flex-wrap justify-content-center">
         {fdatas.map((fdata, index) => (
