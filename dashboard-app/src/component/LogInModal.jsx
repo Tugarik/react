@@ -1,15 +1,16 @@
-import "../styles/logInModal.css";
+import "../../styles/LogInModal.css";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { USERS } from "../utils/data";
+import { USERS } from "../../utils/data";
 
-export default function Home({ loginRole }) {
+export default function LogInModal({ loginRole }) {
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usersList, setUsersList] = useState(USERS);
+  const [currentUser, setCurrentUser] = useState("");
 
   const navigate = useNavigate();
   const forgotHandle = () => {
@@ -34,6 +35,7 @@ export default function Home({ loginRole }) {
       if (userName === user.name && password === user.password) {
         if (user.role === "user") {
           setIsLoggedIn(true);
+          setCurrentUser(userName);
           loginRole(user.role);
           isMatch = true;
           console.log("logged user name: ", userName);
@@ -42,7 +44,7 @@ export default function Home({ loginRole }) {
           return;
         } else {
           setIsLoggedIn(true);
-
+          setCurrentUser(userName);
           loginRole(user.role);
           isMatch = true;
           console.log("logged user name: ", userName);
@@ -76,7 +78,6 @@ export default function Home({ loginRole }) {
     setIsLoggedIn(false);
     navigate("/");
   };
-
   return (
     <>
       {isLoggedIn ? (

@@ -1,120 +1,4 @@
-export const PRODUCTS = [
-  {
-    name: "HP Elitebook 840",
-    spec: [
-      {
-        DisplaySize: '14"',
-        CPU: "i5-6300U 2,4 GHZ",
-        HardDrive: "1Tb SSD",
-        RAM: "16GB",
-      },
-    ],
-    id: "ea5e3b6c",
-    image: "https://i.ebayimg.com/images/g/E8wAAOSwO9Bjmd1t/s-l1600.jpg",
-    description:
-      "Used: An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller’s listing for full details and description of any imperfections. ",
-    price: 180,
-    stock: 29,
-    sale: false,
-    category: "computers & tablets",
-  },
-  {
-    name: "HP Probook 430",
-    spec: [
-      {
-        DisplaySize: '13"',
-        CPU: "i5-8250U 2,4 GHZ",
-        HardDrive: "256Gb SSD",
-        RAM: "8GB",
-      },
-    ],
-    id: "bf3e8ab6",
-    image: "https://i.ebayimg.com/images/g/F2oAAOSwbxBimCXu/s-l1600.jpg",
-    description:
-      "Touch Convertible Laptop AMD. 1 year Warranty. Free and fast delivery.",
-    price: 265,
-    stock: 2,
-    sale: true,
-    category: "computers & tablets",
-  },
-  {
-    name: "Acer Spin 3",
-    spec: [
-      {
-        DisplaySize: '14"',
-        CPU: "i5-8250U 2,4 GHZ",
-        HardDrive: "512Gb SSD",
-        RAM: "8GB",
-      },
-    ],
-    id: "0bd16f1e",
-    image: "https://i.ebayimg.com/images/g/YLkAAOSwKjpjpOdr/s-l1600.jpg",
-    description:
-      "Touch Convertible Laptop AMD. 1 year Warranty. Free and fast delivery.",
-    price: 220,
-    stock: 12,
-    sale: false,
-    category: "computers & tablets",
-  },
-  {
-    description:
-      "As we said a moment ago, our favorite laptop features a 13.3″ inch touchscreen. Xiaomi has gone all out, as it is not only of high definition screen of 360° rotation, but it is also Super Retina OLED with a resolution of 2880 x 1800. It has a brightness of up to 600 nits and a contrast ratio of 1000000:1, with a refresh rate of 90Hz, Adjustable to 60Hz if desired via the Fn + S keyboard combination. The above resolution translates to 255 PPI with a display ratio of 16:10. Compatible with DC attenuation * TÜV Rheinland hardware low blue light certification *, Eye Care Display certification, Dolby Vision certification, VESA DisplayHDR 500 High Standard certification.",
-    spec: [
-      {
-        MemoryCapacity: "Main memory allocated memory",
-        DisplaySize: "13.3",
-        DisplayRatio: "16:10",
-        Type: "ConvertibleDimensions (WxHxD) 296.5mm long Width 205.5mm",
-        OperatingSystem: "Windows 10,Windows 11",
-        Origin: " Mainland ChinaGraphics ",
-        CardModel: "Intel Iris Xe Graphics",
-        HardDriveType: "SSDScreen Refresh",
-        Rate: "60Hz",
-        HardDrive: "512GBWeight ",
-        CPU: "Intel Core i7-1250U",
-        PanelType: "OLED",
-        RAM: "16GB",
-        BodyMaterial: "MetalThickness",
-        DriveType: "NoneWireless",
-        Interfaces: "Bluetooth 5.2",
-        DisplayResolution: "2880*1800Keyboard",
-      },
-    ],
-    name: "Xiaomi Mi Book Air 13",
-    id: "dd405c2c",
-    image:
-      "https://www.xiaomihome.global/wp-content/uploads/2022/11/xiaomi-book-air-13-2022-cover-1.webp",
-    price: 1200,
-    stock: 10,
-    sale: true,
-    category: "computers & tablets",
-  },
-  {
-    description: "Philips HD6975/00 Digital Oven Toaster Grill",
-    spec: [{ capacity: "25 Liters", wattage: "1500W", weight: "6380 Grams" }],
-    name: "Philips Oven",
-    id: "8bf7f8d6-92f3-11ed-a1eb-0242ac120002",
-    image: "​​https://m.media-amazon.com/images/I/618O0ywM1SL._SX522_.jpg",
-    price: 1200,
-    stock: 164,
-    sale: false,
-    category: "appliances",
-  },
-  {
-    description: "Philips Hue smart LED bulbs",
-    spec: [{ type: "A19", wattage: "9.5W", output: "800 Lumens" }],
-    name: "LED bulbs",
-    id: "8bf7f5fc-92f3-11ed-a1eb-0242ac120002",
-    image:
-      "​​https://cdn.vox-cdn.com/thumbor/twhweqrG_obtz7SoYGWKld_qgMM=/0x0:5250x3600/1400x1400/filters:focal(2625x1800:2626x1801)/cdn.vox-cdn.com/uploads/chorus_asset/file/22823524/philips_smart_led_bulb_package.jpg",
-    price: 80,
-    stock: 4,
-    sale: 0,
-    category: "appliances",
-  },
-];
-
-export const roles = [
+export const USERS = [
   {
     name: "tuga",
     password: "123",
@@ -123,11 +7,215 @@ export const roles = [
   {
     name: "andy",
     password: "asd",
-    role: "user",
+    role: "moderator",
   },
   {
     name: "sumlai",
     password: "qwerty",
     role: "user",
+  },
+];
+
+export const DATA = [
+  {
+    title: "Camera",
+    image: "https://m.media-amazon.com/images/I/91rQ3XfEYzL._SL1500_.jpg",
+    model: "Sony Alpha III",
+    spec: [
+      { Shutter: "10fps Silent" },
+      { ISO: "50 to 204,800" },
+      { Sensor: "35mm Full-frame Image Sensor" },
+      {
+        Battery:
+          "Long-lasting Z battery for up to 710 images8 on a full charge",
+      },
+    ],
+    description:
+      "Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
+    price: "1999",
+    category: "Camera",
+    sale: 15,
+    id: "55100c41",
+  },
+  {
+    title: "HP Laptop",
+    image:
+      "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06927801.png",
+    model: "HP Probook 430",
+    spec: [
+      { DisplaySize: '13"' },
+      { CPU: "i5-8250U 2,4 GHZ" },
+      { HardDrive: "256Gb SSD" },
+      { RAM: "8GB" },
+    ],
+    description:
+      "Touch Convertible Laptop AMD. 1 year Warranty. Free and fast delivery.",
+    price: "350",
+    stock: 2,
+    category: "Laptops",
+    sale: 10,
+    id: "bf3e8ab6",
+  },
+  {
+    title: "Xiaomi",
+    description:
+      "As we said a moment ago, our favorite laptop features a 13.3″ inch touchscreen. Xiaomi has gone all out, as it is not only of high definition screen of 360° rotation, but it is also Super Retina OLED with a resolution of 2880 x 1800. It has a brightness of up to 600 nits and a contrast ratio of 1000000:1, with a refresh rate of 90Hz, Adjustable to 60Hz if desired via the Fn + S keyboard combination. The above resolution translates to 255 PPI with a display ratio of 16:10. Compatible with DC attenuation * TÜV Rheinland hardware low blue light certification *, Eye Care Display certification, Dolby Vision certification, VESA DisplayHDR 500 High Standard certification.",
+    spec: [
+      { MemoryCapacity: "Main memory allocated memory" },
+      { DisplaySize: "13.3" },
+      { DisplayRatio: "16:10" },
+      { Type: "ConvertibleDimensions (WxHxD) 296.5mm long Width 205.5mm" },
+      { OperatingSystem: "Windows 10,Windows 11" },
+      { Origin: " Mainland ChinaGraphics " },
+      { CardModel: "Intel Iris Xe Graphics" },
+      { HardDriveType: "SSDScreen Refresh" },
+      { Rate: "60Hz" },
+      { HardDrive: "512GBWeight " },
+      { CPU: "Intel Core i7-1250U" },
+      { PanelType: "OLED" },
+      { RAM: "16GB" },
+      { BodyMaterial: "MetalThickness" },
+      { DriveType: "NoneWireless" },
+      { Interfaces: "Bluetooth 5.2" },
+      { DisplayResolution: "2880*1800Keyboard" },
+    ],
+    model: "Xiaomi Mi Book Air 13",
+    id: "dd405c2c",
+    image:
+      "https://www.xiaomihome.global/wp-content/uploads/2022/11/xiaomi-book-air-13-2022-cover-1.webp",
+    price: 1200,
+    stock: 10,
+    sale: 0,
+    category: "Laptops",
+  },
+  {
+    title: "HP Laptop",
+    image:
+      "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08114744.png?imwidth=270&imdensity=1",
+    model: "HP Elitebook 840",
+    spec: [
+      { DisplaySize: '14"' },
+      { CPU: "i5-6300U 2,4 GHZ" },
+      { HardDrive: "1Tb SSD" },
+      { RAM: "16GB" },
+    ],
+    description:
+      "An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller’s listing for full details and description of any imperfections. ",
+    price: "450",
+    stock: 29,
+    category: "Laptops",
+    sale: 20,
+    id: "ea5e3b6c",
+  },
+  {
+    title: "Wireless headphones",
+    image: "https://m.media-amazon.com/images/I/51QL9pV-1qL._AC_SL1000_.jpg",
+    model: "Beat",
+    price: "350",
+    category: "Accessories",
+    sale: 0,
+    id: "de1fd4da",
+  },
+  {
+    title: "RTX3070",
+    image: "https://m.media-amazon.com/images/I/61XC1vb1HFL.jpg",
+    model: "Graphic card",
+    price: "1000",
+    category: "PcParts",
+    sale: 0,
+    id: "57d28ae1",
+  },
+  {
+    title: "CPU",
+    image: "https://m.media-amazon.com/images/I/51CVLuhri5L.jpg",
+    model: "I7-12700K",
+    price: "900",
+    category: "PcParts",
+    sale: 0,
+    id: "8c3f3d00",
+  },
+  {
+    title: "Apple Mac Laptop",
+    image:
+      "https://9to5mac.com/wp-content/uploads/sites/6/2021/10/MacBook-Pro-2021.jpg",
+    model: "Macbook Pro",
+    spec: [
+      { DisplaySize: '14"' },
+      { CPU: "i5-6300U 2,4 GHZ" },
+      { HardDrive: "1Tb SSD" },
+      { RAM: "16GB" },
+    ],
+    price: "3000",
+    category: "Laptops",
+    sale: 0,
+    id: "eb89f3b9",
+  },
+  {
+    title: "Phone",
+    image:
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209_GEO_EMEA?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660754213188",
+    model: "Iphone 14 Promax",
+    price: "2000",
+    category: "Phones",
+    sale: 0,
+    id: "9b77899e",
+  },
+  {
+    title: "RAM",
+    image:
+      "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/G.SKILL_Trident_Z_Royal_Elite_series_DDR4_memory_coming_May_2021.jpg",
+    model: "TridentZ Royal",
+    price: "500",
+    category: "PcParts",
+    sale: 0,
+    id: "77e9361b",
+  },
+  {
+    title: "Motherboard",
+    image:
+      "https://dlcdnwebimgs.asus.com/gain/36e07492-4808-4066-8f4a-0b454ca0a1ef/w800",
+    model: "ASUS Z690",
+    price: "700",
+    category: "PcParts",
+    sale: 0,
+    id: "db9de9dd",
+  },
+  {
+    title: "Power Supply",
+    image: "https://m.media-amazon.com/images/I/61G4pXx0IGL.jpg",
+    model: "",
+    price: "400",
+    category: "PcParts",
+    sale: 0,
+    id: "b99e64b4",
+  },
+  {
+    title: "Phone",
+    image:
+      "https://images.samsung.com/pk/smartphones/galaxy-s21/buy/s21_ultra_basicgroup_kv_mo_img.jpg",
+    model: "S21 Ultra",
+    price: "1900",
+    category: "Phones",
+    sale: 15,
+    id: "a2a5afea",
+  },
+  {
+    title: "Phone",
+    image: "https://m.media-amazon.com/images/I/71ZDY57yTQL._SX522_.jpg",
+    model: "Iphone 14 Pro",
+    price: "1500",
+    category: "Phones",
+    sale: 7,
+    id: "67611efd",
+  },
+  {
+    title: "Phone",
+    image:
+      "https://media.wired.com/photos/6332360740fe1e8870aa3bc0/master/pass/iPhone-14-Review-Gear.jpg",
+    model: "Iphone 14",
+    price: "1200",
+    category: "Phones",
+    sale: 0,
+    id: "43f0cb85",
   },
 ];

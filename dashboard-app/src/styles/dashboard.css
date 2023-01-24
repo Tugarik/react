@@ -1,3 +1,90 @@
-.dashboard {
+.Dash_Side {
+  width: 30%;
+  height: calc(100vh - 50px);
+}
+
+.Dash_Nav {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.Dash_Nav .brandName {
+  color: #003585;
+}
+#basic-input2 {
+  background-color: lightgrey;
+}
+#button-addon2 {
+  background-color: #003585;
+  color: #ffffff;
+}
+
+.Dash_Nav .whiteBtn {
+  font-size: 14px;
+  color: #003585;
+  background-color: #ffffff;
+  border: 0;
+}
+
+.blueBtn {
+  width: 40%;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #003585;
+  border: 1px solid #003585;
+  border: 0;
+  border-radius: 5px;
+}
+
+.roleBtn {
+  width: 80%;
+  background-color: #fcfcfc;
+  color: #838383;
+  border-radius: 10px;
+  border: 0;
+  padding: 5px;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.roleBtn:hover {
+  background-color: #003585;
+  color: #ffffff;
+}
+
+.roleBtn:active {
+  background-color: #003585;
+  color: #ffffff;
+}
+
+.greyBtn {
+  width: 40%;
+  font-size: 14px;
+  color: #003585;
+  background-color: #d2d2d2;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+}
+
+.blueBtn:hover,
+.greyBtn:hover {
+  border: 1px solid #003585;
+}
+
+.modalBtns {
   display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.qmark {
+  padding: 5px 15px;
+  background-color: #a7f65c;
+  color: #003585;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: fit-content;
+  border-radius: 50%;
+  margin: 15px auto;
 }

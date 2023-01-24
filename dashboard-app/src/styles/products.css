@@ -1,4 +1,32 @@
 .products {
   width: 100%;
-  background-color: royalblue;
+  background-color: lightgray;
+  padding: 25px;
+}
+
+.products .addBtn {
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #003585;
+  border: 1px solid #003585;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.productsTitle {
+  color: #003585;
+  font-weight: 600;
+}
+
+.searchProduct {
+  background-color: #ffffff;
+  border: 1px solid #b5b5b5;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.searchProduct input {
+  border: 0;
+  outline: none;
 }
