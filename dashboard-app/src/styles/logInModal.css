@@ -3,6 +3,13 @@
   --bs-backdrop-opacity: 0.7;
 }
 
+.inputContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
 .modalInputs {
   display: flex;
   flex-direction: column;
@@ -15,13 +22,6 @@
   border: 0;
   width: 100%;
   outline: none;
-}
-
-.inputContainer {
-  display: flex;
-  align-items: center;
-  border: 1px solid grey;
-  border-radius: 5px;
 }
 
 .inputImg {
@@ -39,10 +39,12 @@
 .loginBtn {
   border: 1px solid #003585;
   background-color: #003585;
+  color: #ffffff;
 }
 .loginBtn:hover {
   border: 1px solid #003585;
   background-color: #fff;
+  color: #003585;
 }
 
 .regBtn {

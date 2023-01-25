@@ -1,0 +1,13 @@
+.inputsAddItem {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 10px;
+}
+
+.inputsAddItem input {
+  padding: 5px;
+  border: 1px solid lightgray;
+  width: 100%;
+  outline: none;
+}

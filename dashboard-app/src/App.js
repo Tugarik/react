@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import DashPanel from "./pages/DashPanel";
@@ -20,7 +21,20 @@ function App() {
     setRole(userRole);
   };
   const [role, setRole] = useState("");
-  const [isLogged, setIsLogged] = useState(false);
+
+  const [items, setItems] = useState();
+
+  useEffect(() => {
+    try {
+      axios.get("http://localhost:5000/products").then((res) => {
+        console.log(res.data);
+        setItems(res.data);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
+
   return (
     <div className="App">
       <RoleContext.Provider value={{ role, setRole }}>
@@ -32,7 +46,7 @@ function App() {
             <Route path="panel" element={<DashPanel />} />
             <Route path="users" element={<Users />} />
             <Route path="products" element={<Products />} />
-            <Route path="orders" element={<Orders />} />
+            <Route path="orders" element={<Orders items={items} />} />
             <Route path="moderator" element={<Moderator />} />
             <Route path="settings" element={<Settings />} />
           </Route>
