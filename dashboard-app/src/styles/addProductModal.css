@@ -1,14 +1,16 @@
 .inputsAddItem {
   display: flex;
-  flex-direction: column;
-  text-align: right;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  /* text-align: right; */
   gap: 10px;
+  padding: 0 auto;
 }
 
-.inputsAddItem input {
+.inputAddItem {
   padding: 5px;
   border: 1px solid lightgray;
-  width: 100%;
+  width: 48%;
   outline: none;
 }
 
@@ -18,3 +20,11 @@
   padding: 15px;
   box-shadow: 2px 2px 2px;
 }
+
+.inputSpec {
+  padding: 5px;
+  border: 1px solid lightgray;
+  width: 40%;
+  outline: none;
+}
+

@@ -1,13 +1,13 @@
 const products = require("./products.json");
-
+const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 
 const app = express();
 const port = 5000;
 app.use(cors());
 app.use(bodyParser.json());
+
 
 app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
@@ -16,15 +16,37 @@ app.get("/", (req, res) => {
 
 app.get("/products", (req, res) => {
   console.log("GET products huselt orj irlee");
-  res.setHeader("Content-Type", "application/json");
-  res.json(products);
+  res.status(200).send(products);
+});
+
+app.post("/products", (req, res) => {
+  console.log("POST products huselt orj irlee");
+  products.unshift(req.body);
+  res.status(200).send(products);
+});
+
+app.delete("/products", (req, res) => {
+  console.log("DELETE products huselt orj irlee");
+  // const {id} = req.params;
+  console.log(req.data);
+  res.status(200).send(products);
 });
 
 app.get("/users", (req, res) => {
   console.log("GET users huselt orj irlee");
-  res.status(200).send("users page");
+  res.status(200).send("Users page");
 });
 
 app.listen(port, () => {
   console.log(`Server is starting in ${port} port`);
 });
+
+function removeObjectWithId(arr, id) {
+  const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
+
+  if (objWithIdIndex > -1) {
+    arr.splice(objWithIdIndex, 1);
+  }
+
+  return arr;
+}

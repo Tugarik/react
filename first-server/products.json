@@ -1,6 +1,6 @@
 [
   {
-    "title": "Camera",
+    "title": "Sony Camera",
     "image": "https://m.media-amazon.com/images/I/91rQ3XfEYzL._SL1500_.jpg",
     "model": "Sony Alpha III",
     "spec": [
@@ -19,6 +19,7 @@
     ],
     "description": "Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
     "price": "1999",
+    "stock": 10,
     "category": "Camera",
     "sale": 15,
     "id": "55100c41"
@@ -142,6 +143,7 @@
     "image": "https://m.media-amazon.com/images/I/51QL9pV-1qL._AC_SL1000_.jpg",
     "model": "Beat",
     "price": "350",
+    "stock": 35,
     "category": "Accessories",
     "sale": 0,
     "id": "de1fd4da"
@@ -151,6 +153,7 @@
     "image": "https://m.media-amazon.com/images/I/61XC1vb1HFL.jpg",
     "model": "Graphic card",
     "price": "1000",
+    "stock": 100,
     "category": "PcParts",
     "sale": 0,
     "id": "57d28ae1"
@@ -160,6 +163,7 @@
     "image": "https://m.media-amazon.com/images/I/51CVLuhri5L.jpg",
     "model": "I7-12700K",
     "price": "900",
+    "stock": 30,
     "category": "PcParts",
     "sale": 0,
     "id": "8c3f3d00"
@@ -183,6 +187,7 @@
       }
     ],
     "price": "3000",
+    "stock": 5,
     "category": "Laptops",
     "sale": 0,
     "id": "eb89f3b9"
@@ -192,6 +197,7 @@
     "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209_GEO_EMEA?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660754213188",
     "model": "Iphone 14 Promax",
     "price": "2000",
+    "stock": 120,
     "category": "Phones",
     "sale": 0,
     "id": "9b77899e"
@@ -201,6 +207,7 @@
     "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/G.SKILL_Trident_Z_Royal_Elite_series_DDR4_memory_coming_May_2021.jpg",
     "model": "TridentZ Royal",
     "price": "500",
+    "stock": 45,
     "category": "PcParts",
     "sale": 0,
     "id": "77e9361b"
@@ -210,6 +217,7 @@
     "image": "https://dlcdnwebimgs.asus.com/gain/36e07492-4808-4066-8f4a-0b454ca0a1ef/w800",
     "model": "ASUS Z690",
     "price": "700",
+    "stock": 25,
     "category": "PcParts",
     "sale": 0,
     "id": "db9de9dd"
@@ -219,6 +227,7 @@
     "image": "https://m.media-amazon.com/images/I/61G4pXx0IGL.jpg",
     "model": "Power Supply",
     "price": "400",
+    "stock": 21,
     "category": "PcParts",
     "sale": 0,
     "id": "b99e64b4"
@@ -228,6 +237,7 @@
     "image": "https://images.samsung.com/pk/smartphones/galaxy-s21/buy/s21_ultra_basicgroup_kv_mo_img.jpg",
     "model": "S21 Ultra",
     "price": "1900",
+    "stock": 2,
     "category": "Phones",
     "sale": 15,
     "id": "a2a5afea"
@@ -237,6 +247,7 @@
     "image": "https://m.media-amazon.com/images/I/71ZDY57yTQL._SX522_.jpg",
     "model": "Iphone 14 Pro",
     "price": "1500",
+    "stock": 22,
     "category": "Phones",
     "sale": 7,
     "id": "67611efd"
@@ -246,6 +257,7 @@
     "image": "https://media.wired.com/photos/6332360740fe1e8870aa3bc0/master/pass/iPhone-14-Review-Gear.jpg",
     "model": "Iphone 14",
     "price": "1200",
+    "stock": 99,
     "category": "Phones",
     "sale": 0,
     "id": "43f0cb85"

@@ -48,8 +48,13 @@
   text-align: left;
 }
 
-.roleBtn:hover {
+.roleBtn-active {
   background-color: #003585;
+  color: #ffffff;
+}
+
+.roleBtn:hover {
+  background-color: #2f64b4;
   color: #ffffff;
 }
 

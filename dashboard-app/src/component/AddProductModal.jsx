@@ -1,84 +1,93 @@
 import "../styles/addProductModal.css";
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
+import {v4 as uuid} from "uuid";
+import axios from "axios";
 
 export default function AddProductModal() {
   const [show, setShow] = useState(false);
+  const [inputList, setInputList] = useState([]);
 
-  const [image, setImage] = useState();
-  const [title, setTitle] = useState();
-  const [category, setCategory] = useState();
-  const [model, setModel] = useState();
-  const [price, setPrice] = useState();
-  const [stock, setStock] = useState();
-  const [sale, setSale] = useState();
-  const [specKey, setSpecKey] = useState();
-  const [specValue, setSpecValue] = useState();
+  const [specKey, setSpecKey] = useState([]);
+  const [specValue, setSpecValue] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newItem);
-    specKeys.push(specKey);
-    specValues.push(specValue);
-    console.log(specKeys);
-    console.log(specValues);
+    console.log(e.target.specKey.value);
+    const itemId = uuid().slice(0,8);
+    
+    const spec = {};
+    spec[e.target.specKey.value] = e.target.specValue.value;
+    const specArray = [spec];
+    
+   
+    const newItem = {
+      title: e.target.title.value,
+      image: e.target.image.value,
+      description: e.target.description.value,
+      model: e.target.model.value,
+      spec: specArray,
+      price: e.target.price.value,
+      stock: e.target.stock.value,
+      category: e.target.category.value,
+      sale: e.target.sale.value,
+      id: itemId,
+    };
+
     setShow(false);
-  };
-  const spec = {};
-  const specKeys = [];
-  const specValues = [];
-  spec[specKey] = specValue;
-  const specArray = [spec];
 
-  const newItem = {
-    title: title,
-    image: image,
-    model: model,
-    spec: specArray,
-    price: price,
-    stock: stock,
-    category: category,
-    sale: sale,
-    id: "eb89f3b9",
+    try {
+      axios.post("http://localhost:5000/products", newItem)
+      .then(()=>console.log("POST done"));
+    
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-  let specItems = [1, 1];
-  const addSpecField = () => {
-    specItems.push(1);
-    console.log(specItems);
-  };
-  const SpecField = () => {
-    useEffect(() => {
-      // console.log("SpecField generated");
-      specItems.forEach((specItem, index) => {
-        return (
-          <div className="specBox" key={index}>
-            <input
-              className="inputAddItem mt-2"
-              type="text"
-              placeholder="Үзүүлэлт"
-              id="specKey"
-              onChange={(e) => {
-                setSpecKey(e.target.value);
-              }}
-            />
-            <input
-              className="inputAddItem mt-2"
-              type="text"
-              placeholder="Үзүүлэлтийн утга"
-              id="specValue"
-              onChange={(e) => {
-                setSpecValue(e.target.value);
-              }}
-            />
-          </div>
-        );
-      });
-    }, [specItems]);
+  
+  const Input = ({index}) => {
+    return (
+      <div id={index} className="specBox d-flex flex-wrap">
+          <input
+            className="inputSpec mt-2"
+            type="text"
+            placeholder="Үзүүлэлт"
+            name="specKey"
+            onChange={(e) => setSpecKey(e.target.value)}
+          />
+          <input
+            className="inputSpec mt-2 ms-2"
+            type="text"
+            placeholder="Үзүүлэлтийн утга"
+            name="specValue"
+            onChange={(e) => 
+              setSpecValue(e.target.value)}
+          />
+          
+          
+      </div>
+    )
   };
 
+  const addSpecField = (e) => {
+    setInputList(inputList.concat(<Input key = {inputList.length} index={inputList.length} />));
+  };
+
+  const removeElement = (id) => {
+    const newList = inputList.filter(
+      (list) => list.id !== id
+    );
+    setInputList(newList);
+  };
+
+  const delSpecField = (e) => {
+    inputList.pop();
+    setInputList(inputList);
+    console.log('deleted');
+  }
   return (
     <>
       <button onClick={handleShow} className="btn addBtn">
@@ -100,6 +109,15 @@ export default function AddProductModal() {
           </Modal.Header>
           <Modal.Body>
             <div className="inputsAddItem">
+              <input
+                className="inputAddItem"
+                type="text"
+                placeholder="Category"
+                name="category"
+                onChange={(e) => {
+                  
+                }}
+              />
               <input
                 className="inputAddItem"
                 type="text"
@@ -155,37 +173,19 @@ export default function AddProductModal() {
                   setSale(e.target.value);
                 }}
               />
+              <textarea
+                className="inputAddItem"
+                type="text"
+                placeholder="Description"
+                name="description"
+                onChange={()=>{setDescription(e.target.value)}}
+              />
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
-              {specItems.map((specItem, index) => {
-                return (
-                  <div className="specBox" key={index}>
-                    <input
-                      className="inputAddItem mt-2"
-                      type="text"
-                      placeholder="Үзүүлэлт"
-                      name="specKey"
-                      onChange={(e) => {
-                        setSpecKey(e.target.value);
-                        let a = [];
-                        a.push(e.target.value);
-                        console.log("a = ", a);
-                      }}
-                    />
-                    <input
-                      className="inputAddItem mt-2"
-                      type="text"
-                      placeholder="Үзүүлэлтийн утга"
-                      name="specValue"
-                      onChange={(e) => {
-                        setSpecValue(e.target.value);
-                      }}
-                    />
-                  </div>
-                );
-              })}
-              <SpecField />
+              {inputList}
+              
             </div>
+            
           </Modal.Body>
           <Modal.Footer>
             <div className="addBtns d-flex justify-content-between">
@@ -196,9 +196,17 @@ export default function AddProductModal() {
               >
                 + Үзүүлэлт нэмэх
               </div>
+              <div
+                type="button"
+                className="btn btn-secondary mx-2"
+                onClick={delSpecField}
+              >
+                - Үзүүлэлт hasah
+              </div>
               <button type="submit" className="btn blueBtn">
                 ХАДГАЛАХ
               </button>
+              
             </div>
           </Modal.Footer>
         </form>

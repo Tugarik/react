@@ -1,6 +1,21 @@
+import axios from "axios";
+
 import { Table } from "react-bootstrap";
 
 export default function ProductTable({ items }) {
+  
+  const removeElement = (itemId)=> {
+    
+    console.log(itemId);
+    const sendData = {id: itemId};
+    
+    try {
+      axios.delete("http://localhost:5000/products", sendData)
+      .then(()=>console.log("DELETE ID sent"));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   return (
     <Table>
       <thead className="bg-secondary">
@@ -15,10 +30,10 @@ export default function ProductTable({ items }) {
         </tr>
       </thead>
       <tbody>
-        {items &&
-          items.map((item, index) => {
-            return (
-              <tr key={index}>
+        {
+        items &&
+          items.map((item, index) => (
+              <tr key={index} id={item.id}>
                 <td>
                   <img
                     src={item.image}
@@ -33,11 +48,12 @@ export default function ProductTable({ items }) {
                 <td>{item.sale}</td>
                 <td>{item.category}</td>
                 <td>
-                  <button className="modifyBtn">Edit</button>
+
+                  <button className="modifyBtn" onClick={()=>removeElement(item.id)}>Edit</button>
                 </td>
               </tr>
-            );
-          })}
+            )
+          )}
       </tbody>
     </Table>
   );
