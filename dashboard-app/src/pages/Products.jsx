@@ -4,7 +4,7 @@ import "../styles/products.css";
 import MonitorSvg from "../svg/MonitorSvg";
 import { DATA } from "../utils/data";
 
-export default function Products() {
+export default function Products({ items }) {
   return (
     <div className="products">
       <div className="d-flex">
@@ -22,7 +22,7 @@ export default function Products() {
         </div>
       </div>
       <div>
-        <ProductTable />
+        <ProductTable items={items} />
       </div>
     </div>
   );

@@ -1,8 +1,13 @@
+const products = require("./products.json");
+
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+
 const app = express();
 const port = 5000;
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
@@ -11,19 +16,15 @@ app.get("/", (req, res) => {
 
 app.get("/products", (req, res) => {
   console.log("GET products huselt orj irlee");
-  res.status(200).send(products);
+  res.setHeader("Content-Type", "application/json");
+  res.json(products);
 });
 
 app.get("/users", (req, res) => {
   console.log("GET users huselt orj irlee");
-  res.status(200).send("Users page");
+  res.status(200).send("users page");
 });
 
 app.listen(port, () => {
   console.log(`Server is starting in ${port} port`);
 });
-
-const products = [
-  { name: "Sony", price: 250, stock: 15 },
-  { name: "Canon", price: 200, stock: 10 },
-];

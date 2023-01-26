@@ -1,27 +1,88 @@
 import "../styles/addProductModal.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
-import { USERS } from "../utils/data";
 
 export default function AddProductModal() {
   const [show, setShow] = useState(false);
+
+  const [image, setImage] = useState();
+  const [title, setTitle] = useState();
+  const [category, setCategory] = useState();
+  const [model, setModel] = useState();
+  const [price, setPrice] = useState();
+  const [stock, setStock] = useState();
+  const [sale, setSale] = useState();
+  const [specKey, setSpecKey] = useState();
+  const [specValue, setSpecValue] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginHandler(userName, password);
-    console.log(userName, password);
+    console.log(newItem);
+    specKeys.push(specKey);
+    specValues.push(specValue);
+    console.log(specKeys);
+    console.log(specValues);
     setShow(false);
   };
+  const spec = {};
+  const specKeys = [];
+  const specValues = [];
+  spec[specKey] = specValue;
+  const specArray = [spec];
 
-  // validation
+  const newItem = {
+    title: title,
+    image: image,
+    model: model,
+    spec: specArray,
+    price: price,
+    stock: stock,
+    category: category,
+    sale: sale,
+    id: "eb89f3b9",
+  };
+  let specItems = [1, 1];
+  const addSpecField = () => {
+    specItems.push(1);
+    console.log(specItems);
+  };
+  const SpecField = () => {
+    useEffect(() => {
+      // console.log("SpecField generated");
+      specItems.forEach((specItem, index) => {
+        return (
+          <div className="specBox" key={index}>
+            <input
+              className="inputAddItem mt-2"
+              type="text"
+              placeholder="Үзүүлэлт"
+              id="specKey"
+              onChange={(e) => {
+                setSpecKey(e.target.value);
+              }}
+            />
+            <input
+              className="inputAddItem mt-2"
+              type="text"
+              placeholder="Үзүүлэлтийн утга"
+              id="specValue"
+              onChange={(e) => {
+                setSpecValue(e.target.value);
+              }}
+            />
+          </div>
+        );
+      });
+    }, [specItems]);
+  };
 
   return (
     <>
       <button onClick={handleShow} className="btn addBtn">
-        <img src="./img/user_white.svg" alt="" /> + Бараа нэмэх
+        + Бараа нэмэх
       </button>
 
       <Modal
@@ -42,10 +103,28 @@ export default function AddProductModal() {
               <input
                 className="inputAddItem"
                 type="text"
+                placeholder="Барааны зураг"
+                name="image"
+                onChange={(e) => {
+                  setImage(e.target.value);
+                }}
+              />
+              <input
+                className="inputAddItem"
+                type="text"
                 placeholder="Барааны нэр"
                 name="title"
                 onChange={(e) => {
-                  setUserName(e.target.value);
+                  setTitle(e.target.value);
+                }}
+              />
+              <input
+                className="inputAddItem"
+                type="text"
+                placeholder="Барааны загвар"
+                name="model"
+                onChange={(e) => {
+                  setModel(e.target.value);
                 }}
               />
               <input
@@ -54,7 +133,7 @@ export default function AddProductModal() {
                 placeholder="Барааны үнэ (₮)"
                 name="price"
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setPrice(e.target.value);
                 }}
               />
 
@@ -64,7 +143,7 @@ export default function AddProductModal() {
                 placeholder="Үлдэгдэл"
                 name="stock"
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setStock(e.target.value);
                 }}
               />
               <input
@@ -73,33 +152,48 @@ export default function AddProductModal() {
                 placeholder="Хямдрал (%-иар)"
                 name="sale"
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setSale(e.target.value);
                 }}
               />
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
-              <input
-                className="inputAddItem"
-                type="text"
-                placeholder="Багтаамж"
-                name="sale"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              <input
-                className="inputAddItem"
-                type="text"
-                placeholder="Цахилгаан зарцуулалт"
-                name="sale"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
+
+              {specItems.map((specItem, index) => {
+                return (
+                  <div className="specBox" key={index}>
+                    <input
+                      className="inputAddItem mt-2"
+                      type="text"
+                      placeholder="Үзүүлэлт"
+                      name="specKey"
+                      onChange={(e) => {
+                        setSpecKey(e.target.value);
+                        let a = [];
+                        a.push(e.target.value);
+                        console.log("a = ", a);
+                      }}
+                    />
+                    <input
+                      className="inputAddItem mt-2"
+                      type="text"
+                      placeholder="Үзүүлэлтийн утга"
+                      name="specValue"
+                      onChange={(e) => {
+                        setSpecValue(e.target.value);
+                      }}
+                    />
+                  </div>
+                );
+              })}
+              <SpecField />
             </div>
           </Modal.Body>
           <Modal.Footer>
             <div className="addBtns d-flex justify-content-between">
-              <div type="button" className="btn btn-secondary mx-2">
+              <div
+                type="button"
+                className="btn btn-secondary mx-2"
+                onClick={addSpecField}
+              >
                 + Үзүүлэлт нэмэх
               </div>
               <button type="submit" className="btn blueBtn">

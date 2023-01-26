@@ -1,7 +1,6 @@
 import { Table } from "react-bootstrap";
-import { DATA } from "../utils/data";
 
-export default function ProductTable() {
+export default function ProductTable({ items }) {
   return (
     <Table>
       <thead className="bg-secondary">
@@ -16,29 +15,29 @@ export default function ProductTable() {
         </tr>
       </thead>
       <tbody>
-        {DATA.map((item, index) => {
-          return (
-            <tr key={index}>
-              <td>
-                <img
-                  src={item.image}
-                  alt="product"
-                  width="50px"
-                  height="50px"
-                />
-                Зураг
-              </td>
-              <td>{item.model}</td>
-              <td>{item.price}</td>
-              <td>{item.stock}</td>
-              <td>{item.sale}</td>
-              <td>{item.category}</td>
-              <td>
-                <button className="modifyBtn">Modify</button>
-              </td>
-            </tr>
-          );
-        })}
+        {items &&
+          items.map((item, index) => {
+            return (
+              <tr key={index}>
+                <td>
+                  <img
+                    src={item.image}
+                    alt="product"
+                    width="50px"
+                    height="50px"
+                  />
+                </td>
+                <td>{item.model}</td>
+                <td>{item.price}</td>
+                <td>{item.stock}</td>
+                <td>{item.sale}</td>
+                <td>{item.category}</td>
+                <td>
+                  <button className="modifyBtn">Edit</button>
+                </td>
+              </tr>
+            );
+          })}
       </tbody>
     </Table>
   );

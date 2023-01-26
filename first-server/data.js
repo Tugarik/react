@@ -1,22 +1,4 @@
-export const USERS = [
-  {
-    name: "tuga",
-    password: "123",
-    role: "admin",
-  },
-  {
-    name: "andy",
-    password: "asd",
-    role: "moderator",
-  },
-  {
-    name: "sumlai",
-    password: "qwerty",
-    role: "user",
-  },
-];
-
-export const DATA = [
+[
   {
     title: "Camera",
     image: "https://m.media-amazon.com/images/I/91rQ3XfEYzL._SL1500_.jpg",
@@ -33,7 +15,6 @@ export const DATA = [
     description:
       "Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
     price: "1999",
-    stock: 18,
     category: "Camera",
     sale: 15,
     id: "55100c41",

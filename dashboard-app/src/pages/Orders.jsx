@@ -9,9 +9,12 @@ export default function Orders({ items }) {
         items.map((item, index) => {
           return (
             <div key={index}>
+              <div>Title: {item.title}</div>
               <div>Name: {item.name}</div>
               <div>Price: {item.price}</div>
               <div>Quantity: {item.stock}</div>
+              <div>Sale: {item.sale}% off</div>
+              <div>Category: {item.category}</div>
               <hr />
             </div>
           );
