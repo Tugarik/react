@@ -1,35 +1,37 @@
 import "../styles/addProductModal.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 import axios from "axios";
 
 export default function AddProductModal() {
   const [show, setShow] = useState(false);
-  const [inputList, setInputList] = useState([]);
 
-  const [specKey, setSpecKey] = useState([]);
-  const [specValue, setSpecValue] = useState([]);
+  const [specFields, setSpecFields] = useState([
+    { specKey: "", specValue: "" },
+  ]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.specKey.value);
-    const itemId = uuid().slice(0,8);
-    
-    const spec = {};
-    spec[e.target.specKey.value] = e.target.specValue.value;
-    const specArray = [spec];
-    
-   
+    const itemId = uuid().slice(0, 8);
+    console.log(specFields);
+    const specList = specFields.map((field) => {
+      let obj = {};
+      obj[field.specKey] = field.specValue;
+      console.log(obj);
+      return obj;
+    });
+
     const newItem = {
       title: e.target.title.value,
       image: e.target.image.value,
       description: e.target.description.value,
       model: e.target.model.value,
-      spec: specArray,
+      spec: specList,
       price: e.target.price.value,
       stock: e.target.stock.value,
       category: e.target.category.value,
@@ -40,54 +42,32 @@ export default function AddProductModal() {
     setShow(false);
 
     try {
-      axios.post("http://localhost:5000/products", newItem)
-      .then(()=>console.log("POST done"));
-    
+      axios
+        .post("http://localhost:5000/products", newItem)
+        .then(() => console.log("POST done"));
     } catch (error) {
       console.log(error.message);
     }
-  };
-  
-  const Input = ({index}) => {
-    return (
-      <div id={index} className="specBox d-flex flex-wrap">
-          <input
-            className="inputSpec mt-2"
-            type="text"
-            placeholder="Үзүүлэлт"
-            name="specKey"
-            onChange={(e) => setSpecKey(e.target.value)}
-          />
-          <input
-            className="inputSpec mt-2 ms-2"
-            type="text"
-            placeholder="Үзүүлэлтийн утга"
-            name="specValue"
-            onChange={(e) => 
-              setSpecValue(e.target.value)}
-          />
-          
-          
-      </div>
-    )
+    location.reload();
   };
 
   const addSpecField = (e) => {
-    setInputList(inputList.concat(<Input key = {inputList.length} index={inputList.length} />));
+    let newfield = { specKey: "", specValue: "" };
+    setSpecFields([...specFields, newfield]);
   };
 
-  const removeElement = (id) => {
-    const newList = inputList.filter(
-      (list) => list.id !== id
-    );
-    setInputList(newList);
+  const removeSpecField = (index) => {
+    let data = [...specFields];
+    data.splice(index, 1);
+    setSpecFields(data);
   };
 
-  const delSpecField = (e) => {
-    inputList.pop();
-    setInputList(inputList);
-    console.log('deleted');
-  }
+  const handleSpecChange = (index, e) => {
+    let data = [...specFields];
+    data[index][e.target.name] = e.target.value;
+    setSpecFields(data);
+  };
+
   return (
     <>
       <button onClick={handleShow} className="btn addBtn">
@@ -114,78 +94,77 @@ export default function AddProductModal() {
                 type="text"
                 placeholder="Category"
                 name="category"
-                onChange={(e) => {
-                  
-                }}
               />
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Барааны зураг"
                 name="image"
-                onChange={(e) => {
-                  setImage(e.target.value);
-                }}
               />
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Барааны нэр"
                 name="title"
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
               />
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Барааны загвар"
                 name="model"
-                onChange={(e) => {
-                  setModel(e.target.value);
-                }}
               />
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Барааны үнэ (₮)"
                 name="price"
-                onChange={(e) => {
-                  setPrice(e.target.value);
-                }}
               />
-
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Үлдэгдэл"
                 name="stock"
-                onChange={(e) => {
-                  setStock(e.target.value);
-                }}
               />
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Хямдрал (%-иар)"
                 name="sale"
-                onChange={(e) => {
-                  setSale(e.target.value);
-                }}
               />
               <textarea
                 className="inputAddItem"
                 type="text"
                 placeholder="Description"
                 name="description"
-                onChange={()=>{setDescription(e.target.value)}}
               />
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
-              {inputList}
-              
+              {specFields.map((spec, index) => {
+                return (
+                  <div key={index} className="specBox d-flex flex-wrap">
+                    <input
+                      className="inputSpec mt-2"
+                      type="text"
+                      placeholder="Үзүүлэлт"
+                      name="specKey"
+                      // value={spec.key}
+                      onChange={(e) => handleSpecChange(index, e)}
+                    />
+                    <input
+                      className="inputSpec mt-2 ms-2"
+                      type="text"
+                      placeholder="Үзүүлэлтийн утга"
+                      name="specValue"
+                      // value={spec.value}
+                      onChange={(e) => handleSpecChange(index, e)}
+                    />
+                    <button onClick={() => removeSpecField(index)}>
+                      Remove
+                    </button>
+                  </div>
+                );
+              })}
             </div>
-            
           </Modal.Body>
           <Modal.Footer>
             <div className="addBtns d-flex justify-content-between">
@@ -196,17 +175,10 @@ export default function AddProductModal() {
               >
                 + Үзүүлэлт нэмэх
               </div>
-              <div
-                type="button"
-                className="btn btn-secondary mx-2"
-                onClick={delSpecField}
-              >
-                - Үзүүлэлт hasah
-              </div>
+
               <button type="submit" className="btn blueBtn">
                 ХАДГАЛАХ
               </button>
-              
             </div>
           </Modal.Footer>
         </form>

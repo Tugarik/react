@@ -78,7 +78,7 @@ export default function Home({ loginRole }) {
   };
 
   return (
-    <>
+    <div className="text-center mt-5 p-5">
       {isLoggedIn ? (
         <button onClick={handleLogout} className="btn loginBtn">
           <img src="./img/user_white.svg" alt="" />
@@ -152,6 +152,6 @@ export default function Home({ loginRole }) {
           </Modal.Footer>
         </form>
       </Modal>
-    </>
+    </div>
   );
 }

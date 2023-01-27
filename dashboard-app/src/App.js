@@ -22,14 +22,13 @@ function App() {
   const loginRole = (userRole) => {
     setRole(userRole);
   };
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("admin");
 
   const [items, setItems] = useState();
 
   useEffect(() => {
     try {
       axios.get("http://localhost:5000/products").then((res) => {
-        console.log(res.data);
         setItems(res.data);
       });
     } catch (error) {
