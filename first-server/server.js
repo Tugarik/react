@@ -1,4 +1,4 @@
-const products = require("./products.json");
+let products = require("./products.json");
 const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
@@ -7,7 +7,6 @@ const app = express();
 const port = 5000;
 app.use(cors());
 app.use(bodyParser.json());
-
 
 app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
@@ -22,14 +21,15 @@ app.get("/products", (req, res) => {
 app.post("/products", (req, res) => {
   console.log("POST products huselt orj irlee");
   products.unshift(req.body);
-  res.status(200).send(products);
+  res.status(201).send(products);
 });
 
-app.delete("/products", (req, res) => {
+app.delete("/products/:id", (req, res) => {
   console.log("DELETE products huselt orj irlee");
-  // const {id} = req.params;
-  console.log(req.data);
-  res.status(200).send(products);
+  const id = req.params.id;
+  const filtered = products.filter((product) => product.id !== id);
+  console.log(filtered);
+  products = filtered;
 });
 
 app.get("/users", (req, res) => {
