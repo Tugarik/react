@@ -3,14 +3,16 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { USERS } from "../../utils/data";
+import { useRoleContext } from "../../App";
 
-export default function LogInModal({ loginRole }) {
+export default function LogInModal() {
+  const {role, setRole} = useRoleContext();
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usersList, setUsersList] = useState(USERS);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(role);
 
   const navigate = useNavigate();
   const forgotHandle = () => {
@@ -36,23 +38,14 @@ export default function LogInModal({ loginRole }) {
         if (user.role === "user") {
           setIsLoggedIn(true);
           setCurrentUser(userName);
-          loginRole(user.role);
+          setRole(user.role);
           isMatch = true;
           console.log("logged user name: ", userName);
           console.log("logged password: ", password);
           navigate("/");
           return;
-        } else {
-          setIsLoggedIn(true);
-          setCurrentUser(userName);
-          loginRole(user.role);
-          isMatch = true;
-          console.log("logged user name: ", userName);
-          console.log("logged password: ", password);
-          navigate("/dashboard");
-          return;
         }
-      }
+      } 
     });
     if (!isMatch) {
       alert("Password and user name are not match");
@@ -62,6 +55,7 @@ export default function LogInModal({ loginRole }) {
   const handleRegister = () => {
     registerHandler(userName, password);
   };
+
   const registerHandler = (userName, password) => {
     console.log("user name to reg: ", userName);
     console.log("password to reg: ", password);
@@ -83,7 +77,7 @@ export default function LogInModal({ loginRole }) {
       {isLoggedIn ? (
         <button onClick={handleLogout} className="btn loginBtn">
           <img src="./img/user_white.svg" alt="" />
-          {userName}, Log out
+          {currentUser}, Log out
         </button>
       ) : (
         <button onClick={handleShow} className="btn loginBtn">

@@ -1,48 +1,46 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Dash_Panel from "./pages/Dash_Panel";
-import Dashboard from "./pages/Dashboard";
+
 import Home from "./pages/Home";
-import Moderators from "./pages/Moderators";
-import Orders from "./pages/Orders";
-import Products from "./pages/Products";
-import Settings from "./pages/Settings";
-import Users from "./pages/Users";
 import ItemPage from "./pages/ItemPage";
 import Content from "./pages/Content";
+import axios from "axios";
 
 const RoleContext = createContext(null);
+const ItemsContext = createContext(null);
 
 export function useRoleContext() {
   return useContext(RoleContext);
 }
 
-function App() {
-  const loginRole = (userRole) => {
-    setRole(userRole);
-  };
-  const [role, setRole] = useState("admin");
+export function useItemsContext() {
+  return useContext(ItemsContext);
+}
 
+function App() {
+  const [products, setProducts] = useState([]);
+  const [role, setRole] = useState();
+
+  useEffect(() => {
+    try {
+      axios.get("http://localhost:5000/products").then(res => setProducts(res.data))
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
   return (
     <div className="App">
       <RoleContext.Provider value={{ role, setRole }}>
-        <Routes>
-          <Route path="/*" element={<Home loginRole={loginRole} />}>
-            <Route index element={<Content />} />
-            <Route path="item">
-              <Route path=":itemId" element={<ItemPage />} />
+        <ItemsContext.Provider value = {{ products, setProducts }}>
+          <Routes>
+            <Route path="/*" element={<Home />}>
+              <Route index element={<Content />} />
+              <Route path="item">
+                <Route path=":itemId" element={<ItemPage />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path="/dashboard/*" element={<Dashboard />}>
-            <Route index element={<Dash_Panel />} />
-            <Route path="panel" element={<Dash_Panel />} />
-            <Route path="products" element={<Products />} />
-            <Route path="users" element={<Users />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="moderators" element={<Moderators />} />
-            <Route path="orders" element={<Orders />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </ItemsContext.Provider>
       </RoleContext.Provider>
     </div>
   );

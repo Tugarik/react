@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DATA } from "../utils/data";
+import { useItemsContext } from "../App";
+
 const items = ["Sale"];
 
 export default function Popular() {
-  const navigate = useNavigate();
+  const {products} = useItemsContext();
   const [filter, setFilter] = useState("Sale");
-  const filterHandler = (item) => {
-    setFilter(item);
-  };
+  const navigate = useNavigate();
 
   const FilterButtons = ({ datas }) => {
     datas.forEach((data) => {
@@ -18,10 +17,10 @@ export default function Popular() {
     });
     return (
       <div className="d-flex flex-wrap justify-content-center">
-        {items.map((item, index) => (
+        {items && items.map((item, index) => (
           <div key={index}>
             <button
-              onClick={() => filterHandler(item)}
+              onClick={() => setFilter(item)}
               className="popularBtn rounded-pill m-2"
             >
               {item}
@@ -87,9 +86,9 @@ export default function Popular() {
     <div className="Popular container-lg">
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap">
         <div className="popularTitle mx-auto mx-md-0">Popular products</div>
-        <FilterButtons datas={DATA} />
+        <FilterButtons datas={products} />
       </div>
-      <Filtered datas={DATA} filter={filter} />
+      <Filtered datas={products} filter={filter} />
     </div>
   );
 }
