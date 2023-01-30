@@ -1,12 +1,12 @@
 import axios from "axios";
 
-import { Table } from "react-bootstrap";
+import { Dropdown, DropdownButton, Table } from "react-bootstrap";
+import EditProductModal from "./EditProductModal";
 
 export default function ProductTable({ items }) {
   const removeElement = (itemId) => {
     console.log(itemId);
     location.reload();
-
     try {
       axios
         .delete(`http://localhost:5000/products/${itemId}`)
@@ -15,6 +15,7 @@ export default function ProductTable({ items }) {
       console.log(error.message);
     }
   };
+
   return (
     <Table>
       <thead className="bg-secondary">
@@ -46,12 +47,16 @@ export default function ProductTable({ items }) {
               <td>{item.sale}</td>
               <td>{item.category}</td>
               <td>
-                <button
-                  className="modifyBtn"
-                  onClick={() => removeElement(item.id)}
-                >
-                  Remove
-                </button>
+                <DropdownButton id="dropdown-basic-button" title="Edit">
+                  <EditProductModal items={items} itemId={item.id} />
+
+                  <button
+                    className="btn addBtn ms-2"
+                    onClick={() => removeElement(item.id)}
+                  >
+                    Бараа устгах
+                  </button>
+                </DropdownButton>
               </td>
             </tr>
           ))}

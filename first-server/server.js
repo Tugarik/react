@@ -15,21 +15,28 @@ app.get("/", (req, res) => {
 
 app.get("/products", (req, res) => {
   console.log("GET products huselt orj irlee");
-  res.status(200).send(products);
+  res.send(products);
 });
 
 app.post("/products", (req, res) => {
   console.log("POST products huselt orj irlee");
   products.unshift(req.body);
-  res.status(201).send(products);
+  // res.send(products);
 });
 
 app.delete("/products/:id", (req, res) => {
   console.log("DELETE products huselt orj irlee");
   const id = req.params.id;
   const filtered = products.filter((product) => product.id !== id);
-  console.log(filtered);
   products = filtered;
+});
+
+app.put("/products/:id", (req, res) => {
+  console.log("PUT products huselt orj irlee");
+  const { id } = req.params;
+  const edited = products.filter((product) => product.id !== id);
+  edited.unshift(req.body);
+  products = edited;
 });
 
 app.get("/users", (req, res) => {
