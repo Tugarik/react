@@ -46,7 +46,10 @@ function App() {
             <Route index element={<DashPanel />} />
             <Route path="panel" element={<DashPanel />} />
             <Route path="users" element={<Users />} />
-            <Route path="products" element={<Products items={items} />} />
+            <Route
+              path="products"
+              element={<Products items={items} setItems={setItems} />}
+            />
             <Route path="orders" element={<Orders items={items} />} />
             <Route path="moderator" element={<Moderator />} />
             <Route path="settings" element={<Settings />} />

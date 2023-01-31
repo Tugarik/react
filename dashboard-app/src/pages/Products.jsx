@@ -3,7 +3,7 @@ import ProductTable from "../component/ProductTable";
 import "../styles/products.css";
 import MonitorSvg from "../svg/MonitorSvg";
 
-export default function Products({ items }) {
+export default function Products({ items, setItems }) {
   return (
     <div className="products">
       <div className="d-flex">
@@ -21,7 +21,7 @@ export default function Products({ items }) {
         </div>
       </div>
       <div>
-        <ProductTable items={items} />
+        <ProductTable items={items} setItems={setItems} />
       </div>
     </div>
   );

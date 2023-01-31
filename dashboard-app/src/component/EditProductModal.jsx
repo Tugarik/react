@@ -7,34 +7,30 @@ export default function EditProductModal({ items, itemId }) {
   const [show, setShow] = useState(false);
   const currentObj = items.filter((product) => product.id == itemId);
   const currentProduct = currentObj[0];
-  console.log(itemId, currentProduct.spec);
   const currentFields = currentProduct.spec;
 
   const [specFields, setSpecFields] = useState(currentFields);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("updated");
     const specList = specFields.map((field) => {
       let obj = {};
       obj[field.specKey] = field.specValue;
-      console.log(obj);
       return obj;
     });
-
+    console.log(specList);
     const newItem = {
       title: e.target.title.value,
       image: e.target.image.value,
       description: e.target.description.value,
       model: e.target.model.value,
-      spec: specList,
+      spec: specFields,
       price: e.target.price.value,
       stock: e.target.stock.value,
       category: e.target.category.value,
       sale: e.target.sale.value,
       id: itemId,
     };
-    console.log(newItem);
 
     try {
       axios
@@ -50,6 +46,7 @@ export default function EditProductModal({ items, itemId }) {
   const addSpecField = (e) => {
     let newfield = { specKey: "", specValue: "" };
     setSpecFields([...specFields, newfield]);
+    console.log(specFields);
   };
 
   const removeSpecField = (index) => {
@@ -60,13 +57,15 @@ export default function EditProductModal({ items, itemId }) {
 
   const handleSpecChange = (index, e) => {
     let data = [...specFields];
+    console.log(specFields);
+    console.log(data);
     data[index][e.target.name] = e.target.value;
     setSpecFields(data);
   };
 
   return (
     <>
-      <button onClick={() => setShow(true)} className="btn addBtn ms-2 mb-2">
+      <button onClick={() => setShow(true)} className="btn addBtn">
         Бараа засах
       </button>
 
@@ -141,36 +140,42 @@ export default function EditProductModal({ items, itemId }) {
                 name="description"
                 defaultValue={currentProduct && currentProduct.description}
               />
+
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
-              {specFields.map((spec, index) => {
-                return (
-                  <div key={index} className="specBox d-flex flex-wrap">
-                    <input
-                      className="inputSpec mt-2"
-                      type="text"
-                      placeholder="Үзүүлэлт"
-                      name="specKey"
-                      defaultValue={Object.keys(spec) ? Object.keys(spec) : ""}
-                      onChange={(e) => handleSpecChange(index, e)}
-                    />
-                    <input
-                      className="inputSpec mt-2 ms-2"
-                      type="text"
-                      placeholder="Үзүүлэлтийн утга"
-                      name="specValue"
-                      defaultValue={Object.values(spec)}
-                      onChange={(e) => handleSpecChange(index, e)}
-                    />
-                    <div
-                      className="btn btn-danger removeBtn"
-                      onClick={() => removeSpecField(index)}
-                    >
-                      -
+              {specFields &&
+                specFields.map((spec, index) => {
+                  return (
+                    <div key={index} className="specBox d-flex flex-wrap">
+                      <input
+                        className="inputSpec mt-2"
+                        type="text"
+                        placeholder="Үзүүлэлт"
+                        name="specKey"
+                        defaultValue={
+                          Object.keys(spec) ? Object.keys(spec) : ""
+                        }
+                        onChange={(e) => handleSpecChange(index, e)}
+                      />
+                      <input
+                        className="inputSpec mt-2 ms-2"
+                        type="text"
+                        placeholder="Үзүүлэлтийн утга"
+                        name="specValue"
+                        defaultValue={
+                          Object.values(spec) ? Object.values(spec) : ""
+                        }
+                        onChange={(e) => handleSpecChange(index, e)}
+                      />
+                      <div
+                        className="btn btn-danger removeBtn"
+                        onClick={() => removeSpecField(index)}
+                      >
+                        -
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </Modal.Body>
           <Modal.Footer>

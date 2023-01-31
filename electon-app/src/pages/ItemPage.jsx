@@ -8,19 +8,16 @@ export default function ItemPage() {
 
   const { itemId } = useParams();
   const item = products[products.findIndex((obj) => obj.id == itemId)];
-  
+
   const Specs = ({ currentItem }) => {
-    
     return (
       <div className="ps-3">
         {currentItem &&
-          currentItem.spec.map((singleSpec, index) => 
-
-              <p key={index}>
-                {Object.keys(singleSpec)} : {Object.values(singleSpec)}
-              </p>
-
-          )}
+          currentItem.spec.map((singleSpec, index) => (
+            <p key={index}>
+              {Object.keys(singleSpec)} : {Object.values(singleSpec)}
+            </p>
+          ))}
       </div>
     );
   };
@@ -34,9 +31,16 @@ export default function ItemPage() {
             <img src={item && item.image} alt="" />
           </div>
           <div className="itemText mx-auto">
-            <p><strong>{item && item.category}</strong></p>
-            <p><strong>$ {item && item.price}</strong></p>
-            <p>{item && item.sale != 0 ? `Sale: ${item && item.sale}% off` : ""}</p>
+            <p>
+              <strong>{item && item.category}</strong>
+            </p>
+            <p>
+              <strong>$ {item && item.price}</strong>
+            </p>
+            <p>
+              {item && item.sale != 0 ? `Sale: ${item && item.sale}% off` : ""}
+            </p>
+            <p>Quantity: {item && item.stock}</p>
             <p>Specs:</p>
             <Specs currentItem={item} />
             <p>ItemId: {item && item.id}</p>
