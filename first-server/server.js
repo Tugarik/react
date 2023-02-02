@@ -14,8 +14,9 @@ app.get("/", (req, res) => {
   res.status(200).send("Home page");
 });
 
+// products
 app.get("/products", (req, res) => {
-  console.log("GET products huselt orj irlee");
+  console.log("GET - Products huselt orj irlee");
   fs.readFile("./database/products.json", (err, data) => {
     let savedData = JSON.parse(data);
     if (err) {
@@ -27,7 +28,7 @@ app.get("/products", (req, res) => {
 });
 
 app.post("/products", (req, res) => {
-  console.log("POST products huselt orj irlee");
+  console.log("POST - Products huselt orj irlee");
   fs.readFile("./database/products.json", (err, data) => {
     let savedData = JSON.parse(data);
     if (err) {
@@ -50,7 +51,7 @@ app.post("/products", (req, res) => {
 });
 
 app.delete("/products/:id", (req, res) => {
-  console.log("DELETE products huselt orj irlee");
+  console.log("DELETE - Products huselt orj irlee");
   fs.readFile("./database/products.json", (err, data) => {
     let savedData = JSON.parse(data);
     console.log("read success:");
@@ -76,7 +77,7 @@ app.delete("/products/:id", (req, res) => {
 });
 
 app.put("/products/:id", (req, res) => {
-  console.log("PUT products huselt orj irlee");
+  console.log("PUT - Products huselt orj irlee");
   fs.readFile("./database/products.json", (err, data) => {
     let savedData = JSON.parse(data);
     if (err) {
@@ -100,9 +101,83 @@ app.put("/products/:id", (req, res) => {
   });
 });
 
+// Users
 app.get("/users", (req, res) => {
-  console.log("GET users huselt orj irlee");
-  res.status(200).send("Users page");
+  console.log("GET - Users huselt orj irlee");
+  fs.readFile("./database/users.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      res.status(200).send(savedData);
+    }
+  });
+});
+
+app.post("/users", (req, res) => {
+  console.log("POST - Users huselt orj irlee");
+  fs.readFile("./database/users.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      savedData.unshift(req.body);
+      fs.writeFile(
+        "./database/users.json",
+        JSON.stringify(savedData),
+        (err) => {
+          if (err) {
+            res.status(500).send({ message: err });
+          } else {
+            res.status(200).send({ message: "Data successfully updated" });
+          }
+        }
+      );
+    }
+  });
+});
+
+app.delete("/users/:id", (req, res) => {
+  console.log("DELETE - Users huselt orj irlee");
+  fs.readFile("./database/users.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    console.log("read success:");
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      const id = req.params.id;
+      const filtered = savedData.filter((product) => product.id !== id);
+      console.log("filter success");
+      fs.writeFile("./database/users.json", JSON.stringify(filtered), (err) => {
+        if (err) {
+          res.status(500).send({ message: err });
+        } else {
+          res.status(200).send({ success: true, data: filtered });
+        }
+      });
+    }
+  });
+});
+
+app.put("/users/:id", (req, res) => {
+  console.log("PUT - Users huselt orj irlee");
+  fs.readFile("./database/users.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      const { id } = req.params;
+      const edited = savedData.filter((product) => product.id !== id);
+      edited.unshift(req.body);
+      fs.writeFile("./database/users.json", JSON.stringify(edited), (err) => {
+        if (err) {
+          res.status(500).send({ message: err });
+        } else {
+          res.status(200).send({ message: "Data successfully edited" });
+        }
+      });
+    }
+  });
 });
 
 app.listen(port, () => {

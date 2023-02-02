@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
+import DeleteModal from "./DeleteModal";
 import EditProductModal from "./EditProductModal";
 
 export default function ProductTable({ items, setItems }) {
@@ -55,12 +56,12 @@ export default function ProductTable({ items, setItems }) {
                     <EditProductModal items={items} itemId={item.id} />
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <button
-                      className="btn addBtn"
-                      onClick={() => removeElement(item.id)}
-                    >
-                      Бараа устгах
-                    </button>
+                    <DeleteModal
+                      label={"Бараа устгах"}
+                      itemId={item.id}
+                      section={"products"}
+                      setItems={setItems}
+                    />
                   </Dropdown.Item>
                 </DropdownButton>
               </td>

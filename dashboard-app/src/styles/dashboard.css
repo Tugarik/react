@@ -77,6 +77,26 @@
   border: 1px solid #003585;
 }
 
+.addBtn {
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #003585;
+  border: 1px solid #003585;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.delBtn {
+  font-size: 14px;
+  color: #ffffff;
+  background-color: red;
+  border: 1px solid #003585;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
 .modalBtns {
   display: flex;
   justify-content: space-around;

@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
-export default function AddProductModal() {
+export default function AddUserModal() {
   const [show, setShow] = useState(false);
 
   const [specFields, setSpecFields] = useState([
@@ -18,31 +18,28 @@ export default function AddProductModal() {
     e.preventDefault();
 
     const itemId = uuid().slice(0, 8);
-
     const specList = specFields.map((field) => {
       let obj = {};
       obj[field.specKey] = field.specValue;
       return obj;
     });
 
-    const newItem = {
-      title: e.target.title.value,
-      image: e.target.image.value,
-      description: e.target.description.value,
-      model: e.target.model.value,
-      spec: specList,
-      price: e.target.price.value,
-      stock: e.target.stock.value,
-      category: e.target.category.value,
-      sale: e.target.sale.value,
+    const newUser = {
+      userName: e.target.userName.value,
+      password: e.target.password.value,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      orders: specList,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
       id: itemId,
     };
-    console.log(newItem);
+    console.log(newUser);
     setShow(false);
 
     try {
       axios
-        .post("http://localhost:5000/products", newItem)
+        .post("http://localhost:5000/users", newUser)
         .then(() => console.log("POST done"));
     } catch (error) {
       console.log(error.message);
@@ -70,7 +67,7 @@ export default function AddProductModal() {
   return (
     <>
       <button onClick={handleShow} className="btn addBtn">
-        + Бүтээгдэхүүн нэмэх
+        + Хэрэглэгч нэмэх
       </button>
 
       <Modal
@@ -91,51 +88,40 @@ export default function AddProductModal() {
               <input
                 className="inputAddItem"
                 type="text"
-                placeholder="Category"
-                name="category"
+                placeholder="User name"
+                name="userName"
               />
               <input
                 className="inputAddItem"
                 type="text"
-                placeholder="Барааны зураг"
-                name="image"
+                placeholder="Password"
+                name="password"
               />
               <input
                 className="inputAddItem"
                 type="text"
-                placeholder="Барааны нэр"
-                name="title"
+                placeholder="First name"
+                name="firstName"
               />
               <input
                 className="inputAddItem"
                 type="text"
-                placeholder="Барааны загвар"
-                name="model"
+                placeholder="Last name"
+                name="lastName"
               />
               <input
                 className="inputAddItem"
-                type="text"
-                placeholder="Барааны үнэ (₮)"
-                name="price"
+                type="email"
+                placeholder="email"
+                name="email"
               />
               <input
                 className="inputAddItem"
-                type="text"
-                placeholder="Үлдэгдэл"
-                name="stock"
+                type="phone"
+                placeholder="phone"
+                name="phone"
               />
-              <input
-                className="inputAddItem"
-                type="text"
-                placeholder="Хямдрал (%-иар)"
-                name="sale"
-              />
-              <textarea
-                className="inputAddItem"
-                type="text"
-                placeholder="Description"
-                name="description"
-              />
+
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
               {specFields.map((spec, index) => {
@@ -146,7 +132,6 @@ export default function AddProductModal() {
                       type="text"
                       placeholder="Үзүүлэлт"
                       name="specKey"
-                      // value={spec.key}
                       onChange={(e) => handleSpecChange(index, e)}
                     />
                     <input
@@ -154,7 +139,6 @@ export default function AddProductModal() {
                       type="text"
                       placeholder="Үзүүлэлтийн утга"
                       name="specValue"
-                      // value={spec.value}
                       onChange={(e) => handleSpecChange(index, e)}
                     />
                     <button

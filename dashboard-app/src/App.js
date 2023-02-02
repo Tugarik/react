@@ -25,11 +25,22 @@ function App() {
   const [role, setRole] = useState("admin");
 
   const [items, setItems] = useState();
+  const [users, setUsers] = useState();
 
   useEffect(() => {
     try {
       axios.get("http://localhost:5000/products").then((res) => {
         setItems(res.data);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      axios.get("http://localhost:5000/users").then((res) => {
+        setUsers(res.data);
       });
     } catch (error) {
       console.log(error.message);
@@ -45,7 +56,10 @@ function App() {
           <Route path="/dashboard/*" element={<Dashboard />}>
             <Route index element={<DashPanel />} />
             <Route path="panel" element={<DashPanel />} />
-            <Route path="users" element={<Users />} />
+            <Route
+              path="users"
+              element={<Users users={users} setUsers={setUsers} />}
+            />
             <Route
               path="products"
               element={<Products items={items} setItems={setItems} />}

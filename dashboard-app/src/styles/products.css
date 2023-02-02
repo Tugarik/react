@@ -1,18 +1,9 @@
 .products {
   width: 100%;
-  background-color: lightgray;
+  background-color: rgb(233, 233, 233);
   padding: 25px;
 }
 
-.products .addBtn {
-  font-size: 14px;
-  color: #ffffff;
-  background-color: #003585;
-  border: 1px solid #003585;
-  border: 0;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
 .products .modifyBtn {
   font-size: 14px;
   color: #ffffff;

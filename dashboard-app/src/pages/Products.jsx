@@ -8,7 +8,7 @@ export default function Products({ items, setItems }) {
     <div className="products">
       <div className="d-flex">
         <MonitorSvg color="#003585" />
-        <span className="productsTitle ms-2">Бүтээгдхүүнүүд</span>
+        <span className="productsTitle ms-2">Бүтээгдэхүүнүүд</span>
       </div>
       <hr />
 
