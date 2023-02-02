@@ -1,0 +1,41 @@
+.navbar {
+  height: 30px;
+  text-align: center;
+  padding: 20px;
+  background-color: #e6e6e6;
+}
+.page {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  text-align: center;
+}
+
+.paginationBox {
+  color: #ccc;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  width: fit-content;
+  margin: 50px auto;
+  font-weight: 600;
+}
+
+.page-numbers {
+  cursor: pointer;
+  color: #ccc;
+  background-color: transparent;
+  border: 0;
+  font-size: 1rem;
+  padding: 16px;
+  font-weight: 600;
+}
+.page-numbers:hover {
+  color: #ed1e2b;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ed1e2b;
+}
+
+.active {
+  color: #ed1e2b;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ed1e2b;
+}
