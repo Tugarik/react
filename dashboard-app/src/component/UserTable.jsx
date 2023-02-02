@@ -1,25 +1,22 @@
 import axios from "axios";
+import { useEffect } from "react";
 
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
+import { useDataContext } from "../context/DataContext";
 import DeleteModal from "./DeleteModal";
 import EditUserModal from "./EditUserModal";
 
-export default function UserTable({ users, setUsers }) {
-  const removeElement = (userId) => {
-    console.log(userId);
+export default function UserTable() {
+  const { users, setUsers } = useDataContext();
+  useEffect(() => {
     try {
-      axios.delete(`http://localhost:5000/users/${userId}`).then((res) => {
-        if (res.data.success) {
-          setUsers(res.data.data);
-        } else {
-          console.log(res.data.success);
-        }
+      axios.get("http://localhost:5000/users").then((res) => {
+        setUsers(res.data);
       });
     } catch (error) {
       console.log(error.message);
     }
-  };
-
+  }, []);
   return (
     <Table>
       <thead className="bg-secondary">

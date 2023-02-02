@@ -1,25 +1,22 @@
 import axios from "axios";
+import { useEffect } from "react";
 
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
+import { useDataContext } from "../context/DataContext";
 import DeleteModal from "./DeleteModal";
 import EditProductModal from "./EditProductModal";
 
-export default function ProductTable({ items, setItems }) {
-  const removeElement = (itemId) => {
-    console.log(itemId);
+export default function ProductTable() {
+  const { items, setItems } = useDataContext();
+  useEffect(() => {
     try {
-      axios.delete(`http://localhost:5000/products/${itemId}`).then((res) => {
-        if (res.data.success) {
-          setItems(res.data.data);
-        } else {
-          console.log(res.data.success);
-        }
+      axios.get("http://localhost:5000/products").then((res) => {
+        setItems(res.data);
       });
     } catch (error) {
       console.log(error.message);
     }
-  };
-
+  }, []);
   return (
     <Table>
       <thead className="bg-secondary">

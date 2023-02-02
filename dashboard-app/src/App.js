@@ -1,6 +1,5 @@
-import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import DataContext from "./context/DataContext";
 import Dashboard from "./pages/Dashboard";
 import DashPanel from "./pages/DashPanel";
 import Home from "./pages/Home";
@@ -12,64 +11,23 @@ import Users from "./pages/Users";
 
 import "./styles/app.css";
 
-const RoleContext = createContext(null);
-
-export function useRoleContext() {
-  return useContext(RoleContext);
-}
-
 function App() {
-  const loginRole = (userRole) => {
-    setRole(userRole);
-  };
-  const [role, setRole] = useState("admin");
-
-  const [items, setItems] = useState();
-  const [users, setUsers] = useState();
-
-  useEffect(() => {
-    try {
-      axios.get("http://localhost:5000/products").then((res) => {
-        setItems(res.data);
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, []);
-
-  useEffect(() => {
-    try {
-      axios.get("http://localhost:5000/users").then((res) => {
-        setUsers(res.data);
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, []);
-
   return (
     <div className="App">
-      <RoleContext.Provider value={{ role, setRole }}>
+      <DataContext>
         <Routes>
-          <Route path="/" element={<Home loginRole={loginRole} />} />
-
+          <Route path="/" element={<Home />} />
           <Route path="/dashboard/*" element={<Dashboard />}>
             <Route index element={<DashPanel />} />
             <Route path="panel" element={<DashPanel />} />
-            <Route
-              path="users"
-              element={<Users users={users} setUsers={setUsers} />}
-            />
-            <Route
-              path="products"
-              element={<Products items={items} setItems={setItems} />}
-            />
-            <Route path="orders" element={<Orders items={items} />} />
+            <Route path="users" element={<Users />} />
+            <Route path="products" element={<Products />} />
+            <Route path="orders" element={<Orders />} />
             <Route path="moderator" element={<Moderator />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
-      </RoleContext.Provider>
+      </DataContext>
     </div>
   );
 }

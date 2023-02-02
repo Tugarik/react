@@ -9,11 +9,6 @@ export const USERS = [
     password: "asd",
     role: "moderator",
   },
-  {
-    name: "sumlai",
-    password: "qwerty",
-    role: "user",
-  },
 ];
 
 export const DATA = [

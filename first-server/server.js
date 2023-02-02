@@ -1,4 +1,3 @@
-let products = require("./database/products.json");
 const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");

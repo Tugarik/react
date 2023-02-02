@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import AddUserModal from "../component/AddUserModal";
 import UserTable from "../component/UserTable";
 import "../styles/users.css";
 import UsersSvg from "../svg/UsersSvg";
 
-export default function Users({ users, setUsers }) {
+export default function Users() {
   return (
     <div className="users">
       <div className="d-flex">
@@ -20,7 +21,7 @@ export default function Users({ users, setUsers }) {
         </div>
       </div>
       <div>
-        <UserTable users={users} setUsers={setUsers} />
+        <UserTable />
       </div>
     </div>
   );
