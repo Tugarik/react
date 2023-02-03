@@ -12,8 +12,14 @@ app.get("/", (req, res) => {
 
 app.get("/pages", (req, res) => {
   console.log("GET request recieved");
-
-  res.status(200).send("500");
+  fs.readFile("./data.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      res.status(200).send(savedData);
+    }
+  });
 });
 
 app.listen(port, () => {
