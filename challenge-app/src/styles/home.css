@@ -1,0 +1,21 @@
+.challengeHome {
+  text-align: center;
+}
+
+.challengeHome ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+.challengeHome li {
+  margin-top: 30px;
+  list-style: none;
+}
+
+.challengeBtn {
+  text-decoration: none;
+  background-color: lightseagreen;
+  border-radius: 5px;
+  color: whitesmoke;
+  padding: 10px;
+}

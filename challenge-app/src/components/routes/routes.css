@@ -1,0 +1,48 @@
+.routesNavbar {
+  padding: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+
+.routesNavbar ul {
+  display: flex;
+  list-style: none;
+  text-decoration: none;
+  gap: 10px;
+}
+
+.routesNavbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar {
+  background-color: #e7e9eb;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  height: 85vh;
+}
+
+.routesLayout {
+  display: flex;
+}
+
+.routesPage {
+  padding-left: 20px;
+}
+
+.routesBtn {
+  text-decoration: none;
+  background-color: lightseagreen;
+  border-radius: 5px;
+  color: whitesmoke;
+  padding: 10px;
+  width: 100px;
+  margin-top: 10px;
+}

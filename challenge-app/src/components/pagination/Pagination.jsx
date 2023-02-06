@@ -27,7 +27,7 @@ export default function Pagination() {
     <div className="paginationBox">
       {currentPage >= 2 && (
         <Link
-          to={`/pages/${currentPage - 1}`}
+          to={`pages/${currentPage - 1}`}
           onClick={() => setCurrentPage(currentPage - 1)}
         >
           <PaginationBtn btnName={"Өмнөх"} btnClass={"page-numbers"} />
@@ -35,7 +35,7 @@ export default function Pagination() {
       )}
 
       {currentPage >= 5 && (
-        <Link to="/pages" onClick={() => setCurrentPage(1)}>
+        <Link to="pages" onClick={() => setCurrentPage(1)}>
           <PaginationBtn btnName={"1"} btnClass={"page-numbers"} />
         </Link>
       )}
@@ -44,7 +44,7 @@ export default function Pagination() {
 
       {currentPage >= 4 && (
         <Link
-          to={`/pages/${currentPage - 3}`}
+          to={`pages/${currentPage - 3}`}
           onClick={() => setCurrentPage(currentPage - 3)}
         >
           <PaginationBtn btnName={currentPage - 3} btnClass={"page-numbers"} />
@@ -52,7 +52,7 @@ export default function Pagination() {
       )}
       {currentPage >= 3 && (
         <Link
-          to={`/pages/${currentPage - 2}`}
+          to={`pages/${currentPage - 2}`}
           onClick={() => setCurrentPage(currentPage - 2)}
         >
           <PaginationBtn btnName={currentPage - 2} btnClass={"page-numbers"} />
@@ -60,7 +60,7 @@ export default function Pagination() {
       )}
       {currentPage >= 2 && (
         <Link
-          to={`/pages/${currentPage - 1}`}
+          to={`pages/${currentPage - 1}`}
           onClick={() => {
             setCurrentPage(currentPage - 1);
           }}
@@ -69,13 +69,13 @@ export default function Pagination() {
         </Link>
       )}
 
-      <Link to={`/pages/${currentPage}`}>
+      <Link to={`pages/${currentPage}`}>
         <PaginationBtn btnName={currentPage} btnClass={"page-numbers active"} />
       </Link>
 
       {currentPage < lastPage - 1 && (
         <Link
-          to={`/pages/${currentPage + 1}`}
+          to={`pages/${currentPage + 1}`}
           onClick={() => setCurrentPage(currentPage + 1)}
         >
           <PaginationBtn btnName={currentPage + 1} btnClass={"page-numbers"} />
@@ -84,7 +84,7 @@ export default function Pagination() {
 
       {currentPage < lastPage - 2 && (
         <Link
-          to={`/pages/${currentPage + 2}`}
+          to={`pages/${currentPage + 2}`}
           onClick={() => setCurrentPage(currentPage + 2)}
         >
           <PaginationBtn btnName={currentPage + 2} btnClass={"page-numbers"} />
@@ -93,7 +93,7 @@ export default function Pagination() {
 
       {currentPage < lastPage - 3 && (
         <Link
-          to={`/pages/${currentPage + 3}`}
+          to={`pages/${currentPage + 3}`}
           onClick={() => setCurrentPage(currentPage + 3)}
         >
           <PaginationBtn btnName={currentPage + 3} btnClass={"page-numbers"} />
@@ -102,17 +102,14 @@ export default function Pagination() {
 
       {currentPage < lastPage - 4 && <span className="dots">...</span>}
       {currentPage < lastPage && (
-        <Link
-          to={`/pages/${lastPage}`}
-          onClick={() => setCurrentPage(lastPage)}
-        >
+        <Link to={`pages/${lastPage}`} onClick={() => setCurrentPage(lastPage)}>
           <PaginationBtn btnName={lastPage} btnClass={"page-numbers"} />
         </Link>
       )}
 
       {currentPage < lastPage && (
         <Link
-          to={`/pages/${currentPage + 1}`}
+          to={`pages/${currentPage + 1}`}
           onClick={() => setCurrentPage(currentPage + 1)}
         >
           <PaginationBtn btnName={"Дараах"} btnClass={"page-numbers"} />
