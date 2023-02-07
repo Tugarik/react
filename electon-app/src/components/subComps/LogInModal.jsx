@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { USERS } from "../../utils/data";
-import { useRoleContext } from "../../App";
+import { useDataContext } from "../../context/DataContext";
 
 export default function LogInModal() {
-  const {role, setRole} = useRoleContext();
+  const { role, setRole } = useDataContext();
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +45,7 @@ export default function LogInModal() {
           navigate("/");
           return;
         }
-      } 
+      }
     });
     if (!isMatch) {
       alert("Password and user name are not match");

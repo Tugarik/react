@@ -1,9 +1,7 @@
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { useRoleContext } from "../../App";
 import LogInModal from "./LogInModal";
 
-export default function HomeNav({ loginRole }) {
-  useRoleContext();
+export default function HomeNav() {
   return (
     <div className="HomeNav d-flex">
       <div className="left mb-2 mb-md-0 mx-auto mx-md-0 my-auto">

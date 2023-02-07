@@ -1,11 +1,10 @@
 import "../styles/ItemPage.css";
 import ItemHeader from "../components/subComps/ItemHeader";
 import { useParams } from "react-router-dom";
-import { useItemsContext } from "../App";
+import { useDataContext } from "../context/DataContext";
 
 export default function ItemPage() {
-  const { products } = useItemsContext();
-
+  const { products } = useDataContext();
   const { itemId } = useParams();
   const item = products[products.findIndex((obj) => obj.id == itemId)];
 

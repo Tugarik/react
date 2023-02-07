@@ -3,10 +3,10 @@ import RoutesNavbar from "./RoutesNavbar";
 import RoutesFooter from "./RoutesFooter";
 import "./routes.css";
 
-export default function RoutesHome() {
+export default function RoutesHome({ getSection }) {
   return (
     <div>
-      <RoutesNavbar />
+      <RoutesNavbar getSection={getSection} />
       <Outlet />
       <RoutesFooter />
     </div>
