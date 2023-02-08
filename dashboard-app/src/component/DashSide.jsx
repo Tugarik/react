@@ -53,30 +53,31 @@ export default function DashSide() {
 
     return (
       <div className="d-flex flex-wrap">
-        {menus.map((menu, index) =>
-          current === index ? (
-            <button
-              key={index}
-              className="roleBtn mb-3 mx-auto ps-3 roleBtn-active"
-            >
-              <img src={menu.imageUrl} alt="menulogo" />
-              <span> {menu.name}</span>
-            </button>
-          ) : (
-            <button
-              key={index}
-              className="roleBtn mb-3 mx-auto ps-3"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrent(index);
-                navigate(menu.url);
-              }}
-            >
-              <img src={menu.imageUrl} alt="menulogo" />
-              <span> {menu.name}</span>
-            </button>
-          )
-        )}
+        {menus &&
+          menus.map((menu, index) =>
+            current === index ? (
+              <button
+                key={index}
+                className="roleBtn mb-3 mx-auto ps-3 roleBtn-active"
+              >
+                <img src={menu.imageUrl} alt="menulogo" />
+                <span> {menu.name}</span>
+              </button>
+            ) : (
+              <button
+                key={index}
+                className="roleBtn mb-3 mx-auto ps-3"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrent(index);
+                  navigate(menu.url);
+                }}
+              >
+                <img src={menu.imageUrl} alt="menulogo" />
+                <span> {menu.name}</span>
+              </button>
+            )
+          )}
       </div>
     );
   };

@@ -8,8 +8,8 @@ export function useDataContext() {
 
 export default function DataContext({ children }) {
   const [role, setRole] = useState();
-  const [products, setProducts] = useState();
   const [items, setItems] = useState();
+  const [products, setProducts] = useState();
 
   return (
     <AllContexts.Provider
