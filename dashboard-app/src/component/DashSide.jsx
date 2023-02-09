@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDataContext } from "../context/DataContext";
+import { addDataContext } from "../context/DataContext";
 
 const adminMenu = [
   {
@@ -43,7 +43,7 @@ const moderatorMenu = [
 ];
 
 export default function DashSide() {
-  const { role } = useDataContext();
+  const { role } = addDataContext();
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
   let menus = [];

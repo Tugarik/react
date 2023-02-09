@@ -2,12 +2,12 @@ import axios from "axios";
 import { useEffect } from "react";
 
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
-import { useDataContext } from "../context/DataContext";
+import { addDataContext } from "../context/DataContext";
 import DeleteModal from "./DeleteModal";
 import EditUserModal from "./EditUserModal";
 
 export default function UserTable() {
-  const { users, setUsers } = useDataContext();
+  const { users, setUsers } = addDataContext();
   useEffect(() => {
     try {
       axios.get("http://localhost:5000/users").then((res) => {

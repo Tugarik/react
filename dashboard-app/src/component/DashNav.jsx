@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useDataContext } from "../context/DataContext";
+import { addDataContext } from "../context/DataContext";
 
 export default function DashNav() {
-  const { role } = useDataContext();
+  const { role } = addDataContext();
   const navigate = useNavigate();
   const logOutHandle = () => {
     navigate("/");

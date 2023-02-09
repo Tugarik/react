@@ -1,9 +1,9 @@
-import { useDataContext } from "../context/DataContext";
+import { addDataContext } from "../context/DataContext";
 import "../styles/orders.css";
 import OrdersSvg from "../svg/OrdersSvg";
 
 export default function Orders() {
-  const { items } = useDataContext();
+  const { items } = addDataContext();
 
   return (
     <div className="orders">
