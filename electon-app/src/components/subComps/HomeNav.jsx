@@ -1,7 +1,18 @@
+import { useEffect } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import { useDataContext } from "../../context/DataContext";
 import LogInModal from "./LogInModal";
 
 export default function HomeNav() {
+  const { basketItems, setBasketItems } = useDataContext();
+
+  useEffect(() => {
+    const loadBasket = JSON.parse(localStorage.getItem("basket"));
+    if (loadBasket) {
+      setBasketItems(loadBasket);
+    }
+  }, []);
+
   return (
     <div className="HomeNav d-flex">
       <div className="left mb-2 mb-md-0 mx-auto mx-md-0 my-auto">
@@ -25,7 +36,9 @@ export default function HomeNav() {
         <LogInModal />
         <button className="btn">
           <img src="./img/cart_white.svg" alt="" />
-          <span className="shoppingCart">0</span>
+          <span className="shoppingCart">
+            {basketItems ? basketItems.length : 0}
+          </span>
         </button>
       </div>
     </div>

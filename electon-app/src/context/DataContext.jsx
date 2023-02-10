@@ -8,7 +8,7 @@ export function useDataContext() {
 
 export default function DataContext({ children }) {
   const [role, setRole] = useState();
-  const [items, setItems] = useState();
+  const [basketItems, setBasketItems] = useState();
   const [products, setProducts] = useState();
 
   return (
@@ -18,8 +18,8 @@ export default function DataContext({ children }) {
         setRole,
         products,
         setProducts,
-        items,
-        setItems,
+        basketItems,
+        setBasketItems,
       }}
     >
       {children}

@@ -7,6 +7,11 @@ const items = ["Sale"];
 
 export default function Popular() {
   const { products, setProducts } = useDataContext();
+  const { basketItems, setBasketItems } = useDataContext();
+  const [filter, setFilter] = useState("Sale");
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     try {
       axios
@@ -16,9 +21,6 @@ export default function Popular() {
       console.log(error.message);
     }
   }, []);
-
-  const [filter, setFilter] = useState("Sale");
-  const navigate = useNavigate();
 
   const FilterButtons = ({ datas }) => {
     datas &&
@@ -59,6 +61,36 @@ export default function Popular() {
           }
         });
 
+    const addToCartHandler = (id) => {
+      let basket = [];
+      let isFinished = false;
+      console.log("addId: ", id);
+      if (localStorage.getItem("basket")) {
+        basket = JSON.parse(localStorage.getItem("basket"));
+
+        basket &&
+          basket.forEach((el, index) => {
+            console.log(el, index);
+            if (el.id == id && !isFinished) {
+              el.count++;
+              isFinished = true;
+              console.log("count+");
+            } else if (el.id != id && !isFinished) {
+              basket.push({ id, count: 1 });
+              isFinished = true;
+              console.log("id oldsongui");
+              console.log(el);
+            }
+            // el.id == id ? el.count++ : basket.push({ id, count: 1 });
+          });
+      } else {
+        basket.push({ id, count: 1 });
+        console.log("basket hooson");
+      }
+
+      localStorage.setItem("basket", JSON.stringify(basket));
+    };
+
     return (
       <div className="popularCarts d-flex flex-wrap justify-content-center">
         {fdatas &&
@@ -87,7 +119,10 @@ export default function Popular() {
                     <strong>$ {fdata.price}</strong>
                   </p>
                 </div>
-                <div className="cartBlue">
+                <div
+                  className="cartBlue"
+                  onClick={() => addToCartHandler(fdata.id)}
+                >
                   <img src="./img/cart_blue.svg" alt="logo" />
                 </div>
               </div>
