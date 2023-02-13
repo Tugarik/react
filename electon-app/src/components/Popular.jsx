@@ -63,29 +63,30 @@ export default function Popular() {
 
     const addToCartHandler = (id) => {
       let basket = [];
+      let elIds = [];
       let isFinished = false;
       console.log("addId: ", id);
+
       if (localStorage.getItem("basket")) {
         basket = JSON.parse(localStorage.getItem("basket"));
-
         basket &&
-          basket.forEach((el, index) => {
-            console.log(el, index);
-            if (el.id == id && !isFinished) {
-              el.count++;
-              isFinished = true;
-              console.log("count+");
-            } else if (el.id != id && !isFinished) {
-              basket.push({ id, count: 1 });
-              isFinished = true;
-              console.log("id oldsongui");
-              console.log(el);
-            }
-            // el.id == id ? el.count++ : basket.push({ id, count: 1 });
+          basket.forEach((el) => {
+            elIds.push(el.id);
           });
+
+        if (elIds.includes(id)) {
+          basket &&
+            basket.forEach((el) => {
+              if (el.id == id && !isFinished) {
+                el.count++;
+                isFinished = true;
+              }
+            });
+        } else {
+          basket.push({ id, count: 1 });
+        }
       } else {
         basket.push({ id, count: 1 });
-        console.log("basket hooson");
       }
 
       localStorage.setItem("basket", JSON.stringify(basket));

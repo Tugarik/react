@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useDataContext } from "../../context/DataContext";
@@ -5,12 +6,17 @@ import LogInModal from "./LogInModal";
 
 export default function HomeNav() {
   const { basketItems, setBasketItems } = useDataContext();
-
+  let count = 0;
   useEffect(() => {
     const loadBasket = JSON.parse(localStorage.getItem("basket"));
-    if (loadBasket) {
-      setBasketItems(loadBasket);
-    }
+    loadBasket && setBasketItems(loadBasket);
+
+    loadBasket &&
+      loadBasket.forEach((el) => {
+        count += el.count;
+        console.log(el.count);
+      });
+    console.log(count);
   }, []);
 
   return (
@@ -37,7 +43,7 @@ export default function HomeNav() {
         <button className="btn">
           <img src="./img/cart_white.svg" alt="" />
           <span className="shoppingCart">
-            {basketItems ? basketItems.length : 0}
+            {basketItems ? basketItems.length : 0}:{count != 0 ? count : 0}
           </span>
         </button>
       </div>
