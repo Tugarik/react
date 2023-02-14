@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect } from "react";
 
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
-import { addDataContext } from "../context/DataContext";
+import { useDataContext } from "../context/DataContext";
 import DeleteModal from "./DeleteModal";
 import EditProductModal from "./EditProductModal";
 
 export default function ProductTable() {
-  const { items, setItems } = addDataContext();
+  const { items, setItems } = useDataContext();
+
   useEffect(() => {
     try {
       axios.get("http://localhost:5000/products").then((res) => {

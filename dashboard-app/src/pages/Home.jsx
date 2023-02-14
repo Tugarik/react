@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { USERS } from "../utils/data";
 import UsersSvg from "../svg/UsersSvg";
-import { addDataContext } from "../context/DataContext";
+import { useDataContext } from "../context/DataContext";
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usersList, setUsersList] = useState(USERS);
-  const { role, setRole } = addDataContext();
+  const { role, setRole } = useDataContext();
   const navigate = useNavigate();
   const forgotHandle = () => {
     alert("Bi ch bas martsan");

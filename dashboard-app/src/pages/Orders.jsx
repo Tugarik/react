@@ -1,9 +1,29 @@
-import { addDataContext } from "../context/DataContext";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Spinner } from "react-bootstrap";
+// import { useDataContext } from "../context/DataContext";
+import { useAxios } from "../hooks/useAxios";
+import { useFetch } from "../hooks/useFetch";
 import "../styles/orders.css";
 import OrdersSvg from "../svg/OrdersSvg";
 
 export default function Orders() {
-  const { items } = addDataContext();
+  // const { items, setItems } = useDataContext();
+  const [items, setItems] = useState();
+
+  // const { response, loading, error } = useAxios({
+  //   method: "GET",
+  //   url: "http://localhost:5000/products",
+  // });
+
+  const { response, loading, error } = useFetch(
+    "http://localhost:5000/orders",
+    {}
+  );
+
+  useEffect(() => {
+    response && setItems(response);
+  }, [response]);
 
   return (
     <div className="orders">
@@ -13,20 +33,31 @@ export default function Orders() {
       </div>
 
       <hr />
-      {items &&
-        items.map((item, index) => {
-          return (
-            <div key={index}>
-              <div>Title: {item.title}</div>
-              <div>Name: {item.model}</div>
-              <div>Price: {item.price}</div>
-              <div>Quantity: {item.stock}</div>
-              <div>Sale: {item.sale}% off</div>
-              <div>Category: {item.category}</div>
-              <hr />
-            </div>
-          );
-        })}
+
+      {loading ? (
+        <div className="orderPanel">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      ) : (
+        <div>
+          {error && <div>{error.message}</div>}
+          {items &&
+            items.map((order, index) => {
+              return (
+                <div key={index}>
+                  <div>Title: {order.id}</div>
+                  <div>Buyer ID: {order.userId}</div>
+                  <div>Date: {order.date}</div>
+                  <div>Items: {order.items[0].item}</div>
+                  <div>Quantity: {order.items[0].count}</div>
+                  <hr />
+                </div>
+              );
+            })}
+        </div>
+      )}
     </div>
   );
 }

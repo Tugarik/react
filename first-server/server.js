@@ -179,6 +179,19 @@ app.put("/users/:id", (req, res) => {
   });
 });
 
+// Orders
+app.get("/orders", (req, res) => {
+  console.log("GET - Users huselt orj irlee");
+  fs.readFile("./database/orders.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      res.status(200).send(savedData);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is starting in ${port} port`);
 });

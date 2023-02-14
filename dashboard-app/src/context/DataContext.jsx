@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const AllContexts = createContext(null);
 
-export function addDataContext() {
+export function useDataContext() {
   return useContext(AllContexts);
 }
 
