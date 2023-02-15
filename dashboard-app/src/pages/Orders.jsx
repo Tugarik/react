@@ -47,7 +47,7 @@ export default function Orders() {
             items.map((order, index) => {
               return (
                 <div key={index}>
-                  <div>Title: {order.id}</div>
+                  <div>Order ID: {order.id}</div>
                   <div>Buyer ID: {order.userId}</div>
                   <div>Date: {order.date}</div>
                   <div>Items: {order.items[0].item}</div>

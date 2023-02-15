@@ -1,12 +1,11 @@
-const bodyParser = require("body-parser");
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs");
+import express from "express";
+import cors from "cors";
+import fs from "fs";
 
 const app = express();
 const port = 5000;
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
@@ -100,7 +99,59 @@ app.put("/products/:id", (req, res) => {
   });
 });
 
-// Users
+// user check from shop
+app.put("/users/login", (req, res) => {
+  console.log("PUT check user hiih medeelel irlee");
+  fs.readFile("./database/users.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    let userList = [];
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      savedData.forEach((el, index) => {
+        userList.push(el.userName);
+      });
+      if (userList.includes(req.body.userName)) {
+        res.status(200).send({
+          success: true,
+        });
+      } else {
+        res.status(200).send({
+          success: false,
+        });
+      }
+    }
+  });
+});
+
+app.put("/users/register", (req, res) => {
+  console.log("PUT register hiih medeelel irlee");
+  fs.readFile("./database/users.json", (err, data) => {
+    let savedData = JSON.parse(data);
+    let userList = [];
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      const edited = [...savedData, req.body];
+      savedData.forEach((el) => {
+        userList.push(el.userName);
+      });
+      if (!userList.includes(req.body.userName)) {
+        fs.writeFile("./database/users.json", JSON.stringify(edited), (err) => {
+          if (err) {
+            res.status(500).send({ message: err });
+          } else {
+            res.status(200).send({ success: true });
+          }
+        });
+      } else {
+        res.status(200).send({ success: false });
+      }
+    }
+  });
+});
+
+// Users from dashboard
 app.get("/users", (req, res) => {
   console.log("GET - Users huselt orj irlee");
   fs.readFile("./database/users.json", (err, data) => {

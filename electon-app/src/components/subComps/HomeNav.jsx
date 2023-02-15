@@ -43,7 +43,7 @@ export default function HomeNav() {
         <button className="btn">
           <img src="./img/cart_white.svg" alt="" />
           <span className="shoppingCart">
-            {basketItems ? basketItems.length : 0}:{count != 0 ? count : 0}
+            {basketItems ? basketItems.length : 0}
           </span>
         </button>
       </div>

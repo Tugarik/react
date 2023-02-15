@@ -1,9 +1,10 @@
 import "../../styles/LogInModal.css";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { USERS } from "../../utils/data";
 import { useDataContext } from "../../context/DataContext";
+import axios from "axios";
 
 export default function LogInModal() {
   const { role, setRole } = useDataContext();
@@ -14,7 +15,6 @@ export default function LogInModal() {
   const [usersList, setUsersList] = useState(USERS);
   const [currentUser, setCurrentUser] = useState(role);
 
-  const navigate = useNavigate();
   const forgotHandle = () => {
     alert("Bi ch bas martsan");
     setShow(false);
@@ -25,53 +25,68 @@ export default function LogInModal() {
   const handleSubmit = (e) => {
     e.preventDefault();
     loginHandler(userName, password);
-    console.log(userName, password);
     setShow(false);
   };
 
-  // validation
-
   const loginHandler = (userName, password) => {
-    let isMatch = false;
-    usersList.map((user) => {
-      if (userName === user.name && password === user.password) {
-        if (user.role === "user") {
-          setIsLoggedIn(true);
-          setCurrentUser(userName);
-          setRole(user.role);
-          isMatch = true;
-          console.log("logged user name: ", userName);
-          console.log("logged password: ", password);
-          navigate("/");
-          return;
-        }
-      }
-    });
-    if (!isMatch) {
-      alert("Password and user name are not match");
+    try {
+      axios
+        .put(`http://localhost:5000/users/login`, { userName, password })
+        .then((res) => {
+          if (res.data.success) {
+            setIsLoggedIn(true);
+            setCurrentUser(userName);
+            setRole("user");
+            console.log("logged user name: ", userName);
+            console.log("logged password: ", password);
+          } else {
+            alert("Password and user name are wrong");
+          }
+        });
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
   const handleRegister = () => {
     registerHandler(userName, password);
+    setShow(false);
+    alert("Registration success!");
   };
 
   const registerHandler = (userName, password) => {
-    console.log("user name to reg: ", userName);
-    console.log("password to reg: ", password);
-    setUsersList([
-      ...usersList,
-      { name: userName, password: password, role: "user" },
-    ]);
-    console.log("New user registered!");
-    console.log(usersList);
-    setIsLoggedIn(false);
+    try {
+      axios
+        .put(`http://localhost:5000/users/register`, { userName, password })
+        .then((res) => {
+          if (res.data.success) {
+            console.log("user name to reg: ", userName);
+            console.log("password to reg: ", password);
+            setIsLoggedIn(false);
+          } else {
+            alert(`${userName} burtgeltei hereglegch bn`);
+          }
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
+
+  // const registerHandler = (userName, password) => {
+  //   console.log("user name to reg: ", userName);
+  //   console.log("password to reg: ", password);
+  //   setUsersList([
+  //     ...usersList,
+  //     { name: userName, password: password, role: "user" },
+  //   ]);
+  //   console.log("New user registered!");
+  //   setIsLoggedIn(false);
+  // };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    navigate("/");
   };
+
   return (
     <>
       {isLoggedIn ? (
