@@ -2,25 +2,20 @@ import "../../styles/LogInModal.css";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { USERS } from "../../utils/data";
 import { useDataContext } from "../../context/DataContext";
 import axios from "axios";
 
 export default function LogInModal() {
-  const { role, setRole } = useDataContext();
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [usersList, setUsersList] = useState(USERS);
-  const [currentUser, setCurrentUser] = useState(role);
+  const [currentUser, setCurrentUser] = useState();
 
   const forgotHandle = () => {
     alert("Bi ch bas martsan");
     setShow(false);
   };
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,47 +23,35 @@ export default function LogInModal() {
     setShow(false);
   };
 
-  const loginHandler = (userName, password) => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    registerHandler(userName, password);
+    setShow(false);
+  };
+
+  async function loginHandler (userName, password)  {
     try {
-      axios
-        .put(`http://localhost:5000/users/login`, { userName, password })
-        .then((res) => {
-          if (res.data.success) {
-            setIsLoggedIn(true);
-            setCurrentUser(userName);
-            setRole("user");
-            console.log("logged user name: ", userName);
-            console.log("logged password: ", password);
-          } else {
-            alert("Password and user name are wrong");
-          }
-        });
-    } catch (error) {
-      console.log(error.message);
+      const res = await axios
+        .put(`http://localhost:5000/users/login`, { userName, password })    
+        res.data.success && 
+        setIsLoggedIn(true);
+        setCurrentUser(userName);
+      } catch (error) {
+        console.log(error.message);
+        alert("Password and user name are wrong");
     }
   };
 
-  const handleRegister = () => {
-    registerHandler(userName, password);
-    setShow(false);
-    alert("Registration success!");
-  };
-
-  const registerHandler = (userName, password) => {
+  async function registerHandler (userName, password) {
     try {
-      axios
+      const res = await axios
         .put(`http://localhost:5000/users/register`, { userName, password })
-        .then((res) => {
-          if (res.data.success) {
-            console.log("user name to reg: ", userName);
-            console.log("password to reg: ", password);
-            setIsLoggedIn(false);
-          } else {
-            alert(`${userName} burtgeltei hereglegch bn`);
-          }
-        });
+        res.data.success &&
+        setIsLoggedIn(false);
+        alert("Registration success!");
     } catch (error) {
-      console.log(error.message);
+        console.log(error.message);
+        alert(`${userName} burtgeltei hereglegch bn`);
     }
   };
 
@@ -95,14 +78,14 @@ export default function LogInModal() {
           {currentUser}, Log out
         </button>
       ) : (
-        <button onClick={handleShow} className="btn loginBtn">
+        <button onClick={() => setShow(true)} className="btn loginBtn">
           <img src="./img/user_white.svg" alt="" /> Log in
         </button>
       )}
 
       <Modal
         show={show}
-        onHide={handleClose}
+        onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
       >

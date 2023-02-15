@@ -17,11 +17,9 @@ app.get("/products", (req, res) => {
   console.log("GET - Products huselt orj irlee");
   fs.readFile("./database/products.json", (err, data) => {
     let savedData = JSON.parse(data);
-    if (err) {
-      res.status(500).send({ message: err });
-    } else {
-      res.status(200).send(savedData);
-    }
+    (err)
+      ? res.status(500).send({ message: err })
+      : res.status(200).send(savedData);
   });
 });
 
@@ -84,69 +82,43 @@ app.put("/products/:id", (req, res) => {
       const { id } = req.params;
       const edited = savedData.filter((product) => product.id !== id);
       edited.unshift(req.body);
-      fs.writeFile(
-        "./database/products.json",
-        JSON.stringify(edited),
-        (err) => {
-          if (err) {
-            res.status(500).send({ message: err });
-          } else {
-            res.status(200).send({ message: "Data successfully edited" });
-          }
-        }
-      );
+      fs.writeFile("./database/products.json", JSON.stringify(edited), (err) => {
+        (err)
+          ? res.status(500).send({ message: err })
+          : res.status(200).send({ message: "Data successfully edited" });    
+      });
     }
   });
 });
 
-// user check from shop
+// user login from shop
 app.put("/users/login", (req, res) => {
   console.log("PUT check user hiih medeelel irlee");
   fs.readFile("./database/users.json", (err, data) => {
-    let savedData = JSON.parse(data);
-    let userList = [];
     if (err) {
       res.status(500).send({ message: err });
-    } else {
-      savedData.forEach((el, index) => {
-        userList.push(el.userName);
-      });
-      if (userList.includes(req.body.userName)) {
-        res.status(200).send({
-          success: true,
-        });
-      } else {
-        res.status(200).send({
-          success: false,
-        });
-      }
+    } else {    
+      (JSON.parse(data).filter( el => el.userName == req.body.userName).length)
+      ? res.status(200).send({success: true})
+      : res.status(401).send({success: false}) 
     }
   });
 });
 
+// user registration from shop
 app.put("/users/register", (req, res) => {
-  console.log("PUT register hiih medeelel irlee");
+  console.log("PUT register user hiih medeelel irlee");
   fs.readFile("./database/users.json", (err, data) => {
-    let savedData = JSON.parse(data);
-    let userList = [];
     if (err) {
       res.status(500).send({ message: err });
     } else {
-      const edited = [...savedData, req.body];
-      savedData.forEach((el) => {
-        userList.push(el.userName);
-      });
-      if (!userList.includes(req.body.userName)) {
-        fs.writeFile("./database/users.json", JSON.stringify(edited), (err) => {
-          if (err) {
-            res.status(500).send({ message: err });
-          } else {
-            res.status(200).send({ success: true });
-          }
-        });
-      } else {
-        res.status(200).send({ success: false });
-      }
+      (JSON.parse(data).filter( el => el.userName == req.body.userName).length)
+      ? res.status(401).send({ success: false })
+      : fs.writeFile("./database/users.json", JSON.stringify([...savedData, req.body]), (err) => {
+          (err) 
+            ? res.status(500).send({ message: err }) 
+            : res.status(200).send({ success: true })
+        })
     }
   });
 });
@@ -155,12 +127,9 @@ app.put("/users/register", (req, res) => {
 app.get("/users", (req, res) => {
   console.log("GET - Users huselt orj irlee");
   fs.readFile("./database/users.json", (err, data) => {
-    let savedData = JSON.parse(data);
-    if (err) {
-      res.status(500).send({ message: err });
-    } else {
-      res.status(200).send(savedData);
-    }
+    (err)
+      ? res.status(500).send({message: err})
+      : res.status(200).send(JSON.parse(data))
   });
 });
 
@@ -172,17 +141,12 @@ app.post("/users", (req, res) => {
       res.status(500).send({ message: err });
     } else {
       savedData.unshift(req.body);
-      fs.writeFile(
-        "./database/users.json",
-        JSON.stringify(savedData),
-        (err) => {
-          if (err) {
-            res.status(500).send({ message: err });
-          } else {
-            res.status(200).send({ message: "Data successfully updated" });
-          }
-        }
-      );
+      fs.writeFile("./database/users.json", JSON.stringify(savedData), (err) => {
+        (err)
+          ? res.status(500).send({ message: err })
+          : res.status(200).send({ message: "Data successfully updated" });
+          
+      });
     }
   });
 });
@@ -199,11 +163,10 @@ app.delete("/users/:id", (req, res) => {
       const filtered = savedData.filter((product) => product.id !== id);
       console.log("filter success");
       fs.writeFile("./database/users.json", JSON.stringify(filtered), (err) => {
-        if (err) {
-          res.status(500).send({ message: err });
-        } else {
-          res.status(200).send({ success: true, data: filtered });
-        }
+        (err)
+          ? res.status(500).send({ message: err })
+          : res.status(200).send({ success: true, data: filtered });
+        
       });
     }
   });
@@ -220,11 +183,9 @@ app.put("/users/:id", (req, res) => {
       const edited = savedData.filter((product) => product.id !== id);
       edited.unshift(req.body);
       fs.writeFile("./database/users.json", JSON.stringify(edited), (err) => {
-        if (err) {
-          res.status(500).send({ message: err });
-        } else {
-          res.status(200).send({ message: "Data successfully edited" });
-        }
+        (err)
+          ? res.status(500).send({ message: err })
+          : res.status(200).send({ message: "Data successfully edited" });
       });
     }
   });
@@ -232,14 +193,11 @@ app.put("/users/:id", (req, res) => {
 
 // Orders
 app.get("/orders", (req, res) => {
-  console.log("GET - Users huselt orj irlee");
+  console.log("GET - Orders huselt orj irlee");
   fs.readFile("./database/orders.json", (err, data) => {
-    let savedData = JSON.parse(data);
-    if (err) {
-      res.status(500).send({ message: err });
-    } else {
-      res.status(200).send(savedData);
-    }
+    (err)
+      ? res.status(500).send({ message: err })
+      : res.status(200).send(JSON.parse(data));
   });
 });
 

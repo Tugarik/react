@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useDataContext } from "../../context/DataContext";
@@ -6,17 +5,10 @@ import LogInModal from "./LogInModal";
 
 export default function HomeNav() {
   const { basketItems, setBasketItems } = useDataContext();
-  let count = 0;
+ 
   useEffect(() => {
     const loadBasket = JSON.parse(localStorage.getItem("basket"));
     loadBasket && setBasketItems(loadBasket);
-
-    loadBasket &&
-      loadBasket.forEach((el) => {
-        count += el.count;
-        console.log(el.count);
-      });
-    console.log(count);
   }, []);
 
   return (
