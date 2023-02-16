@@ -29,42 +29,36 @@ export default function LogInModal() {
     setShow(false);
   };
 
-  async function loginHandler (userName, password)  {
+  async function loginHandler(userName, password) {
     try {
-      const res = await axios
-        .put(`http://localhost:5000/users/login`, { userName, password })    
-        res.data.success && 
+      const res = await axios.put(`http://localhost:5000/users/login`, {
+        userName,
+        password,
+      });
+      if (res.data.success) {
         setIsLoggedIn(true);
         setCurrentUser(userName);
-      } catch (error) {
-        console.log(error.message);
-        alert("Password and user name are wrong");
-    }
-  };
-
-  async function registerHandler (userName, password) {
-    try {
-      const res = await axios
-        .put(`http://localhost:5000/users/register`, { userName, password })
-        res.data.success &&
-        setIsLoggedIn(false);
-        alert("Registration success!");
+        setPassword("");
+      }
     } catch (error) {
-        console.log(error.message);
-        alert(`${userName} burtgeltei hereglegch bn`);
+      console.log(error.message);
+      alert("Password and user name are wrong");
     }
-  };
+  }
 
-  // const registerHandler = (userName, password) => {
-  //   console.log("user name to reg: ", userName);
-  //   console.log("password to reg: ", password);
-  //   setUsersList([
-  //     ...usersList,
-  //     { name: userName, password: password, role: "user" },
-  //   ]);
-  //   console.log("New user registered!");
-  //   setIsLoggedIn(false);
-  // };
+  async function registerHandler(userName, password) {
+    try {
+      const res = await axios.put(`http://localhost:5000/users/register`, {
+        userName,
+        password,
+      });
+      res.data.success && setIsLoggedIn(false);
+      alert("Registration success!");
+    } catch (error) {
+      console.log(error.message);
+      alert(`${userName} burtgeltei hereglegch bn`);
+    }
+  }
 
   const handleLogout = () => {
     setIsLoggedIn(false);

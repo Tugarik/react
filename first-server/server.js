@@ -1,11 +1,12 @@
-import express from "express";
-import cors from "cors";
-import fs from "fs";
+const express = require("express");
+const cors = require("cors");
+const fs = require("fs");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 5000;
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
@@ -17,7 +18,7 @@ app.get("/products", (req, res) => {
   console.log("GET - Products huselt orj irlee");
   fs.readFile("./database/products.json", (err, data) => {
     let savedData = JSON.parse(data);
-    (err)
+    err
       ? res.status(500).send({ message: err })
       : res.status(200).send(savedData);
   });
@@ -82,11 +83,15 @@ app.put("/products/:id", (req, res) => {
       const { id } = req.params;
       const edited = savedData.filter((product) => product.id !== id);
       edited.unshift(req.body);
-      fs.writeFile("./database/products.json", JSON.stringify(edited), (err) => {
-        (err)
-          ? res.status(500).send({ message: err })
-          : res.status(200).send({ message: "Data successfully edited" });    
-      });
+      fs.writeFile(
+        "./database/products.json",
+        JSON.stringify(edited),
+        (err) => {
+          err
+            ? res.status(500).send({ message: err })
+            : res.status(200).send({ message: "Data successfully edited" });
+        }
+      );
     }
   });
 });
@@ -97,10 +102,14 @@ app.put("/users/login", (req, res) => {
   fs.readFile("./database/users.json", (err, data) => {
     if (err) {
       res.status(500).send({ message: err });
-    } else {    
-      (JSON.parse(data).filter( el => el.userName == req.body.userName).length)
-      ? res.status(200).send({success: true})
-      : res.status(401).send({success: false}) 
+    } else {
+      let savedData = JSON.parse(data);
+      savedData.filter(
+        (el) =>
+          el.userName == req.body.userName && el.password == req.body.password
+      ).length
+        ? res.status(200).send({ success: true })
+        : res.status(401).send({ success: false });
     }
   });
 });
@@ -112,13 +121,18 @@ app.put("/users/register", (req, res) => {
     if (err) {
       res.status(500).send({ message: err });
     } else {
-      (JSON.parse(data).filter( el => el.userName == req.body.userName).length)
-      ? res.status(401).send({ success: false })
-      : fs.writeFile("./database/users.json", JSON.stringify([...savedData, req.body]), (err) => {
-          (err) 
-            ? res.status(500).send({ message: err }) 
-            : res.status(200).send({ success: true })
-        })
+      let savedData = JSON.parse(data);
+      savedData.filter((el) => el.userName == req.body.userName).length
+        ? res.status(401).send({ success: false })
+        : fs.writeFile(
+            "./database/users.json",
+            JSON.stringify([...savedData, req.body]),
+            (err) => {
+              err
+                ? res.status(500).send({ message: err })
+                : res.status(200).send({ success: true });
+            }
+          );
     }
   });
 });
@@ -127,26 +141,29 @@ app.put("/users/register", (req, res) => {
 app.get("/users", (req, res) => {
   console.log("GET - Users huselt orj irlee");
   fs.readFile("./database/users.json", (err, data) => {
-    (err)
-      ? res.status(500).send({message: err})
-      : res.status(200).send(JSON.parse(data))
+    err
+      ? res.status(500).send({ message: err })
+      : res.status(200).send(JSON.parse(data));
   });
 });
 
 app.post("/users", (req, res) => {
   console.log("POST - Users huselt orj irlee");
   fs.readFile("./database/users.json", (err, data) => {
-    let savedData = JSON.parse(data);
     if (err) {
       res.status(500).send({ message: err });
     } else {
+      let savedData = JSON.parse(data);
       savedData.unshift(req.body);
-      fs.writeFile("./database/users.json", JSON.stringify(savedData), (err) => {
-        (err)
-          ? res.status(500).send({ message: err })
-          : res.status(200).send({ message: "Data successfully updated" });
-          
-      });
+      fs.writeFile(
+        "./database/users.json",
+        JSON.stringify(savedData),
+        (err) => {
+          err
+            ? res.status(500).send({ message: err })
+            : res.status(200).send({ message: "Data successfully updated" });
+        }
+      );
     }
   });
 });
@@ -163,10 +180,9 @@ app.delete("/users/:id", (req, res) => {
       const filtered = savedData.filter((product) => product.id !== id);
       console.log("filter success");
       fs.writeFile("./database/users.json", JSON.stringify(filtered), (err) => {
-        (err)
+        err
           ? res.status(500).send({ message: err })
           : res.status(200).send({ success: true, data: filtered });
-        
       });
     }
   });
@@ -183,7 +199,7 @@ app.put("/users/:id", (req, res) => {
       const edited = savedData.filter((product) => product.id !== id);
       edited.unshift(req.body);
       fs.writeFile("./database/users.json", JSON.stringify(edited), (err) => {
-        (err)
+        err
           ? res.status(500).send({ message: err })
           : res.status(200).send({ message: "Data successfully edited" });
       });
@@ -195,7 +211,7 @@ app.put("/users/:id", (req, res) => {
 app.get("/orders", (req, res) => {
   console.log("GET - Orders huselt orj irlee");
   fs.readFile("./database/orders.json", (err, data) => {
-    (err)
+    err
       ? res.status(500).send({ message: err })
       : res.status(200).send(JSON.parse(data));
   });
