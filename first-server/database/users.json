@@ -1,22 +1,3 @@
 [
-  {
-    "id": "55100c41",
-    "userName": "user1",
-    "firstName": "Gonchig",
-    "lastName": "Sumlai",
-    "password": "123",
-    "email": "user1@mail.com",
-    "phone": "99112233",
-    "orders": [{ "orderId": "55100c4101" }, { "orderId": "55100c4102" }]
-  },
-  {
-    "id": "55100c42",
-    "userName": "user2",
-    "firstName": "Andy",
-    "lastName": "Legend",
-    "password": "234",
-    "email": "user2@mail.com",
-    "phone": "99112234",
-    "orders": []
-  }
-]
+{"userName":"user3@mail.com","passwordHash":"$2b$10$6YdNyIll5SdOFLHxxe8D2eve917GXbzUmeiV8o3xBtbRJM9b9dFrm","_id":"63ee67788751e2652964c2ea"},
+{"userName":"user4@mail.com","passwordHash":"$2b$10$UBm88xbddiGeeFCYf85ssu96sawseu6av0VTC7Z4/SlA5SFNj89ui","_id":"63ee6ae07e52305b535ec84a"}]

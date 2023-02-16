@@ -31,7 +31,7 @@ export default function LogInModal() {
 
   async function loginHandler(userName, password) {
     try {
-      const res = await axios.put(`http://localhost:5000/users/login`, {
+      const res = await axios.post(`http://localhost:5000/auth/login`, {
         userName,
         password,
       });
@@ -48,7 +48,7 @@ export default function LogInModal() {
 
   async function registerHandler(userName, password) {
     try {
-      const res = await axios.put(`http://localhost:5000/users/register`, {
+      const res = await axios.post(`http://localhost:5000/auth/register`, {
         userName,
         password,
       });
