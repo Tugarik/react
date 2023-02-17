@@ -10,14 +10,14 @@
 // const mongoose = require("mongoose");
 
 import express from "express";
-import cors from"cors";
-import fs from"fs";
+import cors from "cors";
+import fs from "fs";
 import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { credentialValidation } from "./validations/auth.js";
 import { validationResult } from "express-validator";
-import UserModel from './models/User.js';
+import { UserModel } from "./models/User.js";
 import mongoose from "mongoose";
 
 const app = express();
@@ -38,27 +38,35 @@ app.post("/auth/login", credentialValidation, async (req, res) => {
     return res.status(403).send(errors.array());
   }
   try {
-    fs.readFile("./database/users.json", async (err, data) => {
+    fs.readFile("./database/users.json", (err, data) => {
       if (err) {
         res.status(500).send({ message: err });
       } else {
         let savedData = JSON.parse(data);
-        const password = req.body.password;
-        const salt = await bcrypt.genSalt(10);
-        const passwordHash = await bcrypt.hash(password, salt);
-        // const token = jwt.sign({_id: user._id},'secret123', {expiresIn: '1d'});
-        savedData.filter((el) => el.userName == req.body.userName || el.passwordHash == passwordHash).length &&
-        res.status(200).send({ success: true });   
+        if (
+          savedData.filter(
+            (el) =>
+              el.userName == req.body.userName &&
+              bcrypt.compareSync(req.body.password, el.passwordHash)
+          ).length
+        ) {
+          const token = jwt.sign({ userName: req.body.userName }, "key", {
+            expiresIn: "3m",
+          });
+          res.status(202).send({ success: true, token });
+          console.log("token: ", token);
+        } else {
+          res.status(401).send("invalid password");
+        }
       }
     });
-  } catch(error) {
-      res.status(401).send({ success: false });
+  } catch (error) {
+    res.status(401).send({ success: false });
   }
 });
 
 // user registration from shop
-app.post("/auth/register", credentialValidation,  async (req, res) => {
-  
+app.post("/auth/register", credentialValidation, async (req, res) => {
   console.log("PUT register user hiih medeelel irlee");
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -66,14 +74,14 @@ app.post("/auth/register", credentialValidation,  async (req, res) => {
   }
 
   const password = req.body.password;
-  const salt = await bcrypt.genSalt(10);
-  const passwordHash = await bcrypt.hash(password, salt);
+  const salt = bcrypt.genSaltSync(10);
+  const passwordHash = bcrypt.hashSync(password, salt);
 
   const newUser = new UserModel({
-  userName: req.body.userName,
-  passwordHash,
+    userName: req.body.userName,
+    passwordHash,
   });
-  
+
   fs.readFile("./database/users.json", (err, data) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -93,8 +101,6 @@ app.post("/auth/register", credentialValidation,  async (req, res) => {
     }
   });
 });
-
-
 
 // products
 app.get("/products", (req, res) => {
@@ -178,7 +184,6 @@ app.put("/products/:id", (req, res) => {
     }
   });
 });
-
 
 // Users from dashboard
 app.get("/users", (req, res) => {

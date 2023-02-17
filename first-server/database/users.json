@@ -1,3 +1,1 @@
-[
-{"userName":"user3@mail.com","passwordHash":"$2b$10$6YdNyIll5SdOFLHxxe8D2eve917GXbzUmeiV8o3xBtbRJM9b9dFrm","_id":"63ee67788751e2652964c2ea"},
-{"userName":"user4@mail.com","passwordHash":"$2b$10$UBm88xbddiGeeFCYf85ssu96sawseu6av0VTC7Z4/SlA5SFNj89ui","_id":"63ee6ae07e52305b535ec84a"}]
+[{"userName":"user1@mail.com","passwordHash":"$2b$10$x79OMTu9FirEoQTPcl6qROrs7RHBtnwr47Mxs8lB/CRgphyNnMTPi","_id":"63eee25b93c12425e9763a86"}]

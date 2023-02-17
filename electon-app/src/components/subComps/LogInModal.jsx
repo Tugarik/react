@@ -39,6 +39,8 @@ export default function LogInModal() {
         setIsLoggedIn(true);
         setCurrentUser(userName);
         setPassword("");
+        console.log(res.data.token);
+        document.cookie = `token=${res.data.token}`;
       }
     } catch (error) {
       console.log(error.message);
