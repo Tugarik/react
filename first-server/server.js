@@ -1,14 +1,3 @@
-// const express = require("express");
-// const cors = require("cors");
-// const fs = require("fs");
-// const bodyParser = require("body-parser");
-// const jwt = require("jsonwebtoken");
-// const bcrypt = require("bcrypt");
-// const { credentialValidation } = require("./validations/auth.js");
-// const { validationResult } = require("express-validator");
-// const UserModel = require('./models/User.js');
-// const mongoose = require("mongoose");
-
 import express from "express";
 import cors from "cors";
 import fs from "fs";
@@ -19,6 +8,7 @@ import { credentialValidation } from "./validations/auth.js";
 import { validationResult } from "express-validator";
 import { UserModel } from "./models/User.js";
 import mongoose from "mongoose";
+import ProductRouter from "./routes/product-router.js";
 
 const app = express();
 const port = 5000;
@@ -29,6 +19,8 @@ app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
   res.status(200).send("Home page");
 });
+
+app.use(ProductRouter);
 
 // user login from shop
 app.post("/auth/login", credentialValidation, async (req, res) => {

@@ -1,0 +1,36 @@
+GET http://localhost:5050/products/test HTTP/1.1
+
+###
+
+POST http://localhost:5050/product/test HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Sony Alpha III",
+    "image": "https://m.media-amazon.com/images/I/91rQ3XfEYzL._SL1500_.jpg",
+    "spec": [
+      { "Shutter": "10fps Silent" },
+      { "ISO": "50 to 204,800" },
+      { "Sensor": "35mm Full-frame Image Sensor" },
+      {
+        "Battery":
+          "Long-lasting Z battery for up to 710 images8 on a full charge",
+      },
+    ],
+    "description": "Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
+    "price": 1999,
+    "stock": 2,
+    "sale": 0,
+    # "category": 1,
+    # "brand": 2,
+    # "rating": 6.7,
+    # "reviews": 12,
+    # "createdBy": 10000,
+    # "createdDate": "2023-03-01"
+}
+
+###
+
+DELETE http://localhost:5050/product/test?id=4017 HTTP/1.1
+
+### 
