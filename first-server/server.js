@@ -7,8 +7,11 @@ import bcrypt from "bcrypt";
 import { credentialValidation } from "./validations/auth.js";
 import { validationResult } from "express-validator";
 import { UserModel } from "./models/User.js";
-import mongoose from "mongoose";
 import ProductRouter from "./routes/product-router.js";
+import UsersRouter from "./routes/user-router.js";
+import CategoryRouter from "./routes/category-router.js";
+import BrandRouter from "./routes/brand-router.js";
+import MongoDBConnection from "./config/MongoDB-config.js";
 
 const app = express();
 const port = 5000;
@@ -21,6 +24,9 @@ app.get("/", (req, res) => {
 });
 
 app.use(ProductRouter);
+app.use(UsersRouter);
+app.use(CategoryRouter);
+app.use(BrandRouter);
 
 // user login from shop
 app.post("/auth/login", credentialValidation, async (req, res) => {
@@ -258,5 +264,6 @@ app.get("/orders", (req, res) => {
 });
 
 app.listen(port, () => {
+  MongoDBConnection
   console.log(`Server is starting in ${port} port`);
 });

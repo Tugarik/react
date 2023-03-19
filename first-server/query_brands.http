@@ -1,0 +1,25 @@
+GET http://localhost:5000/brands/test HTTP/1.1
+
+###
+
+POST http://localhost:5000/brand/test HTTP/1.1
+content-type: application/json
+
+
+
+
+###
+
+# {"name" : "Other", "image" : "https://formhouse.in/wp-content/uploads/2022/06/index.png"}
+# {"name" : "Samsung", "image" : "https://1000logos.net/wp-content/uploads/2017/06/Samsung-Logo-2.png"}
+# {"name" : "Dell", "image" : "https://1000logos.net/wp-content/uploads/2017/07/Dell-Logo.png"}
+# {"name" : "Apple", "image" : "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png"}
+# {"name" : "Google", "image" : "https://1000logos.net/wp-content/uploads/2021/05/Google-logo.png"}
+# {"name" : "KitchenAid", "image" : "https://1000logos.net/wp-content/uploads/2017/12/KitchenAid-Logo.png"}
+# {"name" : "iRobot", "image" : "https://media.irobot.com/image/iRobot+Logo+Print+%28002%29+400px.jpg"}
+# {"name" : "Bose", "image" : "https://1000logos.net/wp-content/uploads/2021/05/Bose-logo.png"}
+# {"name" : "Ninja", "image" : "https://ninjakitchen.co.uk/INTERSHOP/static/WFS/SharkNinja-GB-Site/ninja-responsive/SharkNinja-GB-ninja-responsive/en_GB/Ninja-logo.svg"}
+# {"name" : "Instant Pot", "image" : "https://logovectordl.com/wp-content/uploads/2021/03/instant-pot-logo-vector.png"}
+# {"name" : "Breville", "image" : "https://d33wubrfki0l68.cloudfront.net/b4479a6d841f4e4e28d809e4821572a6c0056f9f/a708f/img/breville-logo_3d.png"}
+# {"name" : "HP", "image" : "https://1000logos.net/wp-content/uploads/2021/04/HP-logo.png"}
+# {"name" : "Sony", "image" : "https://1000logos.net/wp-content/uploads/2021/05/Sony-logo.png"}

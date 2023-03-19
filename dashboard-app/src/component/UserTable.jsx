@@ -36,11 +36,11 @@ export default function UserTable() {
           users.map((user, index) => (
             <tr key={index} id={user.id}>
               <td>{user.userName}</td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.orders.length}</td>
+              <td>{user.firstName || '-'}</td>
+              <td>{user.lastName || '-'}</td>
+              <td>{user.email || '-'}</td>
+              <td>{user.phone || '-'}</td>
+              <td>{user.orders? user.orders.length : 0}</td>
               <td>
                 <DropdownButton id="dropdown-basic-button" title="Edit">
                   <Dropdown.Item>

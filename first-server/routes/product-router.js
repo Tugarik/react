@@ -1,13 +1,18 @@
+
 import express from "express";
-import { getProducts } from "../services/product-service.js";
+import { addProduct, getProducts } from "../services/product-service.js";
 
-const ProductRouter = express.Router();
+const ProductsRouter = express.Router();
 
-ProductRouter.get("/products/test", (req, res) => {
-  console.log("GET - Products huselt orj irlee");
-  const result = getProducts();
-
+ProductsRouter .get("/products/test", async (req, res) => {
+  const result = await getProducts();
   res.status(200).send(result);
 });
 
-export default ProductRouter;
+ProductsRouter.post("/product/test", async (req, res) => {
+  console.log("reqBody: ", req.body);  
+  const result = await addProduct(req.body);
+    res.status(200).send(result);
+});
+
+export default ProductsRouter;

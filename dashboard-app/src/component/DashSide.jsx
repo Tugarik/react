@@ -13,8 +13,8 @@ const adminMenu = [
     url: "products",
     imageUrl: "../img/ds_monitor.svg",
   },
-  { name: "Захиалгууд", url: "orders", imageUrl: "../../../img/ds_orders.svg" },
   { name: "Хэрэглэгчид", url: "users", imageUrl: "../../../img/ds_users.svg" },
+  { name: "Захиалгууд", url: "orders", imageUrl: "../../../img/ds_orders.svg" },
   {
     name: "Модератор",
     url: "moderator",

@@ -1,9 +1,15 @@
-import fs from "fs";
+import { ProductModel } from "../models/Product.js";
 
-export function getProducts() {
-  const result = fs.readFile("./database/products.json", (err, data) => {
-    let savedData = JSON.parse(data);
-    err ? { message: err } : savedData;
+
+export async function getProducts() {
+  return await ProductModel.find()
+  .then((res) => {
+    return res;
   });
-  return result;
+}
+
+export async function addProduct(props) {
+  const newProduct = new ProductModel(props);
+  const result = await newProduct.save();
+return result;
 }

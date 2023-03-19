@@ -1,0 +1,19 @@
+GET http://localhost:5000/categories/test HTTP/1.1
+
+###
+
+POST http://localhost:5000/category/test HTTP/1.1
+content-type: application/json
+
+
+
+
+###
+
+
+# {"name" : "Other", "image" : "https://formhouse.in/wp-content/uploads/2022/06/index.png"}
+# {"name" : "Camera", "image" : "https://m.media-amazon.com/images/I/91rQ3XfEYzL._SL1500_.jpg"}
+# {"name" : "Phones", "image" : "https://images.samsung.com/is/image/samsung/p6pim/pk/galaxy-s21/gallery/pk-galaxy-s21-ultra-5g-g988-sm-g998bzkgmea-thumb-368317419?imwidth=480"}
+# {"name" : "Laptops", "image" : "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-13-9315/media-gallery/notebook-xps-9315-nt-blue-gallery-3.psd?fmt=png-alpha&pscan=auto&scl=1&wid=4108&hei=2874&qlt=100,1&resMode=sharp2&size=4108,2874&chrss=full&imwidth=5000"}
+# {"name" : "Headphones", "image" : "https://m.media-amazon.com/images/I/51SKmu2G9FL._AC_SL1500_.jpg"}
+# {"name" : "Home Appliances", "image" : "https://m.media-amazon.com/images/I/71DAYttsoPL._AC_SL1500_.jpg"}

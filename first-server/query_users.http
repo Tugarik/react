@@ -1,0 +1,11 @@
+GET http://localhost:5000/users/test HTTP/1.1
+
+###
+
+POST http://localhost:5000/user/test HTTP/1.1
+content-type: application/json
+
+{
+    "userName" : "User02",
+    "passwordHash" : "sadfsdfsdfdsf"
+}

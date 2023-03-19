@@ -7,7 +7,6 @@ const SpecObject = new mongoose.Schema({
 
 const ProductSchema = new mongoose.Schema(
   {
-    _id: mongoose.Schema.Types.ObjectId,
     name: {
       type: String,
       required: true,
@@ -16,7 +15,16 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    spec: [SpecObject],
+    spec: [],
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'Category'
+    },
+    
+    brand: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Brand'
+    },
     description: String,
     price: Number,
     stock: Number,
