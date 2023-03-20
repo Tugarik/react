@@ -103,12 +103,12 @@ export default function EditProductModal({ items, itemId }) {
                 type="text"
                 placeholder="Барааны нэр"
                 name="title"
-                defaultValue={currentProduct && currentProduct.title}
+                defaultValue={currentProduct && currentProduct.name}
               />
               <input
                 className="inputAddItem"
                 type="text"
-                placeholder="Барааны загвар"
+                placeholder="Brand"
                 name="model"
                 defaultValue={currentProduct && currentProduct.model}
               />
@@ -132,6 +132,13 @@ export default function EditProductModal({ items, itemId }) {
                 placeholder="Хямдрал (%-иар)"
                 name="sale"
                 defaultValue={currentProduct && currentProduct.sale}
+              />
+              <input
+                className="inputAddItem"
+                type="text"
+                placeholder="ID"
+                name="sale"
+                defaultValue={currentProduct && currentProduct.id}
               />
               <textarea
                 className="inputAddItem"

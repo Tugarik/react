@@ -7,5 +7,8 @@ content-type: application/json
 
 {
     "userName" : "User02",
-    "passwordHash" : "sadfsdfsdfdsf"
+    "passwordHash" : "sadfsdfsdfdsf",
+    "email" : "user2@test.com",
+    "createdOn" : "2023-03-20"
 }
+

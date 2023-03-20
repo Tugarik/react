@@ -26,20 +26,19 @@ export default function AddUserModal() {
 
     const newUser = {
       userName: e.target.userName.value,
-      password: e.target.password.value,
+      passwordHash: e.target.password.value,
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
       orders: specList,
       email: e.target.email.value,
       phone: e.target.phone.value,
-      id: itemId,
     };
     console.log(newUser);
     setShow(false);
 
     try {
       axios
-        .post("http://localhost:5000/users", newUser)
+        .post("http://localhost:5000/user/test", newUser)
         .then(() => console.log("POST done"));
     } catch (error) {
       console.log(error.message);

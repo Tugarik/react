@@ -11,7 +11,7 @@ export default function ProductTable() {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:5000/products").then((res) => {
+      axios.get("http://localhost:5000/products/test").then((res) => {
         setItems(res.data);
       });
     } catch (error) {
@@ -34,7 +34,7 @@ export default function ProductTable() {
       <tbody>
         {items &&
           items.map((item, index) => (
-            <tr key={index} id={item.id}>
+            <tr key={index} id={item._id}>
               <td>
                 <img
                   src={item.image}
@@ -43,15 +43,16 @@ export default function ProductTable() {
                   height="50px"
                 />
               </td>
-              <td>{item.model}</td>
+              <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.stock}</td>
               <td>{item.sale}</td>
               <td>{item.category}</td>
+              {console.log("Item ID: ", item._id)}
               <td>
                 <DropdownButton id="dropdown-basic-button" title="Edit">
                   <Dropdown.Item>
-                    <EditProductModal items={items} itemId={item.id} />
+                    <EditProductModal items={items} itemId={item._id} />
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <DeleteModal

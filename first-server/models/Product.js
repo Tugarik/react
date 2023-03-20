@@ -18,12 +18,12 @@ const ProductSchema = new mongoose.Schema(
     spec: [],
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:'Category'
+      ref: "Category",
     },
-    
+
     brand: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Brand'
+      ref: "Brand",
     },
     description: String,
     price: Number,

@@ -11,6 +11,7 @@ export default function AddProductModal() {
     { specKey: "", specValue: "" },
   ]);
 
+  const [image, setImage] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -26,23 +27,35 @@ export default function AddProductModal() {
     });
 
     const newItem = {
-      title: e.target.title.value,
-      image: e.target.image.value,
+      name: e.target.title.value,
+      image: image,
       description: e.target.description.value,
-      model: e.target.model.value,
       spec: specList,
-      price: e.target.price.value,
-      stock: e.target.stock.value,
+      // brand: e.target.model.value,
       category: e.target.category.value,
-      sale: e.target.sale.value,
-      id: itemId,
+      price: Number(e.target.price.value),
+      stock: Number(e.target.stock.value),
+      sale: Number(e.target.sale.value),
     };
+
+    // const newItem = {
+    //   title: e.target.title.value,
+    //   image: e.target.image.value,
+    //   description: e.target.description.value,
+    //   model: e.target.model.value,
+    //   spec: specList,
+    //   price: e.target.price.value,
+    //   stock: e.target.stock.value,
+    //   category: e.target.category.value,
+    //   sale: e.target.sale.value,
+    //   id: itemId,
+    // };
     console.log(newItem);
     setShow(false);
 
     try {
       axios
-        .post("http://localhost:5000/products", newItem)
+        .post("http://localhost:5000/product/test", newItem)
         .then(() => console.log("POST done"));
     } catch (error) {
       console.log(error.message);
@@ -65,6 +78,25 @@ export default function AddProductModal() {
     let data = [...specFields];
     data[index][e.target.name] = e.target.value;
     setSpecFields(data);
+  };
+
+  const fileHandler = (e) => {
+    console.log("fileHandler: ", e.target.files[0]);
+    const newImage = new FormData();
+    newImage.append("file", e.target.files[0]);
+    setImage(newImage);
+    console.log("filehandler: ", image);
+  };
+
+  const uploadHandler = (e) => {
+    e.preventDefault();
+    console.log("Uploading");
+    fetch("http://localhost:5000/product/test/file", {
+      method: "POST",
+      body: image,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -97,21 +129,17 @@ export default function AddProductModal() {
               <input
                 className="inputAddItem"
                 type="text"
-                placeholder="Барааны зураг"
-                name="image"
+                placeholder="Brand"
+                name="model"
               />
+
               <input
                 className="inputAddItem"
                 type="text"
                 placeholder="Барааны нэр"
                 name="title"
               />
-              <input
-                className="inputAddItem"
-                type="text"
-                placeholder="Барааны загвар"
-                name="model"
-              />
+
               <input
                 className="inputAddItem"
                 type="text"
@@ -136,6 +164,14 @@ export default function AddProductModal() {
                 placeholder="Description"
                 name="description"
               />
+              <input
+                className="inputAddItem"
+                type="file"
+                placeholder="Барааны зураг"
+                name="image"
+                onChange={fileHandler}
+              />
+              <button onClick={uploadHandler}>Upload</button>
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
               {specFields.map((spec, index) => {

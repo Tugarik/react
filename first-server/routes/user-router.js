@@ -1,4 +1,3 @@
-
 import express from "express";
 import { addUser, getUsers } from "../services/user-service.js";
 
@@ -10,9 +9,9 @@ UsersRouter.get("/users/test", async (req, res) => {
 });
 
 UsersRouter.post("/user/test", async (req, res) => {
-    console.log("reqBody: ", req.body);
-    const result = await addUser(req.body);
-    res.status(200).send(result);
+  console.log("reqBody: ", req.body);
+  const result = await addUser(req.body);
+  res.status(200).send(result);
 });
 
 export default UsersRouter;
