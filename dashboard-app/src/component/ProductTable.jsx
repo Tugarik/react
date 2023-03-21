@@ -11,7 +11,7 @@ export default function ProductTable() {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:5000/products/test").then((res) => {
+      axios.get("http://localhost:5000/products").then((res) => {
         setItems(res.data);
       });
     } catch (error) {

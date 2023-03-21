@@ -1,8 +1,8 @@
 import "../styles/addProductModal.css";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { v4 as uuid } from "uuid";
 import axios from "axios";
+import { json } from "react-router-dom";
 
 export default function AddProductModal() {
   const [show, setShow] = useState(false);
@@ -18,8 +18,6 @@ export default function AddProductModal() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const itemId = uuid().slice(0, 8);
-
     const specList = specFields.map((field) => {
       let obj = {};
       obj[field.specKey] = field.specValue;
@@ -31,16 +29,17 @@ export default function AddProductModal() {
       image: "",
       description: e.target.description.value,
       spec: specList,
-      // brand: e.target.model.value,
+      brand: e.target.model.value,
       category: e.target.category.value,
-      price: Number(e.target.price.value),
-      stock: Number(e.target.stock.value),
-      sale: Number(e.target.sale.value),
+      price: e.target.price.value,
+      stock: e.target.stock.value,
+      sale: e.target.sale.value,
     };
 
     const newProduct = new FormData();
+    newProduct.append("data", JSON.stringify(newItem));
     newProduct.append("file", image);
-    newProduct.append("data", newItem);
+    
 
     // const newItem = {
     //   title: e.target.title.value,
@@ -59,12 +58,12 @@ export default function AddProductModal() {
 
     try {
       axios
-        .post("http://localhost:5000/product/test", newProduct)
-        .then(() => console.log("POST done"));
+        .post("http://localhost:5000/product/add", newProduct)
+        .then((req, res) => console.log("POST done ", res));
     } catch (error) {
       console.log(error.message);
     }
-    location.reload();
+    // location.reload();
   };
 
   const addSpecField = (e) => {
@@ -85,22 +84,8 @@ export default function AddProductModal() {
   };
 
   const fileHandler = (e) => {
-    console.log("fileHandler: ", e.target.files[0]);
-    // const newImage = new FormData();
-    // newImage.append("file", e.target.files[0]);
     setImage(e.target.files[0]);
-    console.log("filehandler: ", image);
-  };
-
-  const uploadHandler = (e) => {
-    e.preventDefault();
-    console.log("Uploading");
-    fetch("http://localhost:5000/product/test/file", {
-      method: "POST",
-      body: image,
-    })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+ 
   };
 
   return (
@@ -175,7 +160,7 @@ export default function AddProductModal() {
                 name="image"
                 onChange={fileHandler}
               />
-              <button onClick={uploadHandler}>Upload</button>
+              {/* <button onClick={uploadHandler}>Upload</button> */}
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
               {specFields.map((spec, index) => {

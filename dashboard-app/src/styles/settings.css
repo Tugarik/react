@@ -1,4 +1,10 @@
 .settings {
   width: 100%;
   background-color: lightblue;
+  padding: 50px;
+}
+
+.cardImage {
+  width: 200px;
+  height: 100px;
 }
