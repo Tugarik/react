@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
-import cloudinary from "./config/cloudinary.js";
+
 import fs from "fs";
-import bodyParser from "body-parser";
+
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { credentialValidation } from "./validations/auth.js";
@@ -17,7 +17,7 @@ import MongoDBConnection from "./config/MongoDB-config.js";
 const app = express();
 const port = 5000;
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   console.log("GET home huselt orj irlee");
@@ -30,19 +30,6 @@ app.use(CategoryRouter);
 app.use(BrandRouter);
 
 // Upload
-
-const res = cloudinary.uploader.upload("/tmp/0JfDuk6SsmMxnFUkzKXf2.jpg", {
-  public_id: "sony_camera2",
-});
-
-res
-  .then((data) => {
-    console.log(data);
-    console.log("secureUrl: ", data.secure_url);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // user login from shop
 app.post("/auth/login", credentialValidation, async (req, res) => {

@@ -28,7 +28,7 @@ export default function AddProductModal() {
 
     const newItem = {
       name: e.target.title.value,
-      image: image,
+      image: "",
       description: e.target.description.value,
       spec: specList,
       // brand: e.target.model.value,
@@ -37,6 +37,10 @@ export default function AddProductModal() {
       stock: Number(e.target.stock.value),
       sale: Number(e.target.sale.value),
     };
+
+    const newProduct = new FormData();
+    newProduct.append("file", image);
+    newProduct.append("data", newItem);
 
     // const newItem = {
     //   title: e.target.title.value,
@@ -50,12 +54,12 @@ export default function AddProductModal() {
     //   sale: e.target.sale.value,
     //   id: itemId,
     // };
-    console.log(newItem);
+    console.log(newProduct);
     setShow(false);
 
     try {
       axios
-        .post("http://localhost:5000/product/test", newItem)
+        .post("http://localhost:5000/product/test", newProduct)
         .then(() => console.log("POST done"));
     } catch (error) {
       console.log(error.message);
@@ -82,9 +86,9 @@ export default function AddProductModal() {
 
   const fileHandler = (e) => {
     console.log("fileHandler: ", e.target.files[0]);
-    const newImage = new FormData();
-    newImage.append("file", e.target.files[0]);
-    setImage(newImage);
+    // const newImage = new FormData();
+    // newImage.append("file", e.target.files[0]);
+    setImage(e.target.files[0]);
     console.log("filehandler: ", image);
   };
 
