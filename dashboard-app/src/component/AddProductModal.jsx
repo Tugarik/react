@@ -39,20 +39,6 @@ export default function AddProductModal() {
     const newProduct = new FormData();
     newProduct.append("data", JSON.stringify(newItem));
     newProduct.append("file", image);
-    
-
-    // const newItem = {
-    //   title: e.target.title.value,
-    //   image: e.target.image.value,
-    //   description: e.target.description.value,
-    //   model: e.target.model.value,
-    //   spec: specList,
-    //   price: e.target.price.value,
-    //   stock: e.target.stock.value,
-    //   category: e.target.category.value,
-    //   sale: e.target.sale.value,
-    //   id: itemId,
-    // };
     console.log(newProduct);
     setShow(false);
 
@@ -85,7 +71,6 @@ export default function AddProductModal() {
 
   const fileHandler = (e) => {
     setImage(e.target.files[0]);
- 
   };
 
   return (
