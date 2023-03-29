@@ -11,7 +11,9 @@
   width: 48%;
   outline: none;
 }
-
+.inputSelect {
+  width: 98%;
+}
 .specBox {
   border: 1px solid lightgray;
   border-radius: 5px;

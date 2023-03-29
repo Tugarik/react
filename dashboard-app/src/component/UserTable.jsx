@@ -10,7 +10,7 @@ export default function UserTable() {
   const { users, setUsers } = useDataContext();
   useEffect(() => {
     try {
-      axios.get("http://localhost:5000/users/test").then((res) => {
+      axios.get("http://localhost:5000/users").then((res) => {
         setUsers(res.data);
       });
     } catch (error) {

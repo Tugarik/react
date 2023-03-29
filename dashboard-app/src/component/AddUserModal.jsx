@@ -16,8 +16,6 @@ export default function AddUserModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const itemId = uuid().slice(0, 8);
     const specList = specFields.map((field) => {
       let obj = {};
       obj[field.specKey] = field.specValue;

@@ -8,7 +8,6 @@ import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
-
 import "./styles/app.css";
 
 function App() {

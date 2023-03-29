@@ -1,12 +1,12 @@
 import "../styles/addProductModal.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
-import { json } from "react-router-dom";
 
 export default function AddProductModal() {
   const [show, setShow] = useState(false);
-
+  const [cats, setCats] = useState();
+  const [brands, setBrands] = useState();
   const [specFields, setSpecFields] = useState([
     { specKey: "", specValue: "" },
   ]);
@@ -14,6 +14,26 @@ export default function AddProductModal() {
   const [image, setImage] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    try {
+      axios
+        .get(`http://localhost:5000/categories`)
+        .then((res) => setCats(res.data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [setCats]);
+
+  useEffect(() => {
+    try {
+      axios
+        .get(`http://localhost:5000/brands`)
+        .then((res) => setBrands(res.data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [setBrands]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,13 +44,18 @@ export default function AddProductModal() {
       return obj;
     });
 
+    const brandOptions = e.target.brand.options;
+    const brandId = brandOptions[brandOptions.selectedIndex].id;
+    const catOptions = e.target.category.options;
+    const categoryId = catOptions[catOptions.selectedIndex].id;
+
     const newItem = {
       name: e.target.title.value,
       image: "",
       description: e.target.description.value,
       spec: specList,
-      brand: e.target.model.value,
-      category: e.target.category.value,
+      brand: brandId,
+      category: categoryId,
       price: e.target.price.value,
       stock: e.target.stock.value,
       sale: e.target.sale.value,
@@ -39,31 +64,16 @@ export default function AddProductModal() {
     const newProduct = new FormData();
     newProduct.append("data", JSON.stringify(newItem));
     newProduct.append("file", image);
-    
-
-    // const newItem = {
-    //   title: e.target.title.value,
-    //   image: e.target.image.value,
-    //   description: e.target.description.value,
-    //   model: e.target.model.value,
-    //   spec: specList,
-    //   price: e.target.price.value,
-    //   stock: e.target.stock.value,
-    //   category: e.target.category.value,
-    //   sale: e.target.sale.value,
-    //   id: itemId,
-    // };
-    console.log(newProduct);
     setShow(false);
 
     try {
       axios
         .post("http://localhost:5000/product/add", newProduct)
-        .then((req, res) => console.log("POST done ", res));
+        .then((res) => console.log("POST done ", res.data.message));
     } catch (error) {
       console.log(error.message);
     }
-    // location.reload();
+    location.reload();
   };
 
   const addSpecField = (e) => {
@@ -85,7 +95,6 @@ export default function AddProductModal() {
 
   const fileHandler = (e) => {
     setImage(e.target.files[0]);
- 
   };
 
   return (
@@ -109,18 +118,28 @@ export default function AddProductModal() {
           </Modal.Header>
           <Modal.Body>
             <div className="inputsAddItem">
-              <input
-                className="inputAddItem"
-                type="text"
-                placeholder="Category"
-                name="category"
-              />
-              <input
-                className="inputAddItem"
-                type="text"
-                placeholder="Brand"
-                name="model"
-              />
+              <div className="inputSelect d-flex justify-content-between">
+                <label>Select a category:</label>
+                <select className="inputAddItem" name="category" id="category">
+                  {cats &&
+                    cats.map((cat, index) => (
+                      <option key={index} id={cat._id}>
+                        {cat.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="inputSelect d-flex justify-content-between">
+                <label>Select a brand:</label>
+                <select className="inputAddItem" name="brand">
+                  {brands &&
+                    brands.map((brand, index) => (
+                      <option key={index} id={brand._id}>
+                        {brand.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
 
               <input
                 className="inputAddItem"

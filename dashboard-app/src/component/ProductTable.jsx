@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 
-import { Dropdown, DropdownButton, Table } from "react-bootstrap";
+import { Dropdown, DropdownButton, Spinner, Table } from "react-bootstrap";
 import { useDataContext } from "../context/DataContext";
 import DeleteModal from "./DeleteModal";
 import EditProductModal from "./EditProductModal";
@@ -18,7 +18,9 @@ export default function ProductTable() {
       console.log(error.message);
     }
   }, []);
-  return (
+  return !items ? (
+    <Spinner animation="border" role="status" />
+  ) : (
     <Table>
       <thead className="bg-secondary">
         <tr>
@@ -28,6 +30,7 @@ export default function ProductTable() {
           <th>Үлдэгдэл</th>
           <th>Хямдрал %</th>
           <th>Категори</th>
+          <th>Брэнд</th>
           <th>...</th>
         </tr>
       </thead>
@@ -47,8 +50,9 @@ export default function ProductTable() {
               <td>{item.price}</td>
               <td>{item.stock}</td>
               <td>{item.sale}</td>
-              <td>{item.category}</td>
-              {console.log("Item ID: ", item._id)}
+              <td>{{ ...item.category }.name}</td>
+              <td>{{ ...item.brand }.name}</td>
+
               <td>
                 <DropdownButton id="dropdown-basic-button" title="Edit">
                   <Dropdown.Item>

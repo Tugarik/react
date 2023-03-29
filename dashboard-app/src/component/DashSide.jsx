@@ -29,7 +29,7 @@ const adminMenu = [
 
 export default function DashSide() {
   const { role } = useDataContext();
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(localStorage.getItem("currentMenu"));
   const navigate = useNavigate();
   let menus = [];
 
@@ -41,30 +41,23 @@ export default function DashSide() {
     return (
       <div className="d-flex flex-wrap">
         {menus &&
-          menus.map((menu, index) =>
-            current === index ? (
-              <button
-                key={index}
-                className="roleBtn mb-3 mx-auto ps-3 roleBtn-active"
-              >
-                <img src={menu.imageUrl} alt="menulogo" />
-                <span> {menu.name}</span>
-              </button>
-            ) : (
-              <button
-                key={index}
-                className="roleBtn mb-3 mx-auto ps-3"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setCurrent(index);
-                  navigate(menu.url);
-                }}
-              >
-                <img src={menu.imageUrl} alt="menulogo" />
-                <span> {menu.name}</span>
-              </button>
-            )
-          )}
+          menus.map((menu, index) => (
+            <button
+              key={index}
+              className={`roleBtn mb-3 mx-auto ps-3 ${
+                current == index && "roleBtn-active"
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrent(index);
+                localStorage.setItem("currentMenu", index);
+                navigate(menu.url);
+              }}
+            >
+              <img src={menu.imageUrl} alt="menulogo" />
+              <span> {menu.name}</span>
+            </button>
+          ))}
       </div>
     );
   };

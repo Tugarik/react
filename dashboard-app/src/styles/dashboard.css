@@ -1,5 +1,6 @@
 .Dash_Side {
   width: 30%;
+  min-width: 250px;
   height: calc(100vh - 50px);
 }
 
