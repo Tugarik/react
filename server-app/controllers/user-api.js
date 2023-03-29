@@ -1,9 +1,11 @@
 import express from "express";
+import { getUsers } from "../services/user-service.js";
 const Router = express.Router();
 
-Router.get("/users", (req, res) => {
-    console.log("GET - all Users query recieved");
-    res.send("Users");
+Router.get("/users", async (req, res) => {
+    console.log("GET - All Users query recieved");
+    const result = await getUsers()
+    res.send(result);
 });
 
 Router.post("/user/add", (req, res) => {

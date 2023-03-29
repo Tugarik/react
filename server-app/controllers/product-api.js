@@ -4,15 +4,20 @@ import { addProduct, getProducts } from "../services/product-service.js";
 const Router = express.Router();
 
 Router.get("/products", async (req, res) => {
-    console.log("GET - all products query recieved");
+    console.log("GET - all Products query recieved");
     const result = await getProducts();
     res.status(200).send(result);
 });
 
 Router.post("/product/add", upload.single("file"), async (req, res) => {
     console.log("POST - add product query recieved");
-    const result = await addProduct(req);
-    res.status(201).send(result);
+
+    if (!req.file) {
+        res.send({ message: 'File is missing' })
+    } else {
+        const result = await addProduct(req);
+        res.status(201).send(result);
+    }
 });
 
 Router.delete("/product/delete/:id", (req, res) => {
