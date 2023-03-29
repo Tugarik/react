@@ -17,6 +17,6 @@ app.use(BrandApi);
 app.use(CategoryApi);
 
 app.listen(PORT, () => {
-    mongoDBConfig;
-    console.log(`Server started at port: ${PORT}`);
-})
+  mongoDBConfig;
+  console.log(`Server started at port: ${PORT}`);
+});
