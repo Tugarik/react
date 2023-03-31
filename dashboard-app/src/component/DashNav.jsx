@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataContext";
 
 export default function DashNav() {
-  const { role } = useDataContext();
+  const { role, setCurrent } = useDataContext();
   const navigate = useNavigate();
   const logOutHandle = () => {
     navigate("/");
     setShow(false);
+    localStorage.removeItem("menu");
+    setCurrent(0);
   };
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

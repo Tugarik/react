@@ -7,7 +7,19 @@ import DeleteModal from "./DeleteModal";
 import EditProductModal from "./EditProductModal";
 
 export default function ProductTable() {
-  const { items, setItems } = useDataContext();
+  const { items, setItems, isDesc, setIsDesc } = useDataContext();
+  const sortPrice = () => {
+    console.log("sort");
+    setIsDesc(!isDesc);
+    console.log(isDesc);
+    try {
+      axios
+        .get(`http://localhost:5000/products/sort?isDesc=${isDesc}`)
+        .then((res) => setItems(res.data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
     try {
@@ -18,15 +30,25 @@ export default function ProductTable() {
       console.log(error.message);
     }
   }, []);
+
   return !items ? (
     <Spinner animation="border" role="status" />
   ) : (
-    <Table>
+    <Table striped bordered hover>
       <thead className="bg-secondary">
         <tr>
           <th>Зураг</th>
           <th>Барааны нэр</th>
-          <th>Үнэ</th>
+          <th>
+            Үнэ
+            <button className="sortBtn" onClick={sortPrice} type="text">
+              {isDesc ? (
+                <i className="bi bi-sort-down-alt"></i>
+              ) : (
+                <i className="bi bi-sort-down"></i>
+              )}
+            </button>
+          </th>
           <th>Үлдэгдэл</th>
           <th>Хямдрал %</th>
           <th>Категори</th>
@@ -49,7 +71,7 @@ export default function ProductTable() {
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.stock}</td>
-              <td>{item.sale}</td>
+              <td>{!item.sale || item.sale === 0 ? `-` : `${item.sale}%`}</td>
               <td>{{ ...item.category }.name}</td>
               <td>{{ ...item.brand }.name}</td>
 
