@@ -1,7 +1,8 @@
 import AddProductModal from "../component/AddProductModal";
 import ProductTable from "../component/ProductTable";
-import "../styles/products.css";
 import MonitorSvg from "../svg/MonitorSvg";
+import "../styles/products.css";
+import AllProducts from "../component/AllProducts";
 
 export default function Products() {
   return (
@@ -21,6 +22,7 @@ export default function Products() {
         </div>
       </div>
       <div>
+        {/* <AllProducts /> */}
         <ProductTable />
       </div>
     </div>

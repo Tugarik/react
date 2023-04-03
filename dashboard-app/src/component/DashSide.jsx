@@ -1,35 +1,57 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataContext";
+import Dashboard from "../pages/Dashboard";
+import Moderator from "../pages/Moderator";
+import Orders from "../pages/Orders";
+import Products from "../pages/Products";
+import Settings from "../pages/Settings";
+import Users from "../pages/Users";
 
 const adminMenu = [
   {
     name: "Хянах самбар",
     url: "panel",
     imageUrl: "../img/ds_dashboard.svg",
+    component: <Dashboard />,
   },
   {
     name: "Бүтээгдэхүүнүүд",
     url: "products",
     imageUrl: "../img/ds_monitor.svg",
+    component: <Products />,
   },
-  { name: "Хэрэглэгчид", url: "users", imageUrl: "../../../img/ds_users.svg" },
-  { name: "Захиалгууд", url: "orders", imageUrl: "../../../img/ds_orders.svg" },
+  {
+    name: "Хэрэглэгчид",
+    url: "users",
+    imageUrl: "../../../img/ds_users.svg",
+    component: <Users />,
+  },
+  {
+    name: "Захиалгууд",
+    url: "orders",
+    imageUrl: "../../../img/ds_orders.svg",
+    component: <Orders />,
+  },
   {
     name: "Модератор",
     url: "moderator",
     imageUrl: "../img/ds_moderator.svg",
+    component: <Moderator />,
   },
   {
     name: "Тохиргоо",
     url: "settings",
     imageUrl: "../img/ds_settings.svg",
+    component: <Settings />,
   },
 ];
 
 export default function DashSide() {
   const { role } = useDataContext();
-  const [current, setCurrent] = useState(localStorage.getItem("currentMenu"));
+  const [current, setCurrent] = useState(
+    localStorage.getItem("currentMenu") || 0
+  );
   const navigate = useNavigate();
   let menus = [];
 

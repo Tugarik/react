@@ -1,3 +1,7 @@
+.Dashboard {
+  height: 100vh;
+}
+
 .Dash_Side {
   width: 30%;
   min-width: 250px;
@@ -13,6 +17,11 @@
 .Dash_Nav .brandName {
   color: #003585;
 }
+
+.Dash_Layout {
+  width: 70%;
+}
+
 #basic-input2 {
   background-color: lightgrey;
 }

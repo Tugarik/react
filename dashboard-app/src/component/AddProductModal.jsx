@@ -179,7 +179,7 @@ export default function AddProductModal() {
                 name="image"
                 onChange={fileHandler}
               />
-              {/* <button onClick={uploadHandler}>Upload</button> */}
+
               <p className="text-start mt-4">Үзүүлэлтүүд</p>
 
               {specFields.map((spec, index) => {
