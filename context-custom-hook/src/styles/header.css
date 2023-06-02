@@ -1,0 +1,11 @@
+.header-container {
+  width: 100vw;
+  height: 70px;
+  background-color: blueviolet;
+  opacity: 0.4;
+  padding: 20px 100px;
+  color: aliceblue;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
